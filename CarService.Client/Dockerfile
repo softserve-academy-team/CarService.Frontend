@@ -1,9 +1,14 @@
-FROM node:8.9.4-alpine
-WORKDIR /sln
-COPY . .
-RUN npm install --silent 
-EXPOSE 4200
-RUN npm run-script build 
-ENTRYPOINT npm start
+FROM node:8.9.4-alpine AS builder
+COPY . /CarService.Client
+WORKDIR /CarService.Client
+RUN npm install --silent
+RUN $(npm bin)/ng build
+
+FROM nginx
+COPY --from=builder /CarService.Client/dist/* /usr/share/nginx/html/
+
+
+
+
 
 
