@@ -23,10 +23,7 @@ import { SliderComponent } from './components/slider/slider.component';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
