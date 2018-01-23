@@ -11,13 +11,15 @@ import {MatStepperModule} from '@angular/material/stepper';
 
 import { AppComponent } from './app.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SliderComponent
+    SliderComponent,
+    CarouselComponent
   ],
   imports: [
     AppRoutingModule,
