@@ -1,7 +1,11 @@
 <div class="main">
-  <button (click)="leftClick()" mat-fab class="leftBtn">Left</button>
+  <button (click)="leftClick()" mat-fab class="leftBtn">
+    <i class="material-icons">keyboard_arrow_left</i>
+  </button>
   <mat-card>
     <img mat-card-image [src]="images[numOfCurrImg].src">
   </mat-card>
-  <button (click)="rightClick()" mat-fab class="rightBtn">Right</button>
+  <button (click)="rightClick()" mat-fab class="rightBtn">
+      <i class="material-icons">keyboard_arrow_right</i>
+  </button>
 </div>
