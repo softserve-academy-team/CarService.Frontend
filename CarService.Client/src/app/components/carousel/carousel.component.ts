@@ -10,6 +10,7 @@ export class CarouselComponent implements OnInit {
 numOfCurrImg: number;
 numOfImages: number;
 time: number;
+hide: boolean;
 
 images: any[] = [
   {
@@ -29,6 +30,7 @@ images: any[] = [
     this.numOfImages = this.images.length;
     this.numOfCurrImg = 0;
     this.time = 4000;
+    this.hide = true;
     this.changeImageSourceWithInterval();
   }
 

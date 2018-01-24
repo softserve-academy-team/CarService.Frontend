@@ -1,10 +1,10 @@
-<div class="main">
+<div class="main" (mouseenter)="hide=false" (mouseleave)="hide=true">
   <mat-card>
-    <button (click)="leftClick()" mat-fab class="leftBtn">
+    <button [style.visibility]="(hide == true) ? 'hidden' : 'visible' " (click)="leftClick()" mat-fab class="leftBtn">
       <i class="material-icons">keyboard_arrow_left</i>
     </button>
     <img mat-card-image [src]="images[numOfCurrImg].src">
-    <button (click)="rightClick()" mat-fab class="rightBtn">
+    <button [style.visibility]="(hide == true) ? 'hidden' : 'visible' " (click)="rightClick()" mat-fab class="rightBtn">
       <i class="material-icons">keyboard_arrow_right</i>
     </button>
   </mat-card>
