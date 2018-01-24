@@ -9,6 +9,7 @@ export class CarouselComponent implements OnInit {
 
 numOfCurrImg: number;
 numOfImages: number;
+time: number;
 
 images: any[] = [
   {
@@ -27,6 +28,8 @@ images: any[] = [
   ngOnInit() {
     this.numOfImages = this.images.length;
     this.numOfCurrImg = 0;
+    this.time = 4000;
+    this.changeImageSourceWithInterval();
   }
 
   leftClick() {
@@ -44,5 +47,13 @@ images: any[] = [
       ++this.numOfCurrImg;
     }
   }
+
+  changeImageSourceWithInterval() {
+    setInterval(
+        () =>  {
+            this.rightClick();
+        }, this.time);
+  }
+
 
 }
