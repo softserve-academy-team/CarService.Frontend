@@ -13,14 +13,24 @@ time: number;
 hide: boolean;
 
 images: any[] = [
+ 
   {
-    'src' : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz8sM2JwU9mGJn7cCSToAP_yNyYAhW1OGNi3Y7DE3fVlVumdqfgw'
+    'src' : 'assets/car_service_1.jpg'
   },
   {
-    'src' : 'http://service.kzta.ru/wp-content/uploads/2015/02/time-300x300.png'
+    'src' : 'assets/car_service_2.jpg'
   },
   {
-    'src' : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4GP8C9ZfCZ_sQFEIboThkLSo86LyZ8PsIgnzINdt1Hh-7spbW8w'
+    'src' : 'assets/car_service_3.jpg'
+  },
+  {
+    'src' : 'assets/car_service_4.jpg'
+  },
+  {
+    'src' : 'assets/car_service_5.jpg'
+  },
+  {
+    'src' : 'assets/car_service_6.jpg'
   }
 ];
 
@@ -31,7 +41,7 @@ images: any[] = [
     this.numOfCurrImg = 0;
     this.time = 4000;
     this.hide = true;
-    this.changeImageSourceWithInterval();
+    // this.changeImageSourceWithInterval();
   }
 
   leftClick() {

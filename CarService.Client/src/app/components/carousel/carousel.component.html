@@ -1,11 +1,9 @@
-<div class="main" (mouseenter)="hide=false" (mouseleave)="hide=true">
-  <mat-card>
-    <button [style.visibility]="(hide == true) ? 'hidden' : 'visible' " (click)="leftClick()" mat-fab class="leftBtn">
-      <i class="material-icons">keyboard_arrow_left</i>
+ <mat-card class="main" (mouseenter)="hide=false" (mouseleave)="hide=true">
+    <button [style.visibility]="(hide == true) ? 'hidden' : 'visible' " (click)="leftClick()" color="primary" mat-icon-button class="leftBtn">
+      <i class="material-icons bigger">keyboard_arrow_left</i>
     </button>
     <img mat-card-image [src]="images[numOfCurrImg].src">
-    <button [style.visibility]="(hide == true) ? 'hidden' : 'visible' " (click)="rightClick()" mat-fab class="rightBtn">
-      <i class="material-icons">keyboard_arrow_right</i>
+    <button [style.visibility]="(hide == true) ? 'hidden' : 'visible' " (click)="rightClick()" color="primary" mat-icon-button class="rightBtn">
+      <i class="material-icons bigger">keyboard_arrow_right</i>
     </button>
   </mat-card>
-</div>
