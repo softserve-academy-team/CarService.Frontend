@@ -1,0 +1,27 @@
+<div class="litecar" *ngFor="let car of cars">
+          <div>
+            <mat-grid-list cols="6" rowHeight=40>
+              <mat-grid-tile [rowspan]="3" [colspan]="2">
+                <img src="{{car.photoLink}}" class="autoImg"/>
+              </mat-grid-tile>
+              <mat-grid-tile [rowspan]="1" [colspan]="4"  class="carName">
+                <h2>{{car.markName}} {{car.modelName}} {{car.year}}</h2>
+                </mat-grid-tile>
+              <mat-grid-tile [rowspan]="1" [colspan]="2">
+                <img src="https://cdn1.iconfinder.com/data/icons/money-currency-extras/512/Dollar_Bill-512.png" alt="" class="icon"/>
+                <p class="carPriceUSD">{{car.priceUSD}}$/</p>
+                <p class="carPriceUAH">{{car.priceUAH}}₴</p>
+              </mat-grid-tile>
+              <mat-grid-tile [rowspan]="1" [colspan]="2" class="carInfo">
+                <img src="https://image.flaticon.com/icons/png/512/75/75691.png" class="raceIcon"/>
+                <p>{{car.race}}</p>
+              </mat-grid-tile>
+              <mat-grid-tile [rowspan]="1" [colspan]="2" class="carInfo">
+                <img src="http://simpleicon.com/wp-content/uploads/map-8-256x256.png" class="icon"/>
+                <p>{{car.city}}</p>
+              </mat-grid-tile>
+        <mat-grid-tile [rowspan]="1" [colspan]="2" class="carInfo">  
+        </mat-grid-tile>
+      </mat-grid-list>
+  </div>
+</div>

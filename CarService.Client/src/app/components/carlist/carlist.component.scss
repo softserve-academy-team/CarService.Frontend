@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:600');
+
+.litecar {
+    border: 1px solid black;
+    width: 600px;
+    padding: 20px;
+    border-radius: 15px;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 16pt;
+}
+
+.autoImg {
+    width: 180px;
+    height: 120px;
+}
+
+.carPriceUSD {
+    font-size: 14pt;
+    color: green;
+}
+
+.carPriceUAH {
+    font-size: 12pt;
+    color: grey;
+}
+
+.carInfo {
+    font-size: 11pt;
+}
+
+.icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.raceIcon {
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+}
