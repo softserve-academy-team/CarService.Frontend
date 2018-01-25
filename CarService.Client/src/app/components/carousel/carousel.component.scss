@@ -1,8 +1,6 @@
 $main-width: 500px;
 $main-height: 250px;
-$img-width: 500px;
-$img-height: 250px;
-$num-of-px-inside-img: -30px;
+$num-of-px-inside-img: -40px;
 $arrow-size: 40px;
 
 .main {
@@ -14,14 +12,12 @@ $arrow-size: 40px;
     padding: 0px;
     width: $main-width;
     height: $main-height;
-    border: 1px solid black;
 }
 
 img {
     width: 100%;
     height: 100%;
     margin: 0;
-    border: 1px solid black;
 }
 
 .bigger {
