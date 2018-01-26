@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CarouselComponent } from './components/carousel/carousel.component';
-import { CarlistComponent } from './components/carlist/carlist.component'
+import { CarListComponent } from './components/car-list/car-list.component'
 
 const routes: Routes = [
   { component: CarouselComponent, path: 'carousel'},
-  { component: CarlistComponent, path: 'carlist'}
+  { component: CarListComponent, path: 'carlist'}
 ];
 
 @NgModule({

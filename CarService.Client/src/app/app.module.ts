@@ -14,8 +14,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
-import { CarlistComponent } from './components/carlist/carlist.component';
+import { CarListComponent } from './components/car-list/car-list.component';
 
+import { CarUrlBuilder } from './services/car-url-builder';
 import { CarService } from './services/car.service';
 
 
@@ -23,7 +24,7 @@ import { CarService } from './services/car.service';
   declarations: [
     AppComponent,
     CarouselComponent,
-    CarlistComponent
+    CarListComponent
   ],
   imports: [
     AppRoutingModule,
@@ -35,7 +36,10 @@ import { CarService } from './services/car.service';
     MatIconModule,
     MatGridListModule
   ],
-  providers: [CarService],
+  providers: [
+    CarUrlBuilder,
+    CarService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
