@@ -1,15 +1,13 @@
 $footer-height: 150px;
-.footer {
+.main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  
   position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: #ccc;
-  color: blue;
   text-align: center;
   height:$footer-height;
 }
@@ -17,3 +15,8 @@ $footer-height: 150px;
 .col {
   // border: 1px solid black;
 } 
+
+mat-list-item {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 12px !important;
+}
