@@ -39,9 +39,9 @@ images: any[] = [
   ngOnInit() {
     this.numOfImages = this.images.length;
     this.numOfCurrImg = 0;
-    this.time = 4000;
+    this.time = 6000;
     this.hide = true;
-    // this.changeImageSourceWithInterval();
+    this.changeImageSourceWithInterval();
   }
 
   leftClick() {
