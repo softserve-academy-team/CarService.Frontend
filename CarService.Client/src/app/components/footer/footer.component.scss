@@ -1,0 +1,19 @@
+$footer-height: 150px;
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #ccc;
+  color: blue;
+  text-align: center;
+  height:$footer-height;
+}
+
+.col {
+  // border: 1px solid black;
+} 
