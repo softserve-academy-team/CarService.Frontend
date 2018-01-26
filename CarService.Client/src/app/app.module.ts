@@ -12,13 +12,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { CarDetailComponent } from './components/car-detail/car-detail.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarouselComponent
+    CarouselComponent,
+    CarDetailComponent
   ],
   imports: [
     AppRoutingModule,
