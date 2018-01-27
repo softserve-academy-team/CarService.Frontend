@@ -1,30 +1,41 @@
-<div class="car-list">
-<div *ngFor="let car of listOfRandomCars">
-  <div class="car-element">
-    <mat-grid-list cols="6" rowHeight="40">
-      <mat-grid-tile [rowspan]="3" [colspan]="2">
-        <img src="{{car.photoLink}}" class="auto-img" />
-      </mat-grid-tile>
-      <mat-grid-tile [rowspan]="1" [colspan]="4">
-        <h2>{{car.markName}} {{car.modelName}} {{car.year}}</h2>
-      </mat-grid-tile>
-      <mat-grid-tile [rowspan]="1" [colspan]="2">
-        <img src="https://cdn1.iconfinder.com/data/icons/money-currency-extras/512/Dollar_Bill-512.png" alt="" class="icon" />
-        <p class="carPriceUSD">{{car.priceUSD}}$/</p>
-        <p class="carPriceUAH">{{car.priceUAH}}₴</p>
-      </mat-grid-tile>
-      <mat-grid-tile [rowspan]="1" [colspan]="2" class="car-info">
-        <img src="https://image.flaticon.com/icons/png/512/75/75691.png" class="race-icon" />
-        <p>{{car.race}}</p>
-      </mat-grid-tile>
-      <mat-grid-tile [rowspan]="1" [colspan]="2" class="car-info">
-        <img src="http://simpleicon.com/wp-content/uploads/map-8-256x256.png" class="icon" />
-        <p>{{car.city}}</p>
-      </mat-grid-tile>
-      <mat-grid-tile [rowspan]="1" [colspan]="2" class="car-info">
-      </mat-grid-tile>
-    </mat-grid-list>
+<div>
+  <div *ngFor="let car of listOfRandomCars" class="car-list">
+    <div class="car-container">
+      <div class="auto-img-container">
+        <img src="{{car.photoLink}}" class="auto-img"/>
+      </div>
+      <div class="car-element">
+        <div class="car-name">
+            <h2>{{car.markName}} {{car.modelName}} {{car.year}}</h2>
+        </div>
+        <div class="info-container">
+          <div class="price-block">
+            <p class="carPriceUSD">{{car.priceUSD}}$ /</p>
+            <p class="carPriceUAH">{{car.priceUAH}}₴</p>
+          </div>
+        </div>
+        <div class="info-container">
+          <div class="info-item">
+            <img src="../assets/icons-sedan.png" class="icon" />
+            <p>{{car.race}}</p>
+          </div>
+          <div class="info-item">
+            <img src="../assets/icons-gearbox.png" class="icon" />
+            <p>{{car.gearboxName}}</p>
+          </div>
+        </div>
+        <div class="info-container">
+          <div class="info-item">
+            <img src="../assets/icons-engine.png" class="icon" />
+            <p>{{car.fuelName}}</p>
+          </div>
+          <div class="info-item">
+            <img src="../assets/icons-place-marker.png" class="icon" />
+            <p>{{car.city}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
   </div>
-  <mat-divider></mat-divider>
-</div>
 </div>

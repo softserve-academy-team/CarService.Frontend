@@ -1,13 +1,15 @@
 export class BaseCarInfo {
-  AutoId: number;
-  MarkName: string;
-  ModelName: string;
-  Year: number;
-  PhotoLink: string;
-  PriceUSD: number;
-  PriceUAH: number;
-  PriceEUR: number;
-  Race: string;
-  RaceInt: number;
-  City: string;
+  autoId: number;
+  markName: string;
+  modelName: string;
+  year: number;
+  photoLink: string;
+  priceUSD: number;
+  priceUAH: number;
+  priceEUR: number;
+  race: string;
+  raceInt: number;
+  city: string;
+  fuelName: string;
+  gearboxName: string;
 }
