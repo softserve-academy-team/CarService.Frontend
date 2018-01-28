@@ -27,7 +27,7 @@ import { AboutComponent } from './components/about/about.component';
     AppComponent,
     CarouselComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
     AboutComponent
   ],
   imports: [
