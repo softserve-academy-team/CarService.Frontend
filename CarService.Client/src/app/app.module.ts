@@ -18,6 +18,7 @@ import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 
@@ -27,6 +28,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CarouselComponent,
     FooterComponent,
     NavbarComponent
+    AboutComponent
   ],
   imports: [
     AppRoutingModule,
