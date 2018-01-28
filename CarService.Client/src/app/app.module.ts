@@ -16,6 +16,7 @@ import {MatListModule} from '@angular/material/list';
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 
@@ -23,7 +24,8 @@ import { FooterComponent } from './components/footer/footer.component';
   declarations: [
     AppComponent,
     CarouselComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent
   ],
   imports: [
     AppRoutingModule,
