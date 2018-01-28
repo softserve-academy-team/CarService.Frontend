@@ -9,6 +9,7 @@ import {MatButtonModule, MatInputModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatToolbarModule} from '@angular/material/toolbar';
 
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
@@ -16,6 +17,7 @@ import {MatListModule} from '@angular/material/list';
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
 
 
@@ -25,6 +27,7 @@ import { AboutComponent } from './components/about/about.component';
     AppComponent,
     CarouselComponent,
     FooterComponent,
+    NavbarComponent,
     AboutComponent
   ],
   imports: [
@@ -36,7 +39,8 @@ import { AboutComponent } from './components/about/about.component';
     MatIconModule,
     MatFormFieldModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
