@@ -2,7 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { CarouselComponent } from './carousel.component';
-import {MatCardModule} from '@angular/material/card';
+import { AboutComponent } from '../about/about.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 describe('BannerComponent (inline template)', () => {
 
@@ -15,8 +17,8 @@ describe('BannerComponent (inline template)', () => {
     let carouselContainer: HTMLElement;
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [ CarouselComponent ], // declare the test component
-        imports: [MatCardModule]
+        declarations: [ CarouselComponent, AboutComponent ], // declare the test component
+        imports: [MatCardModule, MatDividerModule]
       });
       fixture = TestBed.createComponent(CarouselComponent);
       comp = fixture.componentInstance; // BannerComponent test instance
@@ -28,10 +30,12 @@ describe('BannerComponent (inline template)', () => {
       carouselContainer = deContainer.nativeElement;
     });
     it('should appear on the screen when carousel is being hovered over', () => {
-        // deContainer.triggerEventHandler('mouseenter', null);
-        fixture.detectChanges();
-        expect(comp.hide).toBeFalsy();
-        expect(btn1.style.visibility).toBe('hidden');
+      deContainer.triggerEventHandler('mouseenter', null);
+      fixture.detectChanges();
+      expect(comp.hide).toBe(true);
+      console.log('hide =', comp.hide);
+      expect(btn1.style.visibility).toBe('hidden');
+      console.log('(btn1.style.visibility=', btn1.style.visibility);
   });
 
 });
