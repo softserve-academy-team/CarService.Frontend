@@ -28,13 +28,14 @@ describe('BannerComponent (inline template)', () => {
       btn1 = deBtns[0].nativeElement;
       btn2 = deBtns[1].nativeElement;
       carouselContainer = deContainer.nativeElement;
+      fixture.detectChanges();
     });
     it('should appear on the screen when carousel is being hovered over', () => {
       deContainer.triggerEventHandler('mouseenter', null);
       fixture.detectChanges();
-      expect(comp.hide).toBe(true);
+      expect(comp.hide).toBe(false);
       console.log('hide =', comp.hide);
-      expect(btn1.style.visibility).toBe('hidden');
+      expect(btn1.style.visibility).toBe('visible');
       console.log('(btn1.style.visibility=', btn1.style.visibility);
   });
 
