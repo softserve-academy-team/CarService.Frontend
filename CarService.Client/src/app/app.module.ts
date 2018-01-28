@@ -32,7 +32,7 @@ import { CarService } from './services/car.service';
   declarations: [
     AppComponent,
     CarouselComponent,
-    CarListComponent
+    CarListComponent,
     FooterComponent,
     NavbarComponent,
     AboutComponent
@@ -46,14 +46,15 @@ import { CarService } from './services/car.service';
     MatCardModule,
     MatIconModule,
     MatGridListModule,
-  ],
-  providers: [
-    CarUrlBuilder,
-    CarService
+    MatDividerModule,
     MatFormFieldModule,
     MatDividerModule,
     MatListModule,
     MatToolbarModule
+  ],
+  providers: [
+    CarUrlBuilder,
+    CarService
   ],
   bootstrap: [AppComponent]
 })
