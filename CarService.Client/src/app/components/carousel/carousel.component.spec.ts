@@ -8,7 +8,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 describe('BannerComponent (inline template)', () => {
 
-    let comp:    CarouselComponent;
+    let comp: CarouselComponent;
     let fixture: ComponentFixture<CarouselComponent>;
     let deBtns: DebugElement[];
     let deContainer: DebugElement;
