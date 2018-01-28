@@ -10,12 +10,19 @@ import {MatButtonModule, MatInputModule, MatDivider} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
+
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatDividerModule } from '@angular/material/divider';
+import { CarListComponent } from './components/car-list/car-list.component';
+import { MatToolbarModule} from '@angular/material/toolbar';
+
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
-import { CarListComponent } from './components/car-list/car-list.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AboutComponent } from './components/about/about.component';
 
 import { CarUrlBuilder } from './services/car-url-builder';
 import { CarService } from './services/car.service';
@@ -26,6 +33,9 @@ import { CarService } from './services/car.service';
     AppComponent,
     CarouselComponent,
     CarListComponent
+    FooterComponent,
+    NavbarComponent,
+    AboutComponent
   ],
   imports: [
     AppRoutingModule,
@@ -36,11 +46,14 @@ import { CarService } from './services/car.service';
     MatCardModule,
     MatIconModule,
     MatGridListModule,
-    MatDividerModule
   ],
   providers: [
     CarUrlBuilder,
     CarService
+    MatFormFieldModule,
+    MatDividerModule,
+    MatListModule,
+    MatToolbarModule
   ],
   bootstrap: [AppComponent]
 })

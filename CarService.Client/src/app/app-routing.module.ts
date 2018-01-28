@@ -4,8 +4,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { CarListComponent } from './components/car-list/car-list.component'
 
 const routes: Routes = [
-  { component: CarouselComponent, path: 'carousel'},
-  { component: CarListComponent, path: 'carlist'}
+  { path: 'carlist', component: CarListComponent }
+  { path: '', component: CarouselComponent }
 ];
 
 @NgModule({
