@@ -1,3 +1,33 @@
-<p>
-  car-detail works!
-</p>
+<div *ngIf="detailCarById">
+
+<div style="text-align:center">
+    <img width="500"  alt="Car Detail" src="{{detailCarById.photoLink}}">
+</div>
+
+<div style="text-align:center">
+    <span>Model:</span>      {{detailCarById.modelName}}
+    <span>Year:</span>      {{detailCarById.year}}
+  </div>
+
+  <div style="text-align:center">
+    <span>Price USD:</span>      {{detailCarById.priceUSD}}
+    <span>Price UAH:</span>      {{detailCarById.priceUAH}}
+  </div>
+
+  <div style="text-align:center">
+    <span>Race:</span>      {{detailCarById.race}}
+    <span>City:</span>      {{detailCarById.city}}
+</div>
+
+<div style="text-align:center">
+    <span>Fuel Name:</span>      {{detailCarById.fuelName}}
+    <span>Description:</span>      {{detailCarById.description}}
+</div>
+
+<div style="text-align:center">
+    <span>Auto ID:</span>      {{detailCarById.autoId}}
+    <span>Gear:</span>      {{detailCarById.gearboxName}}
+</div>
+
+</div>
+
