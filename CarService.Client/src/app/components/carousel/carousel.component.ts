@@ -13,7 +13,6 @@ time: number;
 hide: boolean;
 
 images: any[] = [
- 
   {
     'src' : 'assets/car_service_1.jpg'
   },
