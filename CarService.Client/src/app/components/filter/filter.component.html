@@ -1,3 +1,23 @@
-<p>
-  filter works!
-</p>
+<mat-card class="container">
+  <mat-form-field>
+    <mat-select placeholder="Type">
+      <mat-option *ngFor="let type of types" [value]="type.value">
+        {{ type.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Favorite food">
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{ food.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Favorite food">
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{ food.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>
