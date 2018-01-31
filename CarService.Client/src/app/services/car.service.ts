@@ -10,7 +10,7 @@ export class CarService {
   constructor(private httpClient: HttpClient, private carUrlBuilder: CarUrlBuilder) { }
 
   getListOfRandomCars(): Observable<BaseCarInfo[]> {
-    return this.httpClient.get<BaseCarInfo[]>(this.carUrlBuilder.build("cars", "random"));
+    return this.httpClient.get<BaseCarInfo[]>(this.carUrlBuilder.build("cars","base-info", "random"));
   }
 
 }
