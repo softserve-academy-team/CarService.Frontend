@@ -1,4 +1,4 @@
 export class NameValuePair {
-    name: number;
-    value: string;
+    name: string;
+    value: number;
 }

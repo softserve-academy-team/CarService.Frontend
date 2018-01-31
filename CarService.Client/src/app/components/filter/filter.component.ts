@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterService } from '../../services/filter.service';
 import { NameValuePair } from '../../models/name-value-pair';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs/Observable';
+import {startWith} from 'rxjs/operators/startWith';
+import {map} from 'rxjs/operators/map';
 
 @Component({
   selector: 'app-filter',
@@ -9,11 +13,11 @@ import { NameValuePair } from '../../models/name-value-pair';
 })
 export class FilterComponent implements OnInit {
 
-  foods = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
+  myControl: FormControl = new FormControl();
+
+  options: string[] = [];
+
+  filteredOptions: Observable<string[]>;
   types: NameValuePair[];
 
   constructor(private filterService: FilterService) { }
@@ -23,6 +27,25 @@ export class FilterComponent implements OnInit {
       this.types = data;
       console.log('data', data);
     } );
+
+    this.filteredOptions = this.myControl.valueChanges
+    .pipe(
+      startWith(''),
+      map(val => this.filter(val))
+    );
+
+  }
+  populate(categoryId: number) {
+    console.log('categoryId', categoryId);
+    this.filterService.getCarMakes(categoryId)
+    .subscribe((data: NameValuePair[]) => {
+      data.forEach((nvp: NameValuePair) => this.options.push(nvp.name) );
+    });
+  }
+
+  filter(val: string): string[] {
+    return this.options.filter(option =>
+      option.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
 
 }

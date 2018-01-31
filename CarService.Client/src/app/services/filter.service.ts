@@ -5,13 +5,18 @@ import { NameValuePair } from '../models/name-value-pair';
 
 @Injectable()
 export class FilterService {
-
-  typesUrl = 'http://localhost:5000/api/cars/dropdown/types';
+  commonUrlPart = 'http://localhost:5000/api/cars/dropdown';
+  typesUrl = `${this.commonUrlPart}/types`;
+  makesUrl = `${this.commonUrlPart}/makes`;
   constructor(private httpClient: HttpClient) { }
 
   getCarTypes(): Observable<NameValuePair[]> {
     return this.httpClient
     .get<NameValuePair[]>(this.typesUrl);
+  }
+  getCarMakes(categoryId: number): Observable<NameValuePair[]> {
+    return this.httpClient
+    .get<NameValuePair[]>(`${this.makesUrl}/${categoryId}`);
   }
 
 }

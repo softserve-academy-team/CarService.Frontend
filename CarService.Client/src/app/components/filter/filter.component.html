@@ -1,23 +1,19 @@
 <mat-card class="container">
   <mat-form-field>
     <mat-select placeholder="Type">
-      <mat-option *ngFor="let type of types" [value]="type.value">
+      <mat-option (click)="populate(type.value)" *ngFor="let type of types" [value]="type.value">
         {{ type.name }}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field>
-    <mat-select placeholder="Favorite food">
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{ food.viewValue }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-select placeholder="Favorite food">
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{ food.viewValue }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  
 </mat-card>

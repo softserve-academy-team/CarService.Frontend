@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -10,6 +10,7 @@ import {MatButtonModule, MatInputModule, MatDivider} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CarListComponent } from './components/car-list/car-list.component';
@@ -46,6 +47,8 @@ import { FilterService } from './services/filter.service';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,
@@ -53,6 +56,7 @@ import { FilterService } from './services/filter.service';
     MatDividerModule,
     MatFormFieldModule,
     MatDividerModule,
+    MatInputModule,
     MatListModule,
     MatFormFieldModule,
     MatSelectModule,
