@@ -2,6 +2,7 @@
     margin: auto !important;
     width: 45%;
     min-width: 540px;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
 }
 
 .car-element {
@@ -32,8 +33,8 @@
 }
 
 .icon {
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     margin-right: 10px;
 }
 
@@ -58,6 +59,7 @@
 
 .car-name {
     height: auto;
+    min-height: 30px;
 }
 
 .price-block, .car-info, .info-item {
@@ -72,6 +74,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 13pt;
+    font-size: 12pt;
     width: 50%;
 }
