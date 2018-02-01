@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterService } from '../../services/filter.service';
 import { NameValuePair } from '../../models/name-value-pair';
-import {FormControl} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
@@ -14,8 +14,7 @@ import {tap} from 'rxjs/operators/tap';
 })
 export class FilterComponent implements OnInit {
   categoryId: number;
-  myControl: FormControl = new FormControl();
-  myModelControl: FormControl = new FormControl();
+  myFilterForm: FormGroup;
 
   makeOptions: NameValuePair[] = [];
   modelOptions: NameValuePair[] = [];
@@ -24,7 +23,12 @@ export class FilterComponent implements OnInit {
   filteredModelOptions: Observable<NameValuePair[]>;
   types: NameValuePair[];
 
-  constructor(private filterService: FilterService) { }
+  constructor(
+    private filterService: FilterService,
+    private fb: FormBuilder
+  ) {
+    this.createForm();
+  }
 
   ngOnInit() {
     this.filterService.getCarTypes().subscribe(data => {
@@ -32,7 +36,7 @@ export class FilterComponent implements OnInit {
       console.log('data', data);
     } );
 
-    this.filteredOptions = this.myControl.valueChanges
+    this.filteredOptions = this.myFilterForm.get('make').valueChanges
     .pipe(
       map(value => typeof value === 'string' ? value : value.name),
       tap(data => console.log('dataFromFilter', data)),
@@ -40,7 +44,7 @@ export class FilterComponent implements OnInit {
       map(val => this.filter(val))
     );
 
-    this.filteredModelOptions = this.myModelControl.valueChanges
+    this.filteredModelOptions = this.myFilterForm.get('model').valueChanges
     .pipe(
       map(value => typeof value === 'string' ? value : value.name),
       tap(data => console.log('dataFromModelFilter', data)),
@@ -60,18 +64,18 @@ export class FilterComponent implements OnInit {
   }
 
   onMakeChosen() {
-      const makeId = this.myControl.value.value;
+      const makeId = this.myFilterForm.get('make').value.value;
       this.filterService.getCarModels(this.categoryId, makeId)
       .subscribe((data: NameValuePair[]) => {
         data.forEach((nvp: NameValuePair) => this.modelOptions.push(nvp) );
         console.log('models', data);
       });
       console.log('optionChosen: ');
-      console.log('this.myControl.value ', this.myControl.value);
+      console.log('this.myControl.value ', this.myFilterForm.get('make').value);
     }
     onModelChosen() {
       console.log('onModelChosen()');
-      console.log('this.myModelControl.value', this.myModelControl.value);
+      console.log('this.myModelControl.value', this.myFilterForm.get('model').value);
     }
 
   filter(val: string): NameValuePair[] {
@@ -87,5 +91,13 @@ export class FilterComponent implements OnInit {
     return nvp ? nvp.name : undefined;
   }
 
+
+  createForm() {
+    this.myFilterForm = this.fb.group({
+      type: '',
+      make: ['', Validators.required ],
+      model: ''
+    });
+  }
 
 }

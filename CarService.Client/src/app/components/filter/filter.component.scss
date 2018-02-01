@@ -2,8 +2,9 @@
     position: absolute;
     top: 100px;
     left: 0;
-    display: flex;
-    flex-direction: column;
     
   }
-  
+form {
+  display: flex;
+  flex-direction: column;
+}
