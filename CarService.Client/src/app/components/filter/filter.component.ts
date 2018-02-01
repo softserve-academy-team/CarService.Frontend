@@ -48,4 +48,9 @@ export class FilterComponent implements OnInit {
       option.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
 
+  makeChosen() {
+    console.log('optionChosen: ');
+    console.log('this.myControl.value ', this.myControl.value);
+  }
+
 }
