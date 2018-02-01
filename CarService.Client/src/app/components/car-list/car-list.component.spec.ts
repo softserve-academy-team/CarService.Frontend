@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { CarListComponent } from './car-list.component';
-import { MatDividerModule } from '@angular/material';
+import { MatDividerModule, MatCardModule } from '@angular/material';
 import { BaseCarInfo } from '../../models/base-car-info';
 import { CarService } from '../../services/car.service';
 import { DebugElement } from '@angular/core/src/debug/debug_node';
@@ -12,7 +12,7 @@ describe('Car-ListComponent', () => {
   let fixture: ComponentFixture<CarListComponent>;
   let component: CarListComponent;
   let deCarList: DebugElement[];
-  let carName: HTMLHeadingElement[];
+  let carName: HTMLElement[];
   let pricesUSD: HTMLParagraphElement[];
   let pricesUAH: HTMLParagraphElement[];
   let race: HTMLParagraphElement[];
@@ -37,7 +37,7 @@ describe('Car-ListComponent', () => {
   beforeEach(async() => {
     TestBed.configureTestingModule({
       declarations: [CarListComponent],
-      imports: [MatDividerModule],
+      imports: [MatDividerModule, MatCardModule],
       providers: [{ provide: CarService, useValue: mockRepository}]
     });
     fixture = TestBed.createComponent(CarListComponent);
@@ -56,7 +56,7 @@ describe('Car-ListComponent', () => {
     fuelNames = new Array(countCars);
     gearBoxNames = new Array(countCars);
     for (let i = 0; i < countCars; i++) {
-      carName[i] = deCarList[i].query(By.css('.car-name')).query(By.css('h2')).nativeElement;
+      carName[i] = deCarList[i].query(By.css('.car-name')).nativeElement;
       pricesUSD[i] = deCarList[i].query(By.css('.carPriceUSD')).nativeElement;
       pricesUAH[i] = deCarList[i].query(By.css('.carPriceUAH')).nativeElement;
       race[i] = deCarList[i].queryAll(By.css('.info-item'))[0].query(By.css('p')).nativeElement;
