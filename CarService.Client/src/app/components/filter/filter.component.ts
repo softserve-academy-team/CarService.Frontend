@@ -13,10 +13,11 @@ import {tap} from 'rxjs/operators/tap';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
-
+  categoryId: number;
   myControl: FormControl = new FormControl();
 
-  options: NameValuePair[] = [];
+  makeOptions: NameValuePair[] = [];
+  modelOptions: NameValuePair[] = [];
 
   filteredOptions: Observable<NameValuePair[]>;
   types: NameValuePair[];
@@ -38,20 +39,25 @@ export class FilterComponent implements OnInit {
     );
 
   }
-  populate(categoryId: number) {
+  onTypeChosen(categoryId: number) {
+    this.categoryId = categoryId;
     console.log('categoryId', categoryId);
     this.filterService.getCarMakes(categoryId)
     .subscribe((data: NameValuePair[]) => {
-      data.forEach((nvp: NameValuePair) => this.options.push(nvp) );
+      data.forEach((nvp: NameValuePair) => this.makeOptions.push(nvp) );
     });
   }
 
   filter(val: string): NameValuePair[] {
-    return this.options.filter(option =>
+    return this.makeOptions.filter(option =>
       option.name.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
 
-  makeChosen() {
+  onMakeChosen() {
+    const makeId = this.myControl.value.value;
+    this.filterService.getCarModels(this.categoryId, makeId).subscribe(data => {
+      console.log('models', data);
+    });
     console.log('optionChosen: ');
     console.log('this.myControl.value ', this.myControl.value);
   }

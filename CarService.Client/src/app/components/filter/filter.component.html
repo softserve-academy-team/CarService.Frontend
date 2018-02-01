@@ -1,7 +1,7 @@
 <mat-card class="container">
   <mat-form-field>
     <mat-select placeholder="Type">
-      <mat-option (click)="populate(type.value)" *ngFor="let type of types" [value]="type.value">
+      <mat-option (click)="onTypeChosen(type.value)" *ngFor="let type of types" [value]="type.value">
         {{ type.name }}
       </mat-option>
     </mat-select>
@@ -10,7 +10,7 @@
     <mat-form-field class="example-full-width">
       <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredOptions | async" (click)="makeChosen()" [value]="option">
+        <mat-option *ngFor="let option of filteredOptions | async" (click)="onMakeChosen()" [value]="option">
           {{ option.name }}
         </mat-option>
       </mat-autocomplete>
