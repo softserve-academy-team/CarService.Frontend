@@ -5,6 +5,7 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
+import {tap} from 'rxjs/operators/tap';
 
 @Component({
   selector: 'app-filter',
@@ -30,6 +31,7 @@ export class FilterComponent implements OnInit {
 
     this.filteredOptions = this.myControl.valueChanges
     .pipe(
+      tap(data => console.log('dataFromFilter', data)),
       startWith(''),
       map(val => this.filter(val))
     );
