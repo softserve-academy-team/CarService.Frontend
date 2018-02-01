@@ -9,9 +9,9 @@
   
     <mat-form-field class="example-full-width">
       <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         <mat-option *ngFor="let option of filteredOptions | async" (click)="makeChosen()" [value]="option">
-          {{ option }}
+          {{ option.name }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>

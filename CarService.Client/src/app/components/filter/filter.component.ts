@@ -16,9 +16,9 @@ export class FilterComponent implements OnInit {
 
   myControl: FormControl = new FormControl();
 
-  options: string[] = [];
+  options: NameValuePair[] = [];
 
-  filteredOptions: Observable<string[]>;
+  filteredOptions: Observable<NameValuePair[]>;
   types: NameValuePair[];
 
   constructor(private filterService: FilterService) { }
@@ -31,6 +31,7 @@ export class FilterComponent implements OnInit {
 
     this.filteredOptions = this.myControl.valueChanges
     .pipe(
+      map(value => typeof value === 'string' ? value : value.name),
       tap(data => console.log('dataFromFilter', data)),
       startWith(''),
       map(val => this.filter(val))
@@ -41,18 +42,23 @@ export class FilterComponent implements OnInit {
     console.log('categoryId', categoryId);
     this.filterService.getCarMakes(categoryId)
     .subscribe((data: NameValuePair[]) => {
-      data.forEach((nvp: NameValuePair) => this.options.push(nvp.name) );
+      data.forEach((nvp: NameValuePair) => this.options.push(nvp) );
     });
   }
 
-  filter(val: string): string[] {
+  filter(val: string): NameValuePair[] {
     return this.options.filter(option =>
-      option.toLowerCase().indexOf(val.toLowerCase()) === 0);
+      option.name.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
 
   makeChosen() {
     console.log('optionChosen: ');
     console.log('this.myControl.value ', this.myControl.value);
   }
+
+  displayFn(nvp?: NameValuePair): string | undefined {
+    return nvp ? nvp.name : undefined;
+  }
+
 
 }
