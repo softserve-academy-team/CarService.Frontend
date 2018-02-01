@@ -15,11 +15,13 @@ import {tap} from 'rxjs/operators/tap';
 export class FilterComponent implements OnInit {
   categoryId: number;
   myControl: FormControl = new FormControl();
+  myModelControl: FormControl = new FormControl();
 
   makeOptions: NameValuePair[] = [];
   modelOptions: NameValuePair[] = [];
 
   filteredOptions: Observable<NameValuePair[]>;
+  filteredModelOptions: Observable<NameValuePair[]>;
   types: NameValuePair[];
 
   constructor(private filterService: FilterService) { }
@@ -38,7 +40,16 @@ export class FilterComponent implements OnInit {
       map(val => this.filter(val))
     );
 
+    this.filteredModelOptions = this.myModelControl.valueChanges
+    .pipe(
+      map(value => typeof value === 'string' ? value : value.name),
+      tap(data => console.log('dataFromModelFilter', data)),
+      startWith(''),
+      map(val => this.filterModels(val))
+    );
+
   }
+
   onTypeChosen(categoryId: number) {
     this.categoryId = categoryId;
     console.log('categoryId', categoryId);
@@ -48,18 +59,28 @@ export class FilterComponent implements OnInit {
     });
   }
 
+  onMakeChosen() {
+      const makeId = this.myControl.value.value;
+      this.filterService.getCarModels(this.categoryId, makeId)
+      .subscribe((data: NameValuePair[]) => {
+        data.forEach((nvp: NameValuePair) => this.modelOptions.push(nvp) );
+        console.log('models', data);
+      });
+      console.log('optionChosen: ');
+      console.log('this.myControl.value ', this.myControl.value);
+    }
+    onModelChosen() {
+      console.log('onModelChosen()');
+      console.log('this.myModelControl.value', this.myModelControl.value);
+    }
+
   filter(val: string): NameValuePair[] {
     return this.makeOptions.filter(option =>
       option.name.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
-
-  onMakeChosen() {
-    const makeId = this.myControl.value.value;
-    this.filterService.getCarModels(this.categoryId, makeId).subscribe(data => {
-      console.log('models', data);
-    });
-    console.log('optionChosen: ');
-    console.log('this.myControl.value ', this.myControl.value);
+  filterModels(val: string): NameValuePair[] {
+    return this.modelOptions.filter(option =>
+      option.name.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
 
   displayFn(nvp?: NameValuePair): string | undefined {
