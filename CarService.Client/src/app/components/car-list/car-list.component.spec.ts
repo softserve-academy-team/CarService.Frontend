@@ -12,7 +12,7 @@ describe('Car-ListComponent', () => {
   let fixture: ComponentFixture<CarListComponent>;
   let component: CarListComponent;
   let deCarList: DebugElement[];
-  let carName: HTMLElement[];
+  let carName: HTMLHeadingElement[];
   let pricesUSD: HTMLParagraphElement[];
   let pricesUAH: HTMLParagraphElement[];
   let race: HTMLParagraphElement[];
@@ -56,7 +56,7 @@ describe('Car-ListComponent', () => {
     fuelNames = new Array(countCars);
     gearBoxNames = new Array(countCars);
     for (let i = 0; i < countCars; i++) {
-      carName[i] = deCarList[i].query(By.css('.car-name')).nativeElement;
+      carName[i] = deCarList[i].query(By.css('.car-name')).query(By.css('h2')).nativeElement;
       pricesUSD[i] = deCarList[i].query(By.css('.carPriceUSD')).nativeElement;
       pricesUAH[i] = deCarList[i].query(By.css('.carPriceUAH')).nativeElement;
       race[i] = deCarList[i].queryAll(By.css('.info-item'))[0].query(By.css('p')).nativeElement;

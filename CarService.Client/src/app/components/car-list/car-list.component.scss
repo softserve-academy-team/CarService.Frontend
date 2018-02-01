@@ -1,8 +1,7 @@
 .car-list {
     margin: auto !important;
     width: 45%;
-    min-width: 400px;
-    max-width: 600px;
+    min-width: 540px;
     font-family: Roboto,"Helvetica Neue",sans-serif;
 }
 
@@ -10,8 +9,12 @@
     display: flex;
     flex-direction: column;
     min-width: 240px;
-    padding: 10px;
-    width: 100%;
+    padding-left: 20px;
+    width: 60%;
+}
+
+.auto-img {
+    height: 160px;
 }
 
 .carPriceUSD {
@@ -21,6 +24,7 @@
 
 .carPriceUAH {
     font-size: 12pt;
+    color: grey;
 }
 
 .icon {
@@ -30,21 +34,24 @@
 }
 
 .car-container {
-    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+    padding: 10px;
 }
 
-.car-name {
+.car-name h2 {
     font-size: 16pt;
     color: #256799;
+    margin: 0px;
 }
 
-.info-container, .description {
+.info-container, .car-name {
     display: -webkit-box;
     flex-direction: row;
     justify-content: flex-start;
     height: 30px;
     padding: 2px;
-    font-size: 12pt;
 }
 
 .car-name {
@@ -52,8 +59,8 @@
     min-height: 30px;
 }
 
-.price-block {
-    margin-bottom: 15px;
+.price-block, .car-info, .info-item {
+    margin: auto 0;
 }
 
 .price-block p {
@@ -67,9 +74,3 @@
     font-size: 12pt;
     width: 50%;
 }
-
-.description {
-    height: auto;
-    padding-top: 10px;
-}
-
