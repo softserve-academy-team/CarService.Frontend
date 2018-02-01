@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Image } from '../../models/carousel.array.model';
 
 @Component({
   selector: 'app-carousel',
@@ -7,31 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
 
+  @Input() images: Image[];
 numOfCurrImg: number;
 numOfImages: number;
 time: number;
 hide: boolean;
-
-images: any[] = [
-  {
-    'src' : 'assets/car_service_1.jpg'
-  },
-  {
-    'src' : 'assets/car_service_2.jpg'
-  },
-  {
-    'src' : 'assets/car_service_3.jpg'
-  },
-  {
-    'src' : 'assets/car_service_4.jpg'
-  },
-  {
-    'src' : 'assets/car_service_5.jpg'
-  },
-  {
-    'src' : 'assets/car_service_6.jpg'
-  }
-];
 
   constructor() { }
 

@@ -30,6 +30,7 @@ import { CarUrlBuilder } from './services/car-url-builder';
 import { CarService } from './services/car.service';
 import { FilterComponent } from './components/filter/filter.component';
 import { FilterService } from './services/filter.service';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { FilterService } from './services/filter.service';
     FooterComponent,
     NavbarComponent,
     AboutComponent,
-    FilterComponent
+    FilterComponent,
+    HomeComponent
   ],
   imports: [
     AppRoutingModule,
