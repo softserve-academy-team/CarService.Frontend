@@ -16,6 +16,10 @@ export class CarListComponent implements OnInit {
   constructor(private carService: CarService) { }
 
   ngOnInit() {
+    this.getListOfRandomCars();
+  }
+
+  private getListOfRandomCars() {
     this.carService.getListOfRandomCars().subscribe((data: BaseCarInfo[]) => {
       this.listOfRandomCars = data;
     },
@@ -28,5 +32,4 @@ export class CarListComponent implements OnInit {
       }
     );
   }
-
 }

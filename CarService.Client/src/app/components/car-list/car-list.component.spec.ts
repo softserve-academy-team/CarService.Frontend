@@ -19,8 +19,6 @@ describe('Car-ListComponent', () => {
   let city: HTMLParagraphElement[];
   let fuelNames: HTMLParagraphElement[];
   let gearBoxNames: HTMLParagraphElement[];
-  let icons: HTMLImageElement[];
-  let carImage: HTMLImageElement;
   let debugElement: DebugElement;
   const countCars = 3;
 
@@ -42,10 +40,8 @@ describe('Car-ListComponent', () => {
     });
     fixture = TestBed.createComponent(CarListComponent);
     component = fixture.componentInstance;
-    component.ngOnInit();
     fixture.detectChanges();
-    debugElement = fixture.debugElement;
-    debugElement = debugElement.query(By.css('.car-list-container'));
+    debugElement = fixture.debugElement.query(By.css('.car-list-container'));
     deCarList = debugElement.queryAll(By.css('.car-list'));
     
     carName = new Array(countCars);
@@ -64,13 +60,6 @@ describe('Car-ListComponent', () => {
       fuelNames[i] = deCarList[i].queryAll(By.css('.info-item'))[2].query(By.css('p')).nativeElement;
       gearBoxNames[i] = deCarList[i].queryAll(By.css('.info-item'))[1].query(By.css('p')).nativeElement;
     }
-
-    icons = [
-      deCarList[0].queryAll(By.css('.info-item'))[0].query(By.css('img')).nativeElement,
-      deCarList[0].queryAll(By.css('.info-item'))[1].query(By.css('img')).nativeElement,
-      deCarList[0].queryAll(By.css('.info-item'))[2].query(By.css('img')).nativeElement,
-      deCarList[0].queryAll(By.css('.info-item'))[3].query(By.css('img')).nativeElement
-    ];
   })
 
   it("should display all cars", () => {

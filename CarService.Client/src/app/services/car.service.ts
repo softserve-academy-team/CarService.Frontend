@@ -12,5 +12,4 @@ export class CarService {
   getListOfRandomCars(): Observable<BaseCarInfo[]> {
     return this.httpClient.get<BaseCarInfo[]>(this.carUrlBuilder.build("cars","base-info", "random"));
   }
-
 }
