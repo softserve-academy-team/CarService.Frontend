@@ -1,8 +1,10 @@
 <div class="car-list-container">
   <div *ngFor="let car of listOfRandomCars" class="car-list">
-    <mat-card class="car-container">
-      <div>
-        <img src="{{car.photoLink}}" class="auto-img" />
+    <div class="car-container">
+      <div class="auto-img-container">
+          <a routerLink="/cardetail/{{car.autoId}}">
+        <img src="{{car.photoLink}}" class="auto-img"/>
+          </a>
       </div>
       <div class="car-element">
         <div class="car-name">

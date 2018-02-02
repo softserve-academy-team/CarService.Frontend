@@ -17,6 +17,7 @@ import {MatListModule} from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
@@ -30,6 +31,7 @@ import { CarService } from './services/car.service';
   declarations: [
     AppComponent,
     CarouselComponent,
+    CarDetailComponent,
     CarListComponent,
     FooterComponent,
     NavbarComponent,
