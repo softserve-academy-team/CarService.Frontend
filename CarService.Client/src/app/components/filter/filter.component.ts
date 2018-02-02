@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
 import {tap} from 'rxjs/operators/tap';
+import { CarService } from '../../services/car.service';
 
 @Component({
   selector: 'app-filter',
@@ -25,7 +26,8 @@ export class FilterComponent implements OnInit {
 
   constructor(
     private filterService: FilterService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private carService: CarService
   ) {
     this.createForm();
   }
@@ -76,6 +78,16 @@ export class FilterComponent implements OnInit {
     onModelChosen() {
       console.log('onModelChosen()');
       console.log('this.myModelControl.value', this.myFilterForm.get('model').value);
+    }
+
+    onSubmit() {
+        console.log('Submitting...');
+        console.log('Entry id...', this.myFilterForm.get('model').value.value);
+        const autoId = this.myFilterForm.get('model').value.value;
+        this.carService.getCarBasicInfo(this.categoryId, this.myFilterForm.get('make').value,this.myFilterForm.get('model').value).subscribe(data => {
+          console.log('listDataaa', data);
+        });
+
     }
 
   filter(val: string): NameValuePair[] {

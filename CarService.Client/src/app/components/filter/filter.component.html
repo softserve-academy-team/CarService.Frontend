@@ -1,5 +1,5 @@
 <mat-card class="container">
-  <form [formGroup]="myFilterForm" novalidate>
+  <form [formGroup]="myFilterForm" (ngSubmit)="onSubmit()" novalidate>
   <mat-form-field>
     <mat-select placeholder="Type">
       <mat-option (click)="onTypeChosen(type.value)" *ngFor="let type of types" [value]="type.value">
@@ -25,5 +25,7 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
+    
+    <button mat-raised-button type="submit" [disabled]="myFilterForm.pristine">Search</button>
   </form>
 </mat-card>
