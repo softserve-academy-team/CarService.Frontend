@@ -7,6 +7,7 @@ import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
 import {tap} from 'rxjs/operators/tap';
 import { CarService } from '../../services/car.service';
+import { BaseCarInfo } from '../../models/base-car-info';
 
 @Component({
   selector: 'app-filter',
@@ -97,8 +98,15 @@ export class FilterComponent implements OnInit {
         console.log('Entry id...', this.myFilterForm.get('model').value.value);
         const autoId = this.myFilterForm.get('model').value.value;
         this.carService
-        .getCarIds(carParams).subscribe(data => {
+        .getCarBasicInfo(carParams).subscribe((data: BaseCarInfo[]) => {
           console.log('listDataaa', data);
+          data.forEach(el => {
+            console.log('el.autoId', el.autoId);
+            console.log('el.city', el.city);
+            console.log('el.fuelName', el.fuelName);
+            console.log('el.gearboxName', el.gearboxName);
+            console.log('el.markName', el.markName);
+          });
         });
 
     }
