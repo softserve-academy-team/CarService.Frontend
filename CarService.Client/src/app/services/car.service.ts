@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { CarUrlBuilder } from './car-url-builder';
 import { BaseCarInfo } from '../models/base-car-info';
+import { NameValuePair } from '../models/name-value-pair';
 
 @Injectable()
 export class CarService {
@@ -14,10 +15,12 @@ export class CarService {
   }
 
   // api/cars/base-info/{id}
-  getCarBasicInfo(categoryId: number, makeId: number, modelId: number): Observable<BaseCarInfo[]> {
+  getCarIds(carParams: NameValuePair[]): any {
+    console.log('carParams array', carParams);
     const tempUrl = this.carUrlBuilder.build('cars', 'search');
-    const finalUrl = `${tempUrl}?categoryId=${categoryId}&makeId=${makeId}&modelId=${modelId}`;
-    return this.httpClient.get<BaseCarInfo[]>(finalUrl);
+    // tslint:disable-next-line:max-line-length
+    const finalUrl = `${tempUrl}?${carParams[0].name}=${carParams[0].value}&${carParams[1].name}=${carParams[1].value}&${carParams[2].name}=${carParams[2].value}`;
+    return this.httpClient.get<any>(finalUrl);
   }
 
 }

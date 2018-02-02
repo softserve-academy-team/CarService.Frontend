@@ -82,9 +82,22 @@ export class FilterComponent implements OnInit {
 
     onSubmit() {
         console.log('Submitting...');
+        const carParams = [
+          {
+            name: 'categoryId', value: this.categoryId
+          },
+          {
+            name: 'makeId', value: this.myFilterForm.get('make').value.value
+          },
+          {
+            name: 'modelId', value: this.myFilterForm.get('model').value.value
+          }
+        ];
+
         console.log('Entry id...', this.myFilterForm.get('model').value.value);
         const autoId = this.myFilterForm.get('model').value.value;
-        this.carService.getCarBasicInfo(this.categoryId, this.myFilterForm.get('make').value,this.myFilterForm.get('model').value).subscribe(data => {
+        this.carService
+        .getCarIds(carParams).subscribe(data => {
           console.log('listDataaa', data);
         });
 
