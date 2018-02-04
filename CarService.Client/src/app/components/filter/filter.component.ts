@@ -38,21 +38,18 @@ export class FilterComponent implements OnInit {
   ngOnInit() {
     this.filterService.getCarTypes().subscribe(data => {
       this.types = data;
-      console.log('data', data);
     } );
 
     this.filteredOptions = this.myFilterForm.get('make').valueChanges
     .pipe(
       map(value => typeof value === 'string' ? value : value.name),
       startWith(''),
-      tap(data => console.log('dataFromFilter', data)),
       map(val => this.filter(val))
     );
 
     this.filteredModelOptions = this.myFilterForm.get('model').valueChanges
     .pipe(
       map(value => typeof value === 'string' ? value : value.name),
-      tap(data => console.log('dataFromModelFilter', data)),
       startWith(''),
       map(val => this.filterModels(val))
     );
@@ -95,7 +92,6 @@ export class FilterComponent implements OnInit {
 
 
     onSubmit() {
-        console.log('Submitting...');
         const carParams = [
           {
             name: 'categoryId', value: this.categoryId

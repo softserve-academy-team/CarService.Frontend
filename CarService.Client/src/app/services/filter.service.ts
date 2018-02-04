@@ -21,8 +21,6 @@ export class FilterService {
   }
 
   getCarModels(categoryId: number, makeId: number): Observable<NameValuePair[]> {
-    // dropdown/models/{categoryId}/{makeId}
-    console.log(`${this.modelsUrl}/${categoryId}/${makeId}`);
     return this.httpClient
     .get<NameValuePair[]>(`${this.modelsUrl}/${categoryId}/${makeId}`);
   }
