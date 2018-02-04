@@ -13,5 +13,6 @@ export class BaseCarInfo {
     public city?: string,
     public fuelName?: string,
     public gearBoxName?: string
-  ){ }
+  ) { }
+
 }
