@@ -7,6 +7,22 @@ import { DebugElement } from '@angular/core/src/debug/debug_node';
 import { By } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { Directive, Input } from '@angular/core';
+
+@Directive({
+  selector: '[routerLink]',
+  host: {
+    '(click)': 'onClick()'
+  }
+})
+class RouterLinkStubDirective {
+  @Input('routerLink') linkParams: any;
+  navigatedTo: any = null;
+
+  onClick() {
+    this.navigatedTo = this.linkParams;
+  }
+}
 
 describe('Car-ListComponent', () => {
   let fixture: ComponentFixture<CarListComponent>;
@@ -20,6 +36,9 @@ describe('Car-ListComponent', () => {
   let fuelNames: HTMLParagraphElement[];
   let gearBoxNames: HTMLParagraphElement[];
   let debugElement: DebugElement;
+  let links: RouterLinkStubDirective[];
+  let linkDes: DebugElement[];
+
   const countCars = 3;
 
   let mockRepository = {
@@ -34,7 +53,7 @@ describe('Car-ListComponent', () => {
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [CarListComponent],
+      declarations: [CarListComponent, RouterLinkStubDirective],
       imports: [MatDividerModule, MatCardModule],
       providers: [{ provide: CarService, useValue: mockRepository}]
     });
@@ -60,12 +79,20 @@ describe('Car-ListComponent', () => {
       fuelNames[i] = deCarList[i].queryAll(By.css('.info-item'))[2].query(By.css('p')).nativeElement;
       gearBoxNames[i] = deCarList[i].queryAll(By.css('.info-item'))[1].query(By.css('p')).nativeElement;
     }
+    linkDes = fixture.debugElement.queryAll(By.directive(RouterLinkStubDirective));
+    links = linkDes.map(de => de.injector.get(RouterLinkStubDirective) as RouterLinkStubDirective);
   })
 
   it("should display all cars", () => {
     expect(deCarList.length).toBe(countCars);
   });
   
+  it("should redirect to correct page with car details by click on image of concrete car", () => {
+    expect(links[0].linkParams).toBe('/cardetail/20066946');
+    expect(links[1].linkParams).toBe('/cardetail/20939807');
+    expect(links[2].linkParams).toBe('/cardetail/21074479');
+  });
+
   it("should display markName, modelName, year", () => {
     expect(carName[0].textContent).toContain("Mercedes-Benz E-Class 2014");
     expect(carName[1].textContent).toContain("Fiat 500 2012");
