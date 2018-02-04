@@ -8,6 +8,7 @@ import {map} from 'rxjs/operators/map';
 import {tap} from 'rxjs/operators/tap';
 import { CarService } from '../../services/car.service';
 import { BaseCarInfo } from '../../models/base-car-info';
+import { CommunicationService } from '../../services/communication.service';
 
 @Component({
   selector: 'app-filter',
@@ -28,7 +29,8 @@ export class FilterComponent implements OnInit {
   constructor(
     private filterService: FilterService,
     private fb: FormBuilder,
-    private carService: CarService
+    private carService: CarService,
+    private communicationService: CommunicationService
   ) {
     this.createForm();
   }
@@ -42,8 +44,8 @@ export class FilterComponent implements OnInit {
     this.filteredOptions = this.myFilterForm.get('make').valueChanges
     .pipe(
       map(value => typeof value === 'string' ? value : value.name),
-      tap(data => console.log('dataFromFilter', data)),
       startWith(''),
+      tap(data => console.log('dataFromFilter', data)),
       map(val => this.filter(val))
     );
 
@@ -57,9 +59,24 @@ export class FilterComponent implements OnInit {
 
   }
 
+
+  resetForm() {
+  this.myFilterForm.setValue({
+    make: '',
+    model: ''
+  });
+
+}
+
   onTypeChosen(categoryId: number) {
     this.categoryId = categoryId;
-    console.log('categoryId', categoryId);
+    this.makeOptions = [];
+    this.modelOptions = [];
+    this.myFilterForm.setValue({
+      make: '',
+      model: ''
+    });
+
     this.filterService.getCarMakes(categoryId)
     .subscribe((data: NameValuePair[]) => {
       data.forEach((nvp: NameValuePair) => this.makeOptions.push(nvp) );
@@ -67,19 +84,15 @@ export class FilterComponent implements OnInit {
   }
 
   onMakeChosen() {
+      this.modelOptions = [];
       const makeId = this.myFilterForm.get('make').value.value;
       this.filterService.getCarModels(this.categoryId, makeId)
       .subscribe((data: NameValuePair[]) => {
         data.forEach((nvp: NameValuePair) => this.modelOptions.push(nvp) );
-        console.log('models', data);
       });
-      console.log('optionChosen: ');
-      console.log('this.myControl.value ', this.myFilterForm.get('make').value);
     }
-    onModelChosen() {
-      console.log('onModelChosen()');
-      console.log('this.myModelControl.value', this.myFilterForm.get('model').value);
-    }
+
+
 
     onSubmit() {
         console.log('Submitting...');
@@ -95,20 +108,12 @@ export class FilterComponent implements OnInit {
           }
         ];
 
-        console.log('Entry id...', this.myFilterForm.get('model').value.value);
         const autoId = this.myFilterForm.get('model').value.value;
         this.carService
         .getCarBasicInfo(carParams).subscribe((data: BaseCarInfo[]) => {
-          console.log('listDataaa', data);
-          data.forEach(el => {
-            console.log('el.autoId', el.autoId);
-            console.log('el.city', el.city);
-            console.log('el.fuelName', el.fuelName);
-            console.log('el.gearboxName', el.gearboxName);
-            console.log('el.markName', el.markName);
-          });
+          this.communicationService.sendBaseCarInfo(data);
         });
-
+        this.resetForm();
     }
 
   filter(val: string): NameValuePair[] {
@@ -127,9 +132,8 @@ export class FilterComponent implements OnInit {
 
   createForm() {
     this.myFilterForm = this.fb.group({
-      type: '',
-      make: ['', Validators.required ],
-      model: ''
+      make: [''],
+      model: ['']
     });
   }
 

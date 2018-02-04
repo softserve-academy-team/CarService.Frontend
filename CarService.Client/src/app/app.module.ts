@@ -31,6 +31,7 @@ import { CarService } from './services/car.service';
 import { FilterComponent } from './components/filter/filter.component';
 import { FilterService } from './services/filter.service';
 import { HomeComponent } from './components/home/home.component';
+import { CommunicationService } from './services/communication.service';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { HomeComponent } from './components/home/home.component';
   providers: [
     CarUrlBuilder,
     CarService,
-    FilterService
+    FilterService,
+    CommunicationService
   ],
   bootstrap: [AppComponent]
 })

@@ -9,7 +9,10 @@
   </mat-form-field>
   
     <mat-form-field class="example-full-width">
-      <input type="text" placeholder="Pick a make" aria-label="Number" matInput  formControlName="make" [matAutocomplete]="auto">
+      <input type="text"
+       placeholder="Pick a make"
+       aria-label="Number" matInput 
+       formControlName="make" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         <mat-option *ngFor="let option of filteredOptions | async" (click)="onMakeChosen()" [value]="option">
           {{ option.name }}
@@ -20,7 +23,7 @@
     <mat-form-field class="example-full-width">
       <input type="text" placeholder="Pick a model" aria-label="Number" matInput  formControlName="model" [matAutocomplete]="autoModel">
       <mat-autocomplete #autoModel="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredModelOptions | async" (click)="onModelChosen()" [value]="option">
+        <mat-option *ngFor="let option of filteredModelOptions | async" [value]="option">
           {{ option.name }}
         </mat-option>
       </mat-autocomplete>

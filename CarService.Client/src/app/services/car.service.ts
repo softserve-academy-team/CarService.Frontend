@@ -11,7 +11,7 @@ export class CarService {
   constructor(private httpClient: HttpClient, private carUrlBuilder: CarUrlBuilder) { }
 
   getListOfRandomCars(): Observable<BaseCarInfo[]> {
-    return this.httpClient.get<BaseCarInfo[]>(this.carUrlBuilder.build('cars', 'random'));
+    return this.httpClient.get<BaseCarInfo[]>(this.carUrlBuilder.build('cars', 'base-info', 'random'));
   }
 
   // api/cars/base-info/{id}
@@ -20,6 +20,7 @@ export class CarService {
     const tempUrl = this.carUrlBuilder.build('cars', 'search');
     // tslint:disable-next-line:max-line-length
     const finalUrl = `${tempUrl}?${carParams[0].name}=${carParams[0].value}&${carParams[1].name}=${carParams[1].value}&${carParams[2].name}=${carParams[2].value}`;
+    console.log('http request made to get basic info', finalUrl);
     return this.httpClient.get<BaseCarInfo[]>(finalUrl);
   }
 
