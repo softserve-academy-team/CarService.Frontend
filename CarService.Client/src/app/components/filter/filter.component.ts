@@ -69,10 +69,7 @@ export class FilterComponent implements OnInit {
     this.categoryId = categoryId;
     this.makeOptions = [];
     this.modelOptions = [];
-    this.myFilterForm.setValue({
-      make: '',
-      model: ''
-    });
+    this.resetForm();
 
     this.filterService.getCarMakes(categoryId)
     .subscribe((data: NameValuePair[]) => {
@@ -82,6 +79,9 @@ export class FilterComponent implements OnInit {
 
   onMakeChosen() {
       this.modelOptions = [];
+      this.myFilterForm.patchValue({
+        model: ''
+      });
       const makeId = this.myFilterForm.get('make').value.value;
       this.filterService.getCarModels(this.categoryId, makeId)
       .subscribe((data: NameValuePair[]) => {
