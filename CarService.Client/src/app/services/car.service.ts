@@ -17,5 +17,4 @@ export class CarService {
   getDetailCarById(id:number): Observable<DetailCarInfo>{
     return this.httpClient.get<DetailCarInfo>(this.carUrlBuilder.build("cars", "detailed-info", id.toString()));
   }
-
 }
