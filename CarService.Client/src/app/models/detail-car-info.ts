@@ -11,6 +11,6 @@ export class DetailCarInfo {
     raceInt: number;
     city: string;
     fuelName: string;
-    gearboxName: string;
+    gearBoxName: string;
     description: string;
 }

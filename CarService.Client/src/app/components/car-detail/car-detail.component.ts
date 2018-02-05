@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http/src/response';
 import { DetailCarInfo } from '../../models/detail-car-info';
@@ -12,8 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CarDetailComponent implements OnInit {
 
-// private detailCarById: DetailCarInfo;
-@Input() detailCarById: DetailCarInfo;
+  private detailCarById: DetailCarInfo;
+  private carPhotosAll: Array<string> = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -21,6 +21,11 @@ export class CarDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getDetailCarById();
+    this.getCarPhotos();
+  }
+
+  getDetailCarById(): void{
     this.carService.getDetailCarById(+this.route.snapshot.paramMap.get('id')).subscribe((data: DetailCarInfo) => {
       this.detailCarById = data;
     },
@@ -34,4 +39,9 @@ export class CarDetailComponent implements OnInit {
     );
   }
 
+  getCarPhotos(): void{
+    this.carService.getCarPhotos(+this.route.snapshot.paramMap.get('id')).subscribe(
+      value => this.carPhotosAll = value
+    );
+  }
 }

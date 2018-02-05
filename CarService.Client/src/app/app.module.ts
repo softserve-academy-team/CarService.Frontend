@@ -32,6 +32,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { FilterService } from './services/filter.service';
 import { HomeComponent } from './components/home/home.component';
 import { CommunicationService } from './services/communication.service';
+import { CarDetailGalleryComponent } from './components/car-detail-gallery/car-detail-gallery.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { CommunicationService } from './services/communication.service';
     NavbarComponent,
     AboutComponent,
     FilterComponent,
-    HomeComponent
+    HomeComponent,
+    CarDetailGalleryComponent
   ],
   imports: [
     AppRoutingModule,
