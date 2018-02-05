@@ -25,6 +25,7 @@ import { CarListComponent } from './components/car-list/car-list.component';
 
 import { CarUrlBuilder } from './services/car-url-builder';
 import { CarService } from './services/car.service';
+import { CarDetailGalleryComponent } from './components/car-detail-gallery/car-detail-gallery.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CarService } from './services/car.service';
     CarListComponent,
     FooterComponent,
     NavbarComponent,
-    AboutComponent
+    AboutComponent,
+    CarDetailGalleryComponent
   ],
   imports: [
     AppRoutingModule,
