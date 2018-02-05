@@ -27,5 +27,4 @@ export class CarService {
     const finalUrl = `${tempUrl}?${carParams[0].name}=${carParams[0].value}&${carParams[1].name}=${carParams[1].value}&${carParams[2].name}=${carParams[2].value}`;
     return this.httpClient.get<BaseCarInfo[]>(finalUrl);
   }
-
 }

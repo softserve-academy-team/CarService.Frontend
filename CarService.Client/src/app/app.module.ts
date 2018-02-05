@@ -13,9 +13,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { MatGridListModule } from '@angular/material/grid-list';
-import { CarListComponent } from './components/car-list/car-list.component';
-import { MatToolbarModule} from '@angular/material/toolbar';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -26,6 +24,7 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
+import { CarListComponent } from './components/car-list/car-list.component';
 
 import { CarUrlBuilder } from './services/car-url-builder';
 import { CarService } from './services/car.service';
