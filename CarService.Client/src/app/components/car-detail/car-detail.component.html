@@ -1,57 +1,46 @@
 <div *ngIf="detailCarById">
-  <div class="car-container">
-      <mat-card class="cardetail-card">
-        <img mat-card-image src="{{detailCarById.photoLink}}">
-        <mat-card-actions>
-          <button mat-button>
-            <div class="car-favorite">
-              <h2>+ Add to favorites</h2>
+    <div class="car-detail-container">
+      <div class="car-detail">
+        <mat-card class="cardetail-card">
+          <mat-card-title>
+            <div class="info-container">
+              <div class="car-name"> 
+                <h2>{{detailCarById.markName}} {{detailCarById.modelName}} {{detailCarById.year}}</h2>
+              </div>
             </div>
-          </button>
-        </mat-card-actions>
-      </mat-card>
+          </mat-card-title>
+          <app-car-detail-gallery [carImages]="carPhotosAll"></app-car-detail-gallery>
+        </mat-card>
 
-    <div class="infoo-car">
-      <div class="info-container">
-        <div class="car-name"> 
-          <h2>{{detailCarById.markName}} {{detailCarById.modelName}} {{detailCarById.year}}</h2>
+      <div class="infoo-car">
+        <div class="price-block">
+          <p class="carPriceUSD">{{detailCarById.priceUSD}}$ /</p>
+          <p class="carPriceUAH">{{detailCarById.priceUAH}}₴</p>
         </div>
-      </div>
+      
+        <div class="info-container">
+          <div class="info-item">
+             <img src="../assets/icons-sedan.png" class="icon" />
+             <p>{{detailCarById.race}}</p>
+           </div>
+           <div class="info-item">
+             <img src="../assets/icons-gearbox.png" class="iconGear" />
+            <p>{{detailCarById.gearBoxName}}</p>
+          </div>
+         </div>
 
-      <div class="price-block">
-        <span class="carPriceUSD">
-          {{detailCarById.priceUSD}}$ 
-        </span> /
-        <span class="carPriceUAH">
-           {{detailCarById.priceUAH}}₴
-        </span>
+        <div class="info-container">
+           <div class="info-item">
+             <img src="../assets/icons-engine.png" class="icon" />
+               <p>{{detailCarById.fuelName}}</p>
+          </div>
+          <div class="info-item">
+            <img src="../assets/icons-place-marker.png" class="icon" />
+              <p>{{detailCarById.city}}</p>
+          </div>
+        </div>
+          <div class="description">{{detailCarById.description}}</div>
       </div>
-     
-      <div class="info-container">
-        <div class="info-item">
-          <img src="../assets/icons-sedan.png" class="icon" />
-          <p>{{detailCarById.race}}</p>
-        </div>
-        <div class="info-item">
-          <img src="../assets/icons-gearbox.png" class="iconGear" />
-          <p>{{detailCarById.gearBoxName}}</p>
-        </div>
       </div>
-
-      <div class="info-container">
-        <div class="info-item">
-          <img src="../assets/icons-engine.png" class="icon" />
-          <p>{{detailCarById.fuelName}}</p>
-        </div>
-        <div class="info-item">
-          <img src="../assets/icons-place-marker.png" class="icon" />
-          <p>{{detailCarById.city}}</p>
-        </div>
-      </div>
-    
-    </div>
   </div>
 </div>
-
-
-
