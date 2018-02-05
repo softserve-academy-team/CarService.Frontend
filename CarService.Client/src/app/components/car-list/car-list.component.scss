@@ -9,17 +9,13 @@
     display: flex;
     flex-direction: column;
     min-width: 240px;
-    padding: 10px;
+    padding-left: 20px;
     width: 60%;
 }
 
 .auto-img {
-    width: 240px;
     height: 160px;
-}
-
-.auto-img-container {
-    padding: 10px;
+    width: 240px;
 }
 
 .carPriceUSD {
@@ -41,6 +37,8 @@
 .car-container {
     display: flex;
     flex-direction: row;
+    margin-bottom: 15px;
+    padding: 10px;
 }
 
 .car-name h2 {

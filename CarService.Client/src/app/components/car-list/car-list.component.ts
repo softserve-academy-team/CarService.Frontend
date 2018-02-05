@@ -20,6 +20,10 @@ export class CarListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getListOfRandomCars();
+  }
+
+  private getListOfRandomCars() {
     this.carService.getListOfRandomCars().subscribe((data: BaseCarInfo[]) => {
       this.listOfRandomCars = data;
       this.communicationService.infoReceived.subscribe(d => {
@@ -38,6 +42,4 @@ export class CarListComponent implements OnInit {
 
 
   }
-
-
 }
