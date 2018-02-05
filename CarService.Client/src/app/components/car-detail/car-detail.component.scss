@@ -27,7 +27,7 @@
 }
 
 .infoo-car{
-    width: 600px;
+    width: 650px;
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -65,7 +65,7 @@
 
 .price-block, .car-info, .info-item {
     margin: auto 0;
-    color: #256799;
+    // color: #256799;
 }
 
 .price-block p {
@@ -86,6 +86,6 @@
     align-items: center;
     font-size: 16pt;
     width: 100%;
-    color: #256799;
+    color: #000000;
     margin-top: 15px;
 }
