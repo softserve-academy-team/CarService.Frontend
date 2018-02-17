@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { NameValuePair } from '../models/name-value-pair';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class FilterService {
-  commonUrlPart = 'http://localhost:5000/api/cars/dropdown';
+  commonUrlPart = environment['CarServiceApiBaseUrl'] + '/cars/dropdown';
   typesUrl = `${this.commonUrlPart}/types`;
   makesUrl = `${this.commonUrlPart}/makes`;
   modelsUrl = `${this.commonUrlPart}/models`;
