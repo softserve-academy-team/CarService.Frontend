@@ -5,5 +5,13 @@
 
 export const environment = {
   production: false,
-  CarServiceApiBaseUrl: "http://localhost:52095/api"
+  CarServiceApiBaseUrl: "http://localhost:52095/api",
+  RegistrationConfig: {
+    textMinLength: 4,
+    textMaxLength: 20,
+    experienceMinValue: 0,
+    experienceMaxValue: 60,
+    priceMinValue: 0,
+    priceMaxValue: 100000
+  }
 };
