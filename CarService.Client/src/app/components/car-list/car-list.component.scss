@@ -1,19 +1,13 @@
 .filter-list-container {
-    display: flex;
-    flex-direction: row;
     width: 100%;
 }
 
 .car-list-container {
     margin: auto !important;
-    width: 40%;
-    min-width: 540px;
     max-width: 760px;
 }
 
 .car-container {
-    display: flex;
-    flex-direction: row;
     margin-bottom: 15px;
     padding: 10px;
 }
@@ -28,13 +22,6 @@
     display: flex;
     flex-direction: column;
     min-width: 240px;
-    padding-left: 20px;
-    width: 60%;
-}
-
-.auto-img {
-    height: 160px;
-    width: 240px;
 }
 
 .carPriceUSD {
@@ -53,12 +40,6 @@
     margin-right: 10px;
 }
 
-.car-name h2 {
-    font-size: 16pt;
-    color: #256799;
-    margin: 0px;
-}
-
 .info-container, .car-name {
     display: -webkit-box;
     flex-direction: row;
@@ -70,6 +51,12 @@
 .car-name {
     height: auto;
     min-height: 30px;
+}
+
+.car-name h2 {
+    font-size: 16pt;
+    color: #256799;
+    margin: 0px;
 }
 
 .price-block, .car-info, .info-item {
@@ -88,8 +75,76 @@
     width: 50%;
 }
 
-.filter {
-    margin-top: 100px;
-    margin-left: 40px;
-    margin-right: 20px;
+@media screen and (min-width: 870px) {
+    .filter-list-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .filter {
+        margin-top: 100px;
+        margin-left: 40px;
+        margin-right: 20px;
+    }
+
+    .car-list-container {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .filter-list-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filter  {
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    .car-list-container {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .car-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .car-list-container {
+        min-width: 540px;
+    }
+
+    .car-element {
+        padding-left: 20px;
+        width: 60%;
+    }
+
+    .auto-img {
+        height: 160px;
+        width: 240px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .car-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .car-element {
+        width: 100%;
+    }
+
+    .auto-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .car-list-container {
+        min-width: 280px;
+    }
 }
