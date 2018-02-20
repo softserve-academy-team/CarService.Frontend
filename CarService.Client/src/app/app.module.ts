@@ -14,7 +14,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
@@ -27,6 +28,8 @@ import { CarListComponent } from './components/car-list/car-list.component';
 import { CarUrlBuilder } from './services/car-url-builder';
 import { CarService } from './services/car.service';
 import { CarDetailGalleryComponent } from './components/car-detail-gallery/car-detail-gallery.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileService } from './services/profile.service';
 
 
 @NgModule({
@@ -38,7 +41,8 @@ import { CarDetailGalleryComponent } from './components/car-detail-gallery/car-d
     FooterComponent,
     NavbarComponent,
     AboutComponent,
-    CarDetailGalleryComponent
+    CarDetailGalleryComponent,
+    ProfileComponent
   ],
   imports: [
     AppRoutingModule,
@@ -54,11 +58,13 @@ import { CarDetailGalleryComponent } from './components/car-detail-gallery/car-d
     MatDividerModule,
     MatListModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule
   ],
   providers: [
     CarUrlBuilder,
-    CarService
+    CarService,
+    ProfileService
   ],
   bootstrap: [AppComponent]
 })

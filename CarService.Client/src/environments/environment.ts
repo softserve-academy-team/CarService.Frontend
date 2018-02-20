@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  CarServiceApiBaseUrl: "http://localhost:52095/api"
+  CarServiceApiBaseUrl: "https://localhost:44340/api"
 };
