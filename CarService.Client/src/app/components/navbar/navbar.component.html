@@ -10,6 +10,36 @@
     <div class="authorization">
       <button mat-button>Sign in</button>
       <button mat-button>Sign out</button>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item disabled>
+          <mat-icon>star_border</mat-icon>
+          <span>Favourites</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>work</mat-icon>
+          <span>Orders</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>assignment</mat-icon>
+          <span>Reviews</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>comment</mat-icon>
+          <span>Invitations</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </button>
+      </mat-menu>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
