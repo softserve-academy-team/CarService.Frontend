@@ -5,9 +5,6 @@
 
 export const environment = {
   production: false,
-<<<<<<< HEAD
-  CarServiceApiBaseUrl: "https://localhost:44340/api"
-=======
   CarServiceApiBaseUrl: "https://localhost:44340/api",
   RegistrationConfig: {
     textMinLength: 4,
@@ -15,5 +12,4 @@ export const environment = {
     experienceMinValue: 0,
     experienceMaxValue: 60
   }
->>>>>>> develop
 };
