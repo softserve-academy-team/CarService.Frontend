@@ -139,21 +139,6 @@
         </mat-form-field>
 
         <mat-form-field *ngIf="isMechanic" class="registration-form-field">
-          <input matInput placeholder="Price" [formGroup]="registrationFormGroup" [formControl]="price">
-          <mat-error *ngIf="price.hasError('required')">
-            Price is
-            <strong>required</strong>
-          </mat-error>
-          <mat-error *ngIf="!price.hasError('required')
-                         && price.hasError('pattern')">
-            The value of Price field should be in the range of
-            <strong>{{config.priceMinValue}}</strong>
-            to
-            <strong>{{config.priceMaxValue}}</strong>
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field *ngIf="isMechanic" class="registration-form-field">
           <input matInput placeholder="Specialization" [formGroup]="registrationFormGroup" [formControl]="specialization">
           <mat-error *ngIf="specialization.hasError('required')">
             Specialization is

@@ -25,7 +25,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 
-import { CarUrlBuilder } from './services/car-url-builder';
+import { RestUrlBuilder } from './services/rest-url-builder';
 import { CarService } from './services/car.service';
 import { FilterComponent } from './components/filter/filter.component';
 import { FilterService } from './services/filter.service';
@@ -34,6 +34,7 @@ import { CommunicationService } from './services/communication.service';
 import { CarDetailGalleryComponent } from './components/car-detail-gallery/car-detail-gallery.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { PasswordValidation } from './validation/password-validation';
+import { RegistrationService } from './services/registration.service'; 
 
 
 @NgModule({
@@ -75,11 +76,12 @@ import { PasswordValidation } from './validation/password-validation';
         MatToolbarModule
     ],
     providers: [
-        CarUrlBuilder,
+        RestUrlBuilder,
         CarService,
         PasswordValidation,
         FilterService,
-        CommunicationService
+        CommunicationService,
+        RegistrationService
     ],
     bootstrap: [AppComponent]
 })

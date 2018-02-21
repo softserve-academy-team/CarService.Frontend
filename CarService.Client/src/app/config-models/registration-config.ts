@@ -3,6 +3,4 @@ export class RegistrationConfig {
     textMaxLength: number;
     experienceMinValue: number;
     experienceMaxValue: number;
-    priceMinValue: number;
-    priceMaxValue: number;
 }

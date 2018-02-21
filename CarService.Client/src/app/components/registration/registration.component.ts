@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { RegistrationConfig } from '../../config-models/registration-config';
 import { PasswordValidation } from '../../validation/password-validation';
+import { RegistrationService } from '../../services/registration.service';
 import { CustomerRegistrationData } from '../../models/customer-registration-data';
 import { MechanicRegistrationData } from '../../models/mechanic-registration-data';
 
@@ -28,13 +30,13 @@ export class RegistrationComponent {
   private password: AbstractControl;
   private confirmPassword: AbstractControl;
   private experience: AbstractControl;
-  private price: AbstractControl;
   private specialization: AbstractControl;
 
   private isMechanic: boolean;
 
   constructor(private formBuilder: FormBuilder,
-    private passwordValidation: PasswordValidation) {
+    private passwordValidation: PasswordValidation,
+    private registrationService: RegistrationService) {
 
     this.config = environment["RegistrationConfig"];
 
@@ -48,7 +50,6 @@ export class RegistrationComponent {
     this.password = this.registrationFormGroup.controls.password;
     this.confirmPassword = this.registrationFormGroup.controls.confirmPassword;
     this.experience = this.registrationFormGroup.controls.experience;
-    this.price = this.registrationFormGroup.controls.price;
     this.specialization = this.registrationFormGroup.controls.specialization;
 
     this.isMechanic = false;
@@ -63,7 +64,6 @@ export class RegistrationComponent {
       password: this.getPasswordFormControl(),
       confirmPassword: this.getPasswordFormControl(),
       experience: this.getExperienceFormControl(),
-      price: this.getPriceFormControl(),
       specialization: this.getTextFormControl()
     }, {
         validator: PasswordValidation.MatchPassword
@@ -72,12 +72,10 @@ export class RegistrationComponent {
 
   private disableMechanicFormControls() {
     this.registrationFormGroup.controls.experience.disable();
-    this.registrationFormGroup.controls.price.disable();
     this.registrationFormGroup.controls.specialization.disable();
   }
   private enableMechanicFormControls() {
     this.registrationFormGroup.controls.experience.enable();
-    this.registrationFormGroup.controls.price.enable();
     this.registrationFormGroup.controls.specialization.enable();
   }
 
@@ -109,18 +107,9 @@ export class RegistrationComponent {
       Validators.pattern(this.getExperienceFieldPattern())
     ]);
   }
-  private getPriceFormControl(): FormControl {
-    return new FormControl('', [
-      Validators.required,
-      Validators.pattern(this.gePriceFieldPattern())
-    ]);
-  }
 
   private getExperienceFieldPattern(): string {
     return "(" + this.toRegexRange(this.config.experienceMinValue, this.config.experienceMaxValue) + ")";
-  }
-  private gePriceFieldPattern(): string {
-    return "(" + this.toRegexRange(this.config.priceMinValue, this.config.priceMaxValue) + ")";
   }
 
   private createCustomer(): CustomerRegistrationData {
@@ -140,7 +129,6 @@ export class RegistrationComponent {
     mechanic.email = this.email.value;
     mechanic.password = this.password.value;
     mechanic.experience = this.experience.value;
-    mechanic.price = this.price.value;
     mechanic.specialization = this.specialization.value;
     return mechanic;
   }
@@ -148,12 +136,34 @@ export class RegistrationComponent {
   register() {
     if (this.registrationFormGroup.valid) {
       if (this.isMechanic) {
-        console.log(this.createMechanic());
+        let mechanic = this.createMechanic();
+        console.log(mechanic);
+        this.registrationService.registerMechanic(mechanic).subscribe(data => {
+        },
+          (err: HttpErrorResponse) => {
+            if (err.error instanceof Error) {
+              console.log('An error occurred:', err.error.message);
+            } else {
+              console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+            }
+          }
+        );
       } else {
-        console.log(this.createCustomer());
+        let customer = this.createCustomer();
+        console.log(customer);
+        this.registrationService.registerCustomer(customer).subscribe(data => {
+        },
+          (err: HttpErrorResponse) => {
+            if (err.error instanceof Error) {
+              console.log('An error occurred:', err.error.message);
+            } else {
+              console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+            }
+          }
+        );
       }
     } else {
-      console.log("Error in customer data.");
+      console.log("Input data error.");
     }
   }
   changeRegistrationForm() {

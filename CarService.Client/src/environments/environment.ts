@@ -10,8 +10,6 @@ export const environment = {
     textMinLength: 4,
     textMaxLength: 20,
     experienceMinValue: 0,
-    experienceMaxValue: 60,
-    priceMinValue: 0,
-    priceMaxValue: 100000
+    experienceMaxValue: 60
   }
 };
