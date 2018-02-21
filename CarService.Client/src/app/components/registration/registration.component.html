@@ -1,0 +1,170 @@
+<div class="registration-main">
+  <mat-card class="registration-card">
+    <mat-card-header>
+      <mat-card-title class="registration-card-title">
+        <p *ngIf="isMechanic">Register as mechanic</p>
+        <p *ngIf="!isMechanic">Register as customer</p>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content class="registration-card-content">
+      <form [formGroup]="registrationFormGroup" class="registration-form">
+
+        <mat-form-field class="registration-form-field">
+          <input matInput placeholder="First Name" [formGroup]="registrationFormGroup" [formControl]="firstName">
+          <mat-error *ngIf="firstName.hasError('required')">
+            First Name is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!firstName.hasError('required')
+                         && firstName.hasError('minlength')">
+            The First Name field must be at least
+            <strong>{{config.textMinLength}}</strong> characters in length
+          </mat-error>
+          <mat-error *ngIf="!firstName.hasError('required')
+                         && !firstName.hasError('minlength')
+                         && firstName.hasError('maxlength')">
+            The First Name field cannot exceed
+            <strong>{{config.textMaxLength}}</strong> characters in length
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="registration-form-field">
+          <input matInput placeholder="Last Name" [formGroup]="registrationFormGroup" [formControl]="lastName">
+          <mat-error *ngIf="lastName.hasError('required')">
+            Last Name is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!lastName.hasError('required')
+                         && lastName.hasError('minlength')">
+            The Last Name field must be at least
+            <strong>{{config.textMinLength}}</strong> characters in length
+          </mat-error>
+          <mat-error *ngIf="!lastName.hasError('required')
+                         && !lastName.hasError('minlength')
+                         && lastName.hasError('maxlength')">
+            The Last Name field cannot exceed
+            <strong>{{config.textMaxLength}}</strong> characters in length
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="registration-form-field">
+          <input matInput placeholder="Location" [formGroup]="registrationFormGroup" [formControl]="location">
+          <mat-error *ngIf="location.hasError('required')">
+            Location is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!location.hasError('required')
+                         && location.hasError('minlength')">
+            The Location field must be at least
+            <strong>{{config.textMinLength}}</strong> characters in length
+          </mat-error>
+          <mat-error *ngIf="!location.hasError('required')
+                         && !location.hasError('minlength')
+                         && location.hasError('maxlength')">
+            The Location field cannot exceed
+            <strong>{{config.textMaxLength}}</strong> characters in length
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="registration-form-field">
+          <input matInput placeholder="Email" [formGroup]="registrationFormGroup" [formControl]="email">
+          <mat-error *ngIf="email.hasError('required')">
+            Email is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!email.hasError('required')
+                         && email.hasError('email')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="!email.hasError('required')
+                         && !email.hasError('email')
+                         && email.hasError('minlength')">
+            The Email field must be at least
+            <strong>{{config.textMinLength}}</strong> characters in length
+          </mat-error>
+          <mat-error *ngIf="!email.hasError('required')
+                         && !email.hasError('email')
+                         && !email.hasError('minlength')
+                         && email.hasError('maxlength')">
+            The Email field cannot exceed
+            <strong>{{config.textMaxLength}}</strong> characters in length
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="registration-form-field">
+          <input matInput placeholder="Password" type="password" [formGroup]="registrationFormGroup" [formControl]="password">
+          <mat-error *ngIf="password.hasError('required')">
+            Password is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!password.hasError('required')
+                         && password.hasError('minlength')">
+            The Password field must be at least
+            <strong>{{config.textMinLength}}</strong> characters in length
+          </mat-error>
+          <mat-error *ngIf="!password.hasError('required')
+                         && !password.hasError('minlength')
+                         && password.hasError('maxlength')">
+            The Password field cannot exceed
+            <strong>{{config.textMaxLength}}</strong> characters in length
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="registration-form-field">
+          <input matInput placeholder="Confirm Password" type="password" [formGroup]="registrationFormGroup" [formControl]="confirmPassword">
+          <mat-error *ngIf="confirmPassword.hasError('required')">
+            Confirm Password is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!confirmPassword.hasError('required')
+                         && !confirmPassword.errors?.MutchPassword">
+            The Confirm Password field does not match the Password field.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="isMechanic" class="registration-form-field">
+          <input matInput placeholder="Experience" [formGroup]="registrationFormGroup" [formControl]="experience">
+          <mat-error *ngIf="experience.hasError('required')">
+            Experience is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!experience.hasError('required')
+                         && experience.hasError('pattern')">
+            The value of Experience field should be in the range of
+            <strong>{{config.experienceMinValue}}</strong>
+            to
+            <strong>{{config.experienceMaxValue}}</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="isMechanic" class="registration-form-field">
+          <input matInput placeholder="Specialization" [formGroup]="registrationFormGroup" [formControl]="specialization">
+          <mat-error *ngIf="specialization.hasError('required')">
+            Specialization is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!specialization.hasError('required')
+                         && specialization.hasError('minlength')">
+            The Specialization field must be at least
+            <strong>{{config.textMinLength}}</strong> characters in length
+          </mat-error>
+          <mat-error *ngIf="!specialization.hasError('required')
+                         && !specialization.hasError('minlength')
+                         && specialization.hasError('maxlength')">
+            The Specialization field cannot exceed
+            <strong>{{config.textMaxLength}}</strong> characters in length
+          </mat-error>
+        </mat-form-field>
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="registration-actions">
+      <button mat-raised-button color="primary" (click)="changeRegistrationForm()">
+        <p *ngIf="isMechanic">Register as customer</p>
+        <p *ngIf="!isMechanic">Register as mechanic</p>
+      </button>
+      <button mat-raised-button color="primary" (click)="register()">Register</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

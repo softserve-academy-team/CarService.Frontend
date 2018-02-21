@@ -5,5 +5,15 @@
 
 export const environment = {
   production: false,
+<<<<<<< HEAD
   CarServiceApiBaseUrl: "https://localhost:44340/api"
+=======
+  CarServiceApiBaseUrl: "https://localhost:44340/api",
+  RegistrationConfig: {
+    textMinLength: 4,
+    textMaxLength: 20,
+    experienceMinValue: 0,
+    experienceMaxValue: 60
+  }
+>>>>>>> develop
 };

@@ -7,7 +7,9 @@ import { DebugElement } from '@angular/core/src/debug/debug_node';
 import { By } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import { Directive, Input } from '@angular/core';
+import { Directive, Input, Component } from '@angular/core';
+import { CommunicationService } from '../../services/communication.service';
+
 
 @Directive({
   selector: '[routerLink]',
@@ -22,6 +24,14 @@ class RouterLinkStubDirective {
   onClick() {
     this.navigatedTo = this.linkParams;
   }
+}
+
+@Component({
+  selector: 'app-filter',
+  template: ``
+})
+class FilterComponent {
+
 }
 
 describe('Car-ListComponent', () => {
@@ -53,9 +63,9 @@ describe('Car-ListComponent', () => {
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [CarListComponent, RouterLinkStubDirective],
+      declarations: [CarListComponent, RouterLinkStubDirective, FilterComponent],
       imports: [MatDividerModule, MatCardModule],
-      providers: [{ provide: CarService, useValue: mockRepository}]
+      providers: [{ provide: CarService, useValue: mockRepository}, CommunicationService]
     });
     fixture = TestBed.createComponent(CarListComponent);
     component = fixture.componentInstance;
