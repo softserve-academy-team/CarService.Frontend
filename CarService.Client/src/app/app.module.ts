@@ -34,55 +34,57 @@ import { CommunicationService } from './services/communication.service';
 import { CarDetailGalleryComponent } from './components/car-detail-gallery/car-detail-gallery.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { PasswordValidation } from './validation/password-validation';
-import { RegistrationService } from './services/registration.service'; 
+import { RegistrationService } from './services/registration.service';
+import { GoogleMapComponent } from './components/google-map/google-map.component';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        CarouselComponent,
-        CarDetailComponent,
-        CarListComponent,
-        FooterComponent,
-        NavbarComponent,
-        AboutComponent,
-        CarDetailGalleryComponent,
-        RegistrationComponent,
-        FilterComponent,
-        HomeComponent,
-        CarDetailGalleryComponent
-    ],
-    imports: [
-        AppRoutingModule,
-        BrowserModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        ReactiveFormsModule,
-        MatAutocompleteModule,
-        MatButtonModule,
-        MatCardModule,
-        MatIconModule,
-        MatGridListModule,
-        MatDividerModule,
-        MatFormFieldModule,
-        MatDividerModule,
-        MatInputModule,
-        MatListModule,
-        MatToolbarModule,
-        MatInputModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatSelectModule,
-        MatToolbarModule
-    ],
-    providers: [
-        RestUrlBuilder,
-        CarService,
-        PasswordValidation,
-        FilterService,
-        CommunicationService,
-        RegistrationService
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    CarouselComponent,
+    CarDetailComponent,
+    CarListComponent,
+    FooterComponent,
+    NavbarComponent,
+    AboutComponent,
+    CarDetailGalleryComponent,
+    RegistrationComponent,
+    FilterComponent,
+    HomeComponent,
+    CarDetailGalleryComponent,
+    GoogleMapComponent
+  ],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatGridListModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatDividerModule,
+    MatInputModule,
+    MatListModule,
+    MatToolbarModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatToolbarModule
+  ],
+  providers: [
+    RestUrlBuilder,
+    CarService,
+    PasswordValidation,
+    FilterService,
+    CommunicationService,
+    RegistrationService
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

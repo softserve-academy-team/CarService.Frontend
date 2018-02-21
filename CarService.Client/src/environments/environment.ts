@@ -11,5 +11,10 @@ export const environment = {
     textMaxLength: 20,
     experienceMinValue: 0,
     experienceMaxValue: 60
+  },
+  GoogleMap: {
+    defaultLat: 48.3794,
+    defaultLng: 31.1656,
+    defaultZoom: 6
   }
 };

@@ -6,12 +6,14 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { FilterComponent } from './components/filter/filter.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { GoogleMapComponent } from './components/google-map/google-map.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'car-list', component: CarListComponent },
   { path: 'cardetail/:id', component: CarDetailComponent },
-  { path: 'registration', component: RegistrationComponent }
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'google-map', component: GoogleMapComponent }
 ];
 
 @NgModule({
