@@ -7,7 +7,7 @@ export class CarUrlBuilder {
   private carServiceApiBaseUrl: string;
 
   constructor() {
-    this.carServiceApiBaseUrl = environment["CarServiceApiBaseUrl"];
+    this.carServiceApiBaseUrl = environment['CarServiceApiBaseUrl'];
   }
 
   build(firstParam: string, ...params: string[]): string {
