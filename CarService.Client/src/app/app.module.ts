@@ -39,6 +39,7 @@ import { PasswordValidation } from './validation/password-validation';
 import { RegistrationService } from './services/registration.service'; 
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileService } from './services/profile.service';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { ProfileService } from './services/profile.service';
         FilterComponent,
         HomeComponent,
         CarDetailGalleryComponent,
-        ProfileComponent
+        ProfileComponent,
+        EditProfileComponent
     ],
     imports: [
         AppRoutingModule,

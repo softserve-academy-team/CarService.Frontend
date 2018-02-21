@@ -33,6 +33,10 @@ $profile-container-origin-width: 700px;
     font-size: 14pt;
 }
 
+.edit-button {
+    margin-top: 40px;
+}
+
 @media screen and (min-width: 720px) {
     .profile-container {
         display: flex;

@@ -6,7 +6,8 @@ export class UserDTO {
         public phoneNumber?: string,
         public city?: string,
         public cardNumber?: string,
-        public workExperience?: string,
+        public workExperience?: number,
+        public specialization?: string,
         public mechanicRate?: number
     ) { }
 }

@@ -1,0 +1,40 @@
+.edit-main {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .edit-card {
+    min-width: 400px;
+    max-width: 400px;
+  }
+  
+  .edit-card-title {
+    >p {
+      font-size: 1.8em;
+    }
+  }
+  
+  .edit-card-content {
+    padding-top: 1.2em;
+    margin-bottom: 0.1em;
+  }
+  
+  .edit-form {
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .edit-form-field {
+    width: 100%;
+  }
+  
+  .mat-card>.mat-card-actions:last-child {
+    margin-bottom: -8px;
+  }
+  
+  .edit-actions {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
