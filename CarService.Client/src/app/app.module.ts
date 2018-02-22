@@ -27,6 +27,7 @@ import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { RegistrationService } from './services/registration.service'; 
 import { PasswordValidation } from './validation/password-validation';
+import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import { PasswordValidation } from './validation/password-validation';
         SignInComponent,
         FilterComponent,
         HomeComponent,
-        CarDetailGalleryComponent
+        CarDetailGalleryComponent,
+        EmailConfirmComponent
     ],
     imports: [
         AppRoutingModule,
