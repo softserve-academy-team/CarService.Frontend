@@ -9,33 +9,36 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-    imports: [
-        MatAutocompleteModule,
-        MatButtonModule,
-        MatCardModule,
-        MatIconModule,
-        MatGridListModule,
-        MatFormFieldModule,
-        MatDividerModule,
-        MatListModule,
-        MatInputModule,
-        MatSelectModule,
-        MatToolbarModule,
-      ],
-      exports: [
-        MatAutocompleteModule,
-        MatButtonModule,
-        MatCardModule,
-        MatIconModule,
-        MatGridListModule,
-        MatFormFieldModule,
-        MatDividerModule,
-        MatListModule,
-        MatInputModule,
-        MatSelectModule,
-        MatToolbarModule,
-      ]
-  })
-  export class MaterialModule { }
+  imports: [
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatDividerModule,
+    MatListModule,
+    MatInputModule,
+    MatSelectModule,
+    MatToolbarModule,
+    MatSnackBarModule
+  ],
+  exports: [
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatDividerModule,
+    MatListModule,
+    MatInputModule,
+    MatSelectModule,
+    MatToolbarModule,
+    MatSnackBarModule
+  ]
+})
+export class MaterialModule { }

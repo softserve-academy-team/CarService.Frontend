@@ -8,13 +8,15 @@ import { FilterComponent } from './components/filter/filter.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'car-list', component: CarListComponent },
   { path: 'cardetail/:id', component: CarDetailComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'sign-in', component: SignInComponent }
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'email-confirm' , component:EmailConfirmComponent}
 ];
 
 @NgModule({
