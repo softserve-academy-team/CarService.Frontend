@@ -7,8 +7,8 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   signIn(credentials) {
-    this.http.post("http://localhost:53065/api/account", credentials, { responseType: 'text' }).subscribe(res => {
-      localStorage.setItem('token', res);
+    this.http.post<any>("https://localhost:44340/api/account/token", credentials).subscribe((res: any) => {
+      localStorage.setItem('token', res.access_token);
     });
   }
 }
