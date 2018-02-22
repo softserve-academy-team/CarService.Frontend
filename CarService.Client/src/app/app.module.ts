@@ -36,6 +36,10 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { PasswordValidation } from './validation/password-validation';
 import { RegistrationService } from './services/registration.service';
 import { GoogleMapComponent } from './components/google-map/google-map.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
+
+import { CarPhotoPipe } from './pipes/car-photo.pipe';
+import { UserPhotoPipe } from './pipes/user-photo.pipe';
 
 
 @NgModule({
@@ -52,7 +56,10 @@ import { GoogleMapComponent } from './components/google-map/google-map.component
     FilterComponent,
     HomeComponent,
     CarDetailGalleryComponent,
-    GoogleMapComponent
+    GoogleMapComponent,
+    OrderListComponent,
+    CarPhotoPipe,
+    UserPhotoPipe
   ],
   imports: [
     AppRoutingModule,
