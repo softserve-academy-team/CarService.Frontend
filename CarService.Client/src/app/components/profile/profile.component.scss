@@ -1,6 +1,7 @@
 $avatar-width: 200px;
 $profile-container-min-width: 420px;
 $profile-container-origin-width: 700px;
+$item-font-size: 11pt;
 
 .profile-container {
     margin: auto;
@@ -29,8 +30,8 @@ $profile-container-origin-width: 700px;
 
 .item {
     width: 50%;
-    padding: 20px;
-    font-size: 14pt;
+    padding: 15px;
+    font-size: $item-font-size;
 }
 
 .edit-button {

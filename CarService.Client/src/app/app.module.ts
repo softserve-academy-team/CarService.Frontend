@@ -40,7 +40,7 @@ import { RegistrationService } from './services/registration.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileService } from './services/profile.service';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-
+import { AuthService } from './services/auth.service';
 
 @NgModule({
     declarations: [
@@ -91,7 +91,8 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
         FilterService,
         CommunicationService,
         RegistrationService,
-        ProfileService
+        ProfileService,
+        AuthService
     ],
     bootstrap: [AppComponent]
 })

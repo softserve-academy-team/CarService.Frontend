@@ -8,6 +8,8 @@ import { CustomerEditData } from '../../models/customer-edit-data';
 import { MechanicEditData } from '../../models/mechanic-edit-data';
 import { UserDTO } from '../../models/userDTO';
 import { ProfileService } from '../../services/profile.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 declare let require: any;
 
@@ -40,7 +42,9 @@ export class EditProfileComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private passwordValidation: PasswordValidation,
-    private profileService: ProfileService) { 
+    private profileService: ProfileService,
+    private router: Router,
+    private authService: AuthService) { 
       this.config = environment["RegistrationConfig"];
     }
 
@@ -49,7 +53,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   private getUserInfo() {
-    this.profileService.getUserInfo().subscribe((data: UserDTO) => {
+    this.profileService.getUserInfo(this.authService.userEmail).subscribe((data: UserDTO) => {
       this.user = data;
       this.editFormGroup = this.getEditFormGroup();
 
@@ -66,6 +70,7 @@ export class EditProfileComponent implements OnInit {
       }
       else {
         this.isMechanic = false;
+        this.disableMechanicFormControls();
       }
 
     },
@@ -134,6 +139,11 @@ export class EditProfileComponent implements OnInit {
     return "(" + this.toRegexRange(this.config.experienceMinValue, this.config.experienceMaxValue) + ")";
   }
 
+  private disableMechanicFormControls() {
+    this.editFormGroup.controls.experience.disable();
+    this.editFormGroup.controls.specialization.disable();
+  }
+
   private createCustomerData(): CustomerEditData {
     let customer = new CustomerEditData();
     customer.email = this.user.email;
@@ -152,7 +162,7 @@ export class EditProfileComponent implements OnInit {
     mechanic.city = this.city.value;
     mechanic.phoneNumber = this.phoneNumber.value;
     mechanic.cardNumber =  this.cardNumber.value;
-    mechanic.experience = this.experience.value;
+    mechanic.workExperience = this.experience.value;
     mechanic.specialization = this.specialization.value;
     return mechanic;
   }
@@ -162,7 +172,6 @@ export class EditProfileComponent implements OnInit {
       if (this.isMechanic) {
         let mechanic = this.createMechanicData();
         this.profileService.editMechanic(mechanic).subscribe(data => {
-          console.log("Very good");
         },
           (err: HttpErrorResponse) => {
             if (err.error instanceof Error) {
@@ -185,6 +194,7 @@ export class EditProfileComponent implements OnInit {
           }
         );
       }
+      this.router.navigate(['../profile']);
     } else {
       console.log("Input data error.");
     }

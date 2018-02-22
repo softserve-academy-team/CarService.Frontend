@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { UserDTO } from '../models/userDTO';
 import { RestUrlBuilder } from '../services/rest-url-builder';
@@ -15,8 +15,13 @@ export class ProfileService {
     this.carServiceApiBaseUrl = environment['CarServiceApiBaseUrl'];
   }
 
-  getUserInfo(): Observable<UserDTO> {
-    return this.httpClient.get<UserDTO>(this.restUrlBuilder.build(this.carServiceApiBaseUrl, "profile", "user-info"));
+  getUserInfo(email: string): Observable<UserDTO> {
+    console.log(email);
+    return this.httpClient.post<UserDTO>(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, "profile", "user-info"), 
+      email, 
+      {headers: new HttpHeaders().set('Content-Type', 'application/json')}
+    );
   }
 
   editCustomer(customer: CustomerEditData) {

@@ -3,6 +3,8 @@ import { UserDTO } from '../../models/userDTO';
 import { ProfileService } from '../../services/profile.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,14 +16,17 @@ export class ProfileComponent implements OnInit {
   private userInfo: Element[];
   dataSource = new MatTableDataSource(this.userInfo);
 
-  constructor(private profileService: ProfileService) { }
+  constructor(
+    private profileService: ProfileService, 
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.getUserInfo();
   }
 
   private getUserInfo() {
-    this.profileService.getUserInfo().subscribe((data: UserDTO) => {
+    this.profileService.getUserInfo(this.authService.userEmail).subscribe((data: UserDTO) => {
       this.user = data;
       this.userInfo = [
         {name: "First Name", value: this.user.firstName},
