@@ -1,23 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Image } from '../../models/carousel.array.model';
+import { CarDetailComponent } from '../car-detail/car-detail.component';
 
 @Component({
-  selector: 'app-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss']
+  selector: 'app-car-detail-gallery',
+  templateUrl: './car-detail-gallery.component.html',
+  styleUrls: ['./car-detail-gallery.component.scss']
 })
-export class CarouselComponent implements OnInit {
+export class CarDetailGalleryComponent implements OnInit {
 
-  @Input() images: Image[];
 numOfCurrImg: number;
 numOfImages: number;
 time: number;
 hide: boolean;
 
+@Input() carImages: Array<string> = [];
+
   constructor() { }
 
   ngOnInit() {
-    this.numOfImages = this.images.length;
+    this.numOfImages = this.carImages.length;
     this.numOfCurrImg = 0;
     this.time = 6000;
     this.hide = true;
@@ -46,6 +47,5 @@ hide: boolean;
             this.rightClick();
         }, this.time);
   }
-
 
 }

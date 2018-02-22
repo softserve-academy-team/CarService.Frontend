@@ -1,53 +1,67 @@
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { CarDetailGalleryComponent } from './components/car-detail-gallery/car-detail-gallery.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
+import { FilterComponent } from './components/filter/filter.component';
 import { CarListComponent } from './components/car-list/car-list.component';
-import { MaterialModule } from './material.module';
-
-import { CarUrlBuilder } from './services/car-url-builder';
-import { CarService } from './services/car.service';
+import { RegistrationComponent } from './components/registration/registration.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+
+import { RestUrlBuilder } from './services/rest-url-builder';
+import { CarService } from './services/car.service';
+import { FilterService } from './services/filter.service';
+import { CommunicationService } from './services/communication.service';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { RegistrationService } from './services/registration.service'; 
+import { PasswordValidation } from './validation/password-validation';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CarouselComponent,
-    CarListComponent,
-    FooterComponent,
-    NavbarComponent,
-    AboutComponent,
-    SignInComponent
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MaterialModule
-  ],
-  providers: [
-    CarUrlBuilder,
-    CarService,
-    AuthService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        CarouselComponent,
+        CarDetailComponent,
+        CarListComponent,
+        FooterComponent,
+        NavbarComponent,
+        AboutComponent,
+        CarDetailGalleryComponent,
+        RegistrationComponent,
+        SignInComponent,
+        FilterComponent,
+        HomeComponent,
+        CarDetailGalleryComponent
+    ],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MaterialModule
+    ],
+    providers: [
+        RestUrlBuilder,
+        CarService,
+        PasswordValidation,
+        FilterService,
+        CommunicationService,
+        RegistrationService,
+        AuthService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

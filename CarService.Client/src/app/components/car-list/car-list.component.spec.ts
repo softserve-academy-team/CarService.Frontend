@@ -1,12 +1,38 @@
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { CarListComponent } from './car-list.component';
-import { MatDividerModule } from '@angular/material';
+import { MatDividerModule, MatCardModule } from '@angular/material';
 import { BaseCarInfo } from '../../models/base-car-info';
 import { CarService } from '../../services/car.service';
 import { DebugElement } from '@angular/core/src/debug/debug_node';
 import { By } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { Directive, Input, Component } from '@angular/core';
+import { CommunicationService } from '../../services/communication.service';
+
+
+@Directive({
+  selector: '[routerLink]',
+  host: {
+    '(click)': 'onClick()'
+  }
+})
+class RouterLinkStubDirective {
+  @Input('routerLink') linkParams: any;
+  navigatedTo: any = null;
+
+  onClick() {
+    this.navigatedTo = this.linkParams;
+  }
+}
+
+@Component({
+  selector: 'app-filter',
+  template: ``
+})
+class FilterComponent {
+
+}
 
 describe('Car-ListComponent', () => {
   let fixture: ComponentFixture<CarListComponent>;
@@ -19,9 +45,10 @@ describe('Car-ListComponent', () => {
   let city: HTMLParagraphElement[];
   let fuelNames: HTMLParagraphElement[];
   let gearBoxNames: HTMLParagraphElement[];
-  let icons: HTMLImageElement[];
-  let carImage: HTMLImageElement;
   let debugElement: DebugElement;
+  let links: RouterLinkStubDirective[];
+  let linkDes: DebugElement[];
+
   const countCars = 3;
 
   let mockRepository = {
@@ -36,16 +63,14 @@ describe('Car-ListComponent', () => {
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [CarListComponent],
-      imports: [MatDividerModule],
-      providers: [{ provide: CarService, useValue: mockRepository}]
+      declarations: [CarListComponent, RouterLinkStubDirective, FilterComponent],
+      imports: [MatDividerModule, MatCardModule],
+      providers: [{ provide: CarService, useValue: mockRepository}, CommunicationService]
     });
     fixture = TestBed.createComponent(CarListComponent);
     component = fixture.componentInstance;
-    component.ngOnInit();
     fixture.detectChanges();
-    debugElement = fixture.debugElement;
-    debugElement = debugElement.query(By.css('.car-list-container'));
+    debugElement = fixture.debugElement.query(By.css('.car-list-container'));
     deCarList = debugElement.queryAll(By.css('.car-list'));
     
     carName = new Array(countCars);
@@ -64,19 +89,20 @@ describe('Car-ListComponent', () => {
       fuelNames[i] = deCarList[i].queryAll(By.css('.info-item'))[2].query(By.css('p')).nativeElement;
       gearBoxNames[i] = deCarList[i].queryAll(By.css('.info-item'))[1].query(By.css('p')).nativeElement;
     }
-
-    icons = [
-      deCarList[0].queryAll(By.css('.info-item'))[0].query(By.css('img')).nativeElement,
-      deCarList[0].queryAll(By.css('.info-item'))[1].query(By.css('img')).nativeElement,
-      deCarList[0].queryAll(By.css('.info-item'))[2].query(By.css('img')).nativeElement,
-      deCarList[0].queryAll(By.css('.info-item'))[3].query(By.css('img')).nativeElement
-    ];
+    linkDes = fixture.debugElement.queryAll(By.directive(RouterLinkStubDirective));
+    links = linkDes.map(de => de.injector.get(RouterLinkStubDirective) as RouterLinkStubDirective);
   })
 
   it("should display all cars", () => {
     expect(deCarList.length).toBe(countCars);
   });
   
+  it("should redirect to correct page with car details by click on image of concrete car", () => {
+    expect(links[0].linkParams).toBe('/cardetail/20066946');
+    expect(links[1].linkParams).toBe('/cardetail/20939807');
+    expect(links[2].linkParams).toBe('/cardetail/21074479');
+  });
+
   it("should display markName, modelName, year", () => {
     expect(carName[0].textContent).toContain("Mercedes-Benz E-Class 2014");
     expect(carName[1].textContent).toContain("Fiat 500 2012");

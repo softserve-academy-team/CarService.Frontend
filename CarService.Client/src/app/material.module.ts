@@ -7,33 +7,35 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
     imports: [
+        MatAutocompleteModule,
         MatButtonModule,
         MatCardModule,
         MatIconModule,
         MatGridListModule,
-        MatDividerModule,
         MatFormFieldModule,
         MatDividerModule,
         MatListModule,
+        MatInputModule,
+        MatSelectModule,
         MatToolbarModule,
-        MatFormFieldModule,
-        MatInputModule
       ],
       exports: [
+        MatAutocompleteModule,
         MatButtonModule,
         MatCardModule,
         MatIconModule,
         MatGridListModule,
-        MatDividerModule,
         MatFormFieldModule,
         MatDividerModule,
         MatListModule,
+        MatInputModule,
+        MatSelectModule,
         MatToolbarModule,
-        MatFormFieldModule,
-        MatInputModule
       ]
   })
   export class MaterialModule { }

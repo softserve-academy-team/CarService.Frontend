@@ -1,0 +1,10 @@
+<div class="main" (mouseenter)="hide=false" (mouseleave)="hide=true">
+  <button id="lftBtn" [style.visibility]="(hide == true) ? 'hidden' : 'visible' " (click)="leftClick()" color="primary" mat-icon-button class="leftBtn">
+    <i class="material-icons bigger">keyboard_arrow_left</i>
+  </button>
+  
+  <img mat-card-image [src] ="carImages[numOfCurrImg]">
+    <button id="rtBtn" [style.visibility]="(hide == true) ? 'hidden' : 'visible' " (click)="rightClick()" color="primary" mat-icon-button class="rightBtn">
+      <i class="material-icons bigger">keyboard_arrow_right</i>
+    </button>
+</div>
