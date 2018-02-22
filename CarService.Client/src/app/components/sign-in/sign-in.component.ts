@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { FormsModule, FormBuilder, Validators, FormControl, AbstractControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 
 @Component({
@@ -12,17 +14,28 @@ export class SignInComponent {
   email: AbstractControl;
   password: AbstractControl;
 
-  constructor(private fb: FormBuilder, private auth: AuthService) {
-      this.form = fb.group({
-          email: ['', [Validators.required, Validators.email]],
-          password: ['', [Validators.required, Validators.pattern('^([a-zA-Z0-9@*#]{8,15})$')]]
-      })
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+    this.form = fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.pattern('^([a-zA-Z0-9@*#]{4,15})$')]]
+    })
 
-      this.email = this.form.controls['email'];
-      this.password = this.form.controls['password'];
+    this.email = this.form.controls['email'];
+    this.password = this.form.controls['password'];
   }
 
-  register(){
+  signIn() {
+    this.authService.signIn(this.form.value).subscribe((data: any) => {
+      localStorage.setItem('token', data.access_token);
+      this.router.navigate(['']);
+    },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log('An error occurred:', err.error.message);
+        } else {
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+        }
+      }
+    );
   }
-
 }
