@@ -7,6 +7,8 @@ import { PasswordValidation } from '../../validation/password-validation';
 import { RegistrationService } from '../../services/registration.service';
 import { CustomerRegistrationData } from '../../models/customer-registration-data';
 import { MechanicRegistrationData } from '../../models/mechanic-registration-data';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 declare let require: any;
 
@@ -36,7 +38,9 @@ export class RegistrationComponent {
 
   constructor(private formBuilder: FormBuilder,
     private passwordValidation: PasswordValidation,
-    private registrationService: RegistrationService) {
+    private registrationService: RegistrationService,
+    private router: Router,
+    private snackBar: MatSnackBar) {
 
     this.config = environment["RegistrationConfig"];
 
@@ -162,9 +166,11 @@ export class RegistrationComponent {
           }
         );
       }
+      this.router.navigate([''])
     } else {
       console.log("Input data error.");
     }
+    this.openSnackBar();
   }
   changeRegistrationForm() {
     this.isMechanic = !this.isMechanic;
@@ -175,4 +181,9 @@ export class RegistrationComponent {
     }
   }
 
+  openSnackBar() {
+    this.snackBar.open("Confirm registration by email", "Ok", {
+      duration: 5000
+    });
+  }
 }

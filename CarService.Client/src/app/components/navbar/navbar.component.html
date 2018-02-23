@@ -8,8 +8,8 @@
       <button mat-button>Do inspection</button>
     </div>
     <div class="authorization">
-      <button *ngIf="!authService.isAuthenticated" mat-button>Sign in</button>
-      <button *ngIf="!authService.isAuthenticated" mat-button>Sign up</button>
+      <button *ngIf="!authService.isAuthenticated" mat-button [routerLink]="['sign-in']">Sign in</button>
+      <button *ngIf="!authService.isAuthenticated" mat-button routerLink]="['registration']">Sign up</button>
 
       <button *ngIf="authService.isAuthenticated" mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>account_circle</mat-icon>
