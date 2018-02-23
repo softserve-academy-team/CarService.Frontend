@@ -4,8 +4,9 @@
 
 .order-list-container {
   max-width: 500px;
-  width: 100%;
+  min-width: 500px;
   height: 100vh;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -14,7 +15,9 @@
   margin: 0.7em;
   padding: 0.7em;
   >img {
-    width: 144px;
+    object-fit: cover;
+    max-width: 144px;
+    min-width: 144px;
     height: 108px;
     margin-right: 0.2em;
   }
@@ -28,7 +31,7 @@
 }
 
 .order-list-header-text {
-  width: 228px;
+  max-width: 228px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -37,7 +40,7 @@
 .order-list-card-content {
   margin-bottom: 0px;
   >h2 {
-    width: 280px;
+    max-width: 280px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

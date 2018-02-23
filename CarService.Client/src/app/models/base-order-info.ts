@@ -1,7 +1,7 @@
 export class BaseOrderInfo {
-    carPhotoUrl: string = "https://material.angular.io/assets/img/examples/shiba2.jpg";
+    carPhotoUrl: string;
     orderId: number = 123795;
-    customerPhotoUrl: string = "https://material.angular.io/assets/img/examples/shiba1.jpg";
+    customerPhotoUrl: string;
     customerFirstName: string = "Oleh";
     customerLastName: string = "Dovhan";
     markName: string = "Skoda";
