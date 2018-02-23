@@ -3,6 +3,7 @@ import { FormsModule, FormBuilder, Validators, FormControl, AbstractControl, For
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,8 +14,8 @@ export class SignInComponent {
   form: FormGroup;
   email: AbstractControl;
   password: AbstractControl;
-
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {
     this.form = fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern('^([a-zA-Z0-9@*#]{4,15})$')]]
@@ -34,8 +35,16 @@ export class SignInComponent {
           console.log('An error occurred:', err.error.message);
         } else {
           console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+          this.openSnackBar(`${err.error}`, "Ok");
         }
       }
     );
+  }
+
+  openSnackBar(body: string, button: string) {
+    this.snackBar.open(body, button, {
+      duration: 5000,
+      verticalPosition: this.verticalPosition
+    });
   }
 }
