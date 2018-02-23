@@ -26,6 +26,9 @@ import { CommunicationService } from './services/communication.service';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { RegistrationService } from './services/registration.service'; 
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileService } from './services/profile.service';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { PasswordValidation } from './validation/password-validation';
 import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
 
@@ -44,6 +47,8 @@ import { EmailConfirmComponent } from './components/email-confirm/email-confirm.
         FilterComponent,
         HomeComponent,
         CarDetailGalleryComponent,
+        ProfileComponent,
+        EditProfileComponent,
         EmailConfirmComponent
     ],
     imports: [
@@ -62,6 +67,7 @@ import { EmailConfirmComponent } from './components/email-confirm/email-confirm.
         FilterService,
         CommunicationService,
         RegistrationService,
+        ProfileService,
         AuthService
     ],
     bootstrap: [AppComponent]

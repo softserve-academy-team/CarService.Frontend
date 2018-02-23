@@ -13,15 +13,10 @@ export class AuthService {
   }
 
   signIn(credentials) {
-
    return this.http.post<any>(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'account', 'token'), credentials);
-  //  .subscribe((res: any) => {
-  //     localStorage.setItem('token', res.access_token);
-  //   }
-  //);
   }
 
-  isAuthentificated(){
+  get isAuthentificated(){
     return !!localStorage.getItem('token');
   }
 }
