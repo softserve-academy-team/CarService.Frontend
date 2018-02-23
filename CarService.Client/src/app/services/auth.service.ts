@@ -16,7 +16,7 @@ export class AuthService {
    return this.http.post<any>(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'account', 'token'), credentials);
   }
 
-  isAuthentificated(){
+  get isAuthentificated(){
     return !!localStorage.getItem('token');
   }
 }

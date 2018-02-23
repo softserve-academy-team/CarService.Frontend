@@ -15,20 +15,23 @@ export class ProfileService {
     this.carServiceApiBaseUrl = environment['CarServiceApiBaseUrl'];
   }
 
-  getUserInfo(email: string): Observable<UserDTO> {
-    console.log(email);
-    return this.httpClient.post<UserDTO>(
-      this.restUrlBuilder.build(this.carServiceApiBaseUrl, "profile", "user-info"), 
-      email, 
-      {headers: new HttpHeaders().set('Content-Type', 'application/json')}
-    );
+  getUserInfo(): Observable<UserDTO> {
+    return this.httpClient.get<UserDTO>(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, "profile", "user-info"),
+      {headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)});
   }
 
   editCustomer(customer: CustomerEditData) {
-    return this.httpClient.post(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'customer'), customer);
+    return this.httpClient.post(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'customer'), 
+      customer,
+      {headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)});
   }
 
   editMechanic(mechanic: MechanicEditData) {
-    return this.httpClient.post(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'mechanic'), mechanic);
+    return this.httpClient.post(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'mechanic'), 
+      mechanic,
+      {headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)});
   }
 }

@@ -94,8 +94,8 @@ export class RegistrationComponent {
     return new FormControl('', [
       Validators.required,
       Validators.email,
-      Validators.minLength(this.config.textMinLength),
-      Validators.maxLength(this.config.textMaxLength)
+      Validators.minLength(this.config.emailMinLength),
+      Validators.maxLength(this.config.emailMaxLength)
     ]);
   }
   private getPasswordFormControl(): FormControl {

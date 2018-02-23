@@ -10,6 +10,8 @@ export const environment = {
     textMinLength: 4,
     textMaxLength: 20,
     experienceMinValue: 0,
-    experienceMaxValue: 60
+    experienceMaxValue: 60,
+    emailMinLength: 6,
+    emailMaxLength: 30
   }
 };

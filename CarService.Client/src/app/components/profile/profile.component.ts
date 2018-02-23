@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
   }
 
   private getUserInfo() {
-    this.profileService.getUserInfo(this.authService.userEmail).subscribe((data: UserDTO) => {
+    this.profileService.getUserInfo().subscribe((data: UserDTO) => {
       this.user = data;
       this.userInfo = [
         {name: "First Name", value: this.user.firstName},

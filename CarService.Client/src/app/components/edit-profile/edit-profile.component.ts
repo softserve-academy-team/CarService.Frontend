@@ -53,7 +53,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   private getUserInfo() {
-    this.profileService.getUserInfo(this.authService.userEmail).subscribe((data: UserDTO) => {
+    this.profileService.getUserInfo().subscribe((data: UserDTO) => {
       this.user = data;
       this.editFormGroup = this.getEditFormGroup();
 
