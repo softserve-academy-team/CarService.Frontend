@@ -40,6 +40,7 @@ import { OrderListComponent } from './components/order-list/order-list.component
 
 import { CarPhotoPipe } from './pipes/car-photo.pipe';
 import { UserPhotoPipe } from './pipes/user-photo.pipe';
+import { RegionService } from './services/region-service';
 
 
 @NgModule({
@@ -90,7 +91,8 @@ import { UserPhotoPipe } from './pipes/user-photo.pipe';
     PasswordValidation,
     FilterService,
     CommunicationService,
-    RegistrationService
+    RegistrationService,
+    RegionService
   ],
   bootstrap: [AppComponent]
 })
