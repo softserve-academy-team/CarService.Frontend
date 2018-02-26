@@ -1,7 +1,7 @@
 <div class="component-container">
   <div class="profile-container">
     <div class="image-container">
-      <img src="https://www.amcorro.com/wp-content/uploads/2013/05/user-icon-1.png" class="avatar">
+      <img *ngIf="!loading" src="https://labelstech.com/wp-content/uploads/2017/02/47199326-profile-pictures.png" class="avatar">
     </div>
     <div class="information-container">
       <div *ngFor="let property of userInfo" class="properties">
@@ -15,7 +15,8 @@
         </div>
         <mat-divider></mat-divider>
       </div>
-      <button mat-raised-button color="primary" class="edit-button" [routerLink]="['edit-profile']">Edit Profile Information</button>
+      <button mat-raised-button *ngIf="!loading" color="primary" class="edit-button" [routerLink]="['edit-profile']">Edit Profile Information</button>
     </div>
   </div>
+  <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
 </div>

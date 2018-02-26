@@ -22,14 +22,14 @@ export class ProfileService {
   }
 
   editCustomer(customer: CustomerEditData) {
-    return this.httpClient.post(
+    return this.httpClient.put(
       this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'customer'), 
       customer,
       {headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)});
   }
 
   editMechanic(mechanic: MechanicEditData) {
-    return this.httpClient.post(
+    return this.httpClient.put(
       this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'mechanic'), 
       mechanic,
       {headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)});
