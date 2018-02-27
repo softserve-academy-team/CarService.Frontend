@@ -21,6 +21,8 @@ export class GoogleMapComponent implements OnInit {
   private regionsMarkers: google.maps.Marker[];
   private areRegionsDisplayed: boolean;
 
+  @ViewChild('pacInput') pacInput: any;
+
   constructor(private regionService: RegionService) {
     this.mapConfig = environment["GoogleMap"];
   }
@@ -32,20 +34,12 @@ export class GoogleMapComponent implements OnInit {
     };
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProperties);
 
-    this.map.addListener('zoom_changed', () => {
-      if (this.areRegionsDisplayed && this.map.getZoom() == this.mapConfig.criticalZoom) {
-        this.hideRegionsMarkers();
-        this.areRegionsDisplayed = false;
-      }
-      else if (!this.areRegionsDisplayed && this.map.getZoom() == this.mapConfig.criticalZoom - 1) {
-        this.showRegionsMarkers();
-        this.areRegionsDisplayed = true;
-      }
-    });
-
     this.regionInfoWindow = new google.maps.InfoWindow();
     this.regionsMarkers = this.createRegionsMarkers(this.regionService.getUkrainianRegions());
     this.areRegionsDisplayed = true;
+    this.initMarkersDisplaying();
+
+    this.initAutocomplete();
   }
 
   createRegionsMarkers(regions: RegionInfo[]): google.maps.Marker[] {
@@ -83,6 +77,72 @@ export class GoogleMapComponent implements OnInit {
     for (let i = 0; i < this.regionsMarkers.length; ++i) {
       this.regionsMarkers[i].setMap(null);
     }
+  }
+
+  initMarkersDisplaying() {
+    this.map.addListener('zoom_changed', () => {
+      if (this.areRegionsDisplayed && this.map.getZoom() == this.mapConfig.criticalZoom) {
+        this.hideRegionsMarkers();
+        this.areRegionsDisplayed = false;
+      }
+      else if (!this.areRegionsDisplayed && this.map.getZoom() == this.mapConfig.criticalZoom - 1) {
+        this.showRegionsMarkers();
+        this.areRegionsDisplayed = true;
+      }
+    });
+  }
+
+  initAutocomplete() {
+    let searchBox = new google.maps.places.SearchBox(this.pacInput.nativeElement);
+    this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.pacInput.nativeElement);
+
+    this.map.addListener('bounds_changed', () => {
+      searchBox.setBounds(this.map.getBounds());
+    });
+
+    let markers = [];
+
+    searchBox.addListener('places_changed', () => {
+      let places = searchBox.getPlaces();
+
+      if (places.length == 0) {
+        return;
+      }
+
+      markers.forEach((marker: google.maps.Marker) => {
+        marker.setMap(null);
+      });
+      markers = [];
+
+      let bounds = new google.maps.LatLngBounds();
+      places.forEach((place) => {
+        if (!place.geometry) {
+          console.log("Returned place contains no geometry");
+          return;
+        }
+        // let icon = {
+        //   url: place.icon,
+        //   size: new google.maps.Size(71, 71),
+        //   origin: new google.maps.Point(0, 0),
+        //   anchor: new google.maps.Point(17, 34),
+        //   scaledSize: new google.maps.Size(25, 25)
+        // };
+
+        markers.push(new google.maps.Marker({
+          map: this.map,
+          // icon: icon,
+          title: place.name,
+          position: place.geometry.location
+        }));
+
+        if (place.geometry.viewport) {
+          bounds.union(place.geometry.viewport);
+        } else {
+          bounds.extend(place.geometry.location);
+        }
+      });
+      this.map.fitBounds(bounds);
+    });
   }
 
 }
