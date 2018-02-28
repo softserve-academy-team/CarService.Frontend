@@ -18,20 +18,25 @@ export class ProfileService {
   getUserInfo(): Observable<UserDTO> {
     return this.httpClient.get<UserDTO>(
       this.restUrlBuilder.build(this.carServiceApiBaseUrl, "profile", "user-info"),
-      {headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)});
+      { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
   }
 
   editCustomer(customer: CustomerEditData) {
     return this.httpClient.post(
-      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'customer'), 
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'customer'),
       customer,
-      {headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)});
+      { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
   }
 
   editMechanic(mechanic: MechanicEditData) {
     return this.httpClient.post(
-      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'mechanic'), 
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'mechanic'),
       mechanic,
-      {headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)});
+      { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
+  }
+
+  addCarToFavourites(id: number, info: string) {
+    return this.httpClient.post<any>(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'add'), { autoRiaId: id, info: info },
+      { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
   }
 }

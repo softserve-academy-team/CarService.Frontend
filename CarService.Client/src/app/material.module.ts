@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatInputModule, MatDivider, MatTableModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatDivider, MatTableModule, MatMenuModule, MatSidenavModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-field';
@@ -26,7 +26,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatToolbarModule,
     MatSnackBarModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatSidenavModule
   ],
   exports: [
     MatAutocompleteModule,
@@ -42,7 +43,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatToolbarModule,
     MatSnackBarModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatSidenavModule
   ]
 })
 export class MaterialModule { }
