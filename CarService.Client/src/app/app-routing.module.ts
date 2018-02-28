@@ -12,6 +12,7 @@ import { EmailConfirmComponent } from './components/email-confirm/email-confirm.
 import { PersonalAccountComponent } from './components/personal-account/personal-account.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ProfileOrdersComponent } from './components/profile-orders/profile-orders.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
 
   { path: 'personalAccount', component: PersonalAccountComponent, children: [
     { path: 'profile', component: ProfileComponent, outlet: 'personalAccountOutlet' },
-    { path: 'profile/edit-profile', component: EditProfileComponent, outlet: 'personalAccountOutlet'}
+    { path: 'profile/edit-profile', component: EditProfileComponent, outlet: 'personalAccountOutlet'},
+    { path: 'profile-orders', component: ProfileOrdersComponent, outlet: 'personalAccountOutlet'},
   ]},
 
   { path: 'sign-in', component: SignInComponent },

@@ -18,6 +18,11 @@ import { FilterComponent } from './components/filter/filter.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { PersonalAccountComponent } from './components/personal-account/personal-account.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
+import { ProfileOrdersComponent } from './components/profile-orders/profile-orders.component';
 
 import { RestUrlBuilder } from './services/rest-url-builder';
 import { CarService } from './services/car.service';
@@ -28,10 +33,6 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { RegistrationService } from './services/registration.service'; 
 import { ProfileService } from './services/profile.service';
 import { PasswordValidation } from './validation/password-validation';
-import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
-import { PersonalAccountComponent } from './components/personal-account/personal-account.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 @NgModule({
     declarations: [
@@ -52,6 +53,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
         EditProfileComponent,
         EmailConfirmComponent,
         PersonalAccountComponent,
+        ProfileOrdersComponent
     ],
     imports: [
         AppRoutingModule,

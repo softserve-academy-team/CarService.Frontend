@@ -114,7 +114,6 @@ export class EditProfileComponent implements OnInit {
 
   private getCardNumberFormControl(initValue: string): FormControl {
     return new FormControl(initValue, [
-      Validators.required,
       Validators.pattern("[0-9]{16}"),
       Validators.maxLength(this.cardNumberLength)
     ]);
@@ -122,7 +121,6 @@ export class EditProfileComponent implements OnInit {
 
   private getPhoneNumberFormControl(initValue: string): FormControl {
     return new FormControl(initValue, [
-      Validators.required,
       Validators.pattern(/\+38[0-9]{10}/),
       Validators.maxLength(13)
     ]);
