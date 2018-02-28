@@ -2,53 +2,16 @@
   display: flex;
 }
 
-.order-list-container {
-  max-width: 500px;
-  min-width: 500px;
+.order-container {
+  min-width: 320px;
+  width: 30%;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-.order-list-card {
-  display: flex;
-  margin: 0.7em;
-  padding: 0.7em;
-  >img {
-    object-fit: cover;
-    max-width: 144px;
-    min-width: 144px;
-    height: 108px;
-    margin-right: 0.2em;
-  }
-  >div {
-    margin: 0.8em;
-  }
-}
-
-.customer-header-image {
-  background-size: cover;
-}
-
-.order-list-header-text {
-  max-width: 228px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.order-list-card-content {
-  margin-bottom: 0px;
-  >h2 {
-    max-width: 280px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
 .google-map {
-  width: 100%;
+  width: 70%;
   padding-left: 0.5em;
   padding-right: 0.5em;
 }

@@ -40,7 +40,11 @@ import { OrderListComponent } from './components/order-list/order-list.component
 
 import { CarPhotoPipe } from './pipes/car-photo.pipe';
 import { UserPhotoPipe } from './pipes/user-photo.pipe';
-import { RegionService } from './services/region-service';
+import { OrderService } from './services/order.service';
+import { OrderCardComponent } from './components/order-card/order-card.component';
+
+import { AgmCoreModule } from '@agm/core';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
 
 @NgModule({
@@ -60,7 +64,8 @@ import { RegionService } from './services/region-service';
     GoogleMapComponent,
     OrderListComponent,
     CarPhotoPipe,
-    UserPhotoPipe
+    UserPhotoPipe,
+    OrderCardComponent
   ],
   imports: [
     AppRoutingModule,
@@ -81,9 +86,14 @@ import { RegionService } from './services/region-service';
     MatToolbarModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule,
     MatSelectModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBBzn2O9Ly8zKnsaf_kltqQNrpSLCSlA6U',
+      libraries: ["places"]
+    }),
+    AgmJsMarkerClustererModule,
+    ReactiveFormsModule
   ],
   providers: [
     RestUrlBuilder,
@@ -92,7 +102,7 @@ import { RegionService } from './services/region-service';
     FilterService,
     CommunicationService,
     RegistrationService,
-    RegionService
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
