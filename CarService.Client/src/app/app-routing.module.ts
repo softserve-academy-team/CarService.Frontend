@@ -11,6 +11,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
+import { ProfileOrdersComponent } from './components/profile-orders/profile-orders.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'profile/edit-profile', component: EditProfileComponent},
+  { path: 'profile-orders', component: ProfileOrdersComponent},
   { path: 'sign-in', component: SignInComponent },
   { path: 'email-confirm' , component:EmailConfirmComponent}
 ];
