@@ -1,8 +1,33 @@
 <div class="component-container">
-  <mat-tab-group>
+  <mat-tab-group class="tabs">
     <mat-tab label="My Orders for Review">
-
+      <div>
+        <div class="list-container">
+          <mat-card *ngFor="let order of orders" class="list-card">
+            <img src="{{order.photoLink}}">
+            <div class="content">
+              <div class="header-container">
+                <h4 class="order-list-header-text">
+                  Order № {{order.orderId}}
+                </h4>
+                <h4 class="header-status">
+                  Status: {{order.status}}
+                </h4>
+              </div>
+              <div class="car-name">
+                <h4>{{order.markName}} {{order.modelName}} {{order.year}}</h4>
+              </div>
+              <div class="publish-date">
+                <h4 class="header-status">
+                {{order.date.getDate()}}-{{order.date.getUTCMonth()}}-{{order.date.getFullYear()}} 
+              </h4>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
     </mat-tab>
+    
     <mat-tab label="My Orders to complete" [disabled]="!isMechanic">
 
     </mat-tab>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfileOrderInfo } from '../../models/profile-order-info';
 
 @Component({
   selector: 'app-profile-orders',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileOrdersComponent implements OnInit {
   isMechanic: boolean;
+  private orders: ProfileOrderInfo[] = [];
 
   constructor() { 
     this.isMechanic = false;
+    for (var i = 0; i < 20; i++)
+      this.orders.push(new ProfileOrderInfo());
   }
 
   ngOnInit() {

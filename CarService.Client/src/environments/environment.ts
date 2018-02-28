@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  CarServiceApiBaseUrl: "https://localhost:44340/api",
+  CarServiceApiBaseUrl: "http://localhost:5000/api",
   RegistrationConfig: {
     textMinLength: 4,
     textMaxLength: 20,
