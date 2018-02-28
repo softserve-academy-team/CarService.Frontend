@@ -1,13 +1,13 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav"
   [fixedInViewport]=true [fixedTopGap]=120
-  [fixedBottomGap]=220>
+  [fixedBottomGap]=400>
     <div>
       <button mat-button disabled>
         <mat-icon>star_border</mat-icon>
         <span>Favourites</span>
       </button>
-      <button mat-button disabled>
+      <button mat-button [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['profile-orders'] } }]">
         <mat-icon>work</mat-icon>
         <span>Orders</span>
       </button>
@@ -30,7 +30,7 @@
     </div>
   </mat-sidenav>
 
-  <mat-sidenav-content>
+  <mat-sidenav-content class="content-container">
     <router-outlet name="personalAccountOutlet"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileOrderInfo } from '../../models/profile-order-info';
+import { ProfileService } from '../../services/profile.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { OrderStatus } from '../order-status';
+
+declare let require: any;
 
 @Component({
   selector: 'app-profile-orders',
@@ -8,15 +13,51 @@ import { ProfileOrderInfo } from '../../models/profile-order-info';
 })
 export class ProfileOrdersComponent implements OnInit {
   isMechanic: boolean;
-  private orders: ProfileOrderInfo[] = [];
+  private createdOrders: ProfileOrderInfo[];
+  private appliedOrders: ProfileOrderInfo[];
+  private decode = require('jwt-decode');
 
-  constructor() { 
-    this.isMechanic = false;
-    for (var i = 0; i < 20; i++)
-      this.orders.push(new ProfileOrderInfo());
+  constructor(private profileService: ProfileService) {
+
   }
 
   ngOnInit() {
+    var decoded = this.decode(localStorage.getItem('token'));
+    var tokenMap = new Map(Object.entries(decoded));
+    this.isMechanic = tokenMap.get("http://schemas.microsoft.com/ws/2008/06/identity/claims/role").toString() === "mechanic";
+    
+    this.getUserCreatedOrders();
+    
+    if (this.isMechanic) {
+      this.getUserAppliedOrders();
+    }
   }
 
+  private getUserCreatedOrders() {
+    this.profileService.getUserCreatedOrders().subscribe((data: ProfileOrderInfo[]) => {
+      this.createdOrders = data;
+    },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log('An error occurred:', err.error.message);
+        } else {
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+        }
+      }
+    );
+  }
+
+  private getUserAppliedOrders() {
+    this.profileService.getUserAppliedOrders().subscribe((data: ProfileOrderInfo[]) => {
+      this.appliedOrders = data;
+    },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log('An error occurred:', err.error.message);
+        } else {
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+        }
+      }
+    );
+  }
 }

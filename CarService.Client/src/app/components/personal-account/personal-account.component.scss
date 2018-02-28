@@ -1,6 +1,5 @@
 .example-container {
     height: 100%;
-    min-height: 700px;
   }
   
   .example-sidenav {
@@ -12,4 +11,8 @@
   
   .mat-drawer-container {
     background-color: white;
+}
+
+.content-container {
+  min-height: 700px;
 }

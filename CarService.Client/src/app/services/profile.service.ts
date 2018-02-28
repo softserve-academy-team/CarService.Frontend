@@ -39,4 +39,14 @@ export class ProfileService {
     return this.httpClient.post<any>(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'add'), { autoRiaId: id, info: info },
       { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
   }
+
+  getUserCreatedOrders() {
+    return this.httpClient.get(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'created-orders'),
+    { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
+  }
+
+  getUserAppliedOrders() {
+    return this.httpClient.get(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'applied-orders'),
+    { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
+  }
 }

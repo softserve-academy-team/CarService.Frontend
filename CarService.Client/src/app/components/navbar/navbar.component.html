@@ -31,7 +31,7 @@
           <mat-icon>comment</mat-icon>
           <span>Invitations</span>
         </button>
-        <button mat-menu-item [routerLink]="['/personalAccount/profile']">
+        <button mat-menu-item [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['profile'] } }]">
           <mat-icon>person</mat-icon>
           <span>Profile</span>
         </button>
