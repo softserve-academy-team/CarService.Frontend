@@ -1,10 +1,6 @@
 .example-container {
-    position: absolute;
-    top: 60px;
-    bottom: 0;
-    left: 0;
-    right: 0;
     height: 100%;
+    min-height: 700px;
   }
   
   .example-sidenav {
@@ -12,6 +8,8 @@
     align-items: center;
     justify-content: center;
     width: 200px;
-    background: rgba(255, 0, 0, 0.5);
   }
   
+  .mat-drawer-container {
+    background-color: white;
+}

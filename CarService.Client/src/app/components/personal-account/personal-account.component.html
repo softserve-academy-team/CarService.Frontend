@@ -1,5 +1,7 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav">
+  <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav"
+  [fixedInViewport]=true [fixedTopGap]=120
+  [fixedBottomGap]=220>
     <div>
       <button mat-button disabled>
         <mat-icon>star_border</mat-icon>
