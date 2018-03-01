@@ -12,8 +12,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class MechanicOrderInfoComponent implements OnInit {
   private order: MechanicOrderInfo;
-
-  loading: boolean = false;
+  private status: string;
+  private loading: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +31,11 @@ export class MechanicOrderInfoComponent implements OnInit {
 
     this.orderService.getMechanicOrderInfo(+this.route.snapshot.paramMap.get('id')).subscribe((data: MechanicOrderInfo) => {
       this.order = data;
+
+      if (!this.order.isDoIt)
+        this.status = "Don't get order";
+      else
+        this.status = this.order.status;
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {

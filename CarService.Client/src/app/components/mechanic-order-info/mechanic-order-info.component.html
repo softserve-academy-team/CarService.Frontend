@@ -10,11 +10,11 @@
             <h2>Order №{{order.orderId}}</h2>
           </div>
           <div>
-            <h2>Status: {{order.status}}</h2>
+            <h2>Status: {{status}}</h2>
           </div>
         </div>
         <div class="general-info">
-          <div>
+          <div class="autoria-link">
             <a routerLink="/cardetail/{{order.autoRiaId}}">
               <h4>
                 {{order.markName}} {{order.modelName}} {{order.year}}
@@ -31,6 +31,64 @@
       </div>
     </div>
     <mat-divider></mat-divider>
-    
+    <div class="content-container">
+      <mat-card>
+        <div class="item-container">
+          <div class="item">
+            <span>City: </span>
+          </div>
+          <div class="item">
+            <span>{{order.city}}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="item-container">
+          <div class="item">
+            <span>Description: </span>
+          </div>
+          <div class="item">
+            <span>{{order.description}}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="item-container">
+          <div class="item">
+            <span>Date: </span>
+          </div>
+          <div class="item">
+            <span>{{order.date}}</span>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card class="proposition-container">
+        <div class="item-container">
+          <div class="item">
+            <span>Your proposition: </span>
+          </div>
+          <div class="item">
+            <span>{{order.propositionPrice}}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="item-container">
+          <div class="item">
+            <span>Your comment: </span>
+          </div>
+          <div class="item">
+            <span>{{order.propositionComment}}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="item-container">
+          <div class="item">
+            <span>Date of proposition: </span>
+          </div>
+          <div class="item">
+            <span>{{order.propositionDate}}</span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
   </mat-card>
 </div>

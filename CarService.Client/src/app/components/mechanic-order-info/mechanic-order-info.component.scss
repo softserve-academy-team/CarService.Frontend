@@ -1,4 +1,5 @@
 $car-img-width: 220px;
+$item-font-size: 11pt;
 
 * {
     font-family: Roboto,"Helvetica Neue",sans-serif;
@@ -6,7 +7,7 @@ $car-img-width: 220px;
 
 .order-container {
     margin: auto;
-    width: 70%;
+    width: 50%;
     max-width: 1100px;
     min-width: 700px;
     min-height: 600px;
@@ -51,9 +52,39 @@ $car-img-width: 220px;
     background-size: cover;
 }
 
-.customer-name {
+%header-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.customer-name {
+    @extend %header-content;
     margin-left: 10px;
+}
+
+.autoria-link {
+    @extend %header-content;
+}
+
+.content-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.item {
+    width: 50%;
+    padding: 15px;
+    font-size: $item-font-size;
+    height: auto;
+}
+
+.proposition-container {
+    margin-top: 40px;
 }

@@ -7,13 +7,17 @@ import { ProfileOrderInfo } from '../../models/profile-order-info';
   styleUrls: ['./profile-order-card.component.scss']
 })
 export class ProfileOrderCardComponent implements OnInit {
-
   @Input() order: ProfileOrderInfo;
   @Input() link: string;
-  
+  private status: string;
+
   constructor() { }
 
   ngOnInit() {
+    if (this.order.isDoIt === true)
+      this.status = this.order.status;
+    else
+      this.status = "Don't get order"; 
   }
 
   getLink(): string {

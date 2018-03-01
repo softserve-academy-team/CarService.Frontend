@@ -13,8 +13,8 @@ declare let require: any;
 })
 export class ProfileOrdersComponent implements OnInit {
   isMechanic: boolean;
-  loadingCreated: boolean;
-  loadingApplied: boolean;
+  loadingCreated = false;
+  loadingApplied = false;
   enabledCreatedOrders = true;
   enabledAppliedOrders = true;
 

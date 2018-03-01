@@ -10,6 +10,7 @@ import { UserDTO } from '../../models/userDTO';
 import { ProfileService } from '../../services/profile.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { CommunicationService } from '../../services/communication.service';
 
 declare let require: any;
 
@@ -44,7 +45,8 @@ export class EditProfileComponent implements OnInit {
     private passwordValidation: PasswordValidation,
     private profileService: ProfileService,
     private router: Router,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private communicationService: CommunicationService) {
     this.config = environment["RegistrationConfig"];
   }
 
@@ -72,7 +74,6 @@ export class EditProfileComponent implements OnInit {
         this.isMechanic = false;
         this.disableMechanicFormControls();
       }
-
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -170,6 +171,8 @@ export class EditProfileComponent implements OnInit {
       if (this.isMechanic) {
         let mechanic = this.createMechanicData();
         this.profileService.editMechanic(mechanic).subscribe(data => {
+          this.communicationService.sendUpdatedProfile(true);
+          this.router.navigate(['/personalAccount', { outlets: { personalAccountOutlet: ['profile'] } }]);
         },
           (err: HttpErrorResponse) => {
             if (err.error instanceof Error) {
@@ -182,6 +185,8 @@ export class EditProfileComponent implements OnInit {
       } else {
         let customer = this.createCustomerData();
         this.profileService.editCustomer(customer).subscribe(data => {
+          this.communicationService.sendUpdatedProfile(true);
+          this.router.navigate(['/personalAccount', { outlets: { personalAccountOutlet: ['profile'] } }]);
         },
           (err: HttpErrorResponse) => {
             if (err.error instanceof Error) {
@@ -192,7 +197,6 @@ export class EditProfileComponent implements OnInit {
           }
         );
       }
-      this.router.navigate(['/personalAccount', { outlets: { personalAccountOutlet: ['profile'] } }]);
     } else {
       console.log("Input data error.");
     }

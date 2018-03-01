@@ -11,6 +11,7 @@ export class MechanicOrderInfo {
     markName: string;
     modelName: string;
     year: number;
+    city: string;
     photoLink: string;
     propositionPrice: number;
     propositionComment: string;
