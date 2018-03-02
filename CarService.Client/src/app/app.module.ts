@@ -30,7 +30,7 @@ import { FilterService } from './services/filter.service';
 import { CommunicationService } from './services/communication.service';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
-import { RegistrationService } from './services/registration.service'; 
+import { RegistrationService } from './services/registration.service';
 import { ProfileService } from './services/profile.service';
 import { PasswordValidation } from './validation/password-validation';
 
@@ -72,7 +72,13 @@ import { PasswordValidation } from './validation/password-validation';
         CommunicationService,
         RegistrationService,
         ProfileService,
-        AuthService
+        AuthService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
+
     ],
     bootstrap: [AppComponent]
 })

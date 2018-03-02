@@ -48,7 +48,7 @@ export class CarDetailComponent implements OnInit {
   }
 
   addCarToFavourites(): void{
-    this.profileService.addCarToFavourites(+this.route.snapshot.paramMap.get('id'), this.detailCarById.description).subscribe(data => {
+    this.profileService.addCarToFavorites(+this.route.snapshot.paramMap.get('id'), this.detailCarById.description).subscribe(data => {
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
