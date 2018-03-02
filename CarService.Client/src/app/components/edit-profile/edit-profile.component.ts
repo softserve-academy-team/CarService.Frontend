@@ -52,6 +52,9 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getUserInfo();
+
+    this.editFormGroup = this.formBuilder.group({
+    });
   }
 
   private getUserInfo() {

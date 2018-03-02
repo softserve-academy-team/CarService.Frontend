@@ -2,44 +2,44 @@
   <mat-card class="order-container">
     <div class="header-container">
       <div class="img-container">
-        <img src="{{order.photoLink}}" class="car-image">
+        <img src="{{order?.photoLink}}" class="car-image">
       </div>
       <div class="general-info-container">
         <div class="general-info">
           <div>
-            <h2>Order №{{order.orderId}}</h2>
+            <h2>Order №{{order?.orderId}}</h2>
           </div>
           <div>
             <h2>Status: </h2>
-            <h2 [style.color]="color">{{order.status}}</h2>
+            <h2 [style.color]="color">{{order?.status}}</h2>
           </div>
         </div>
         <div class="general-info">
           <div>
-            <a routerLink="/cardetail/{{order.autoRiaId}}">
+            <a routerLink="/cardetail/{{order?.autoRiaId}}">
               <h4>
-                {{order.markName}} {{order.modelName}} {{order.year}}
+                {{order?.markName}} {{order?.modelName}} {{order?.year}}
               </h4>
             </a>
           </div>
           <div>
-            <h4>{{order.date}}</h4>
+            <h4>{{order?.date}}</h4>
           </div>
         </div>
       </div>
     </div>
     <mat-divider></mat-divider>
     <div class="content-container">
-      <div *ngIf="!loading && order.status == 'Active' && order.reviewPropositions.length==0" class="no-propositions">
+      <div *ngIf="!loading && order?.status == 'Active' && order?.reviewPropositions.length==0" class="no-propositions">
         <span>You don't have any propositions.</span>
       </div>
       <div class="propositons-container">
         
-        <mat-accordion *ngIf="!loading && order.status == 'Active' && order.reviewPropositions.length > 0">
+        <mat-accordion *ngIf="!loading && order?.status == 'Active' && order?.reviewPropositions.length > 0">
           <div class="propositions-title">
             <h3>Propositions:</h3>
           </div>
-          <mat-expansion-panel *ngFor="let proposition of order.reviewPropositions">
+          <mat-expansion-panel *ngFor="let proposition of order?.reviewPropositions">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <div class="panel-title">
@@ -70,7 +70,7 @@
           </mat-expansion-panel>
         </mat-accordion>
 
-        <mat-accordion *ngIf="order.status == 'Pending' || order.status == 'Done'">
+        <mat-accordion *ngIf="order?.status == 'Pending' || order?.status == 'Done'">
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -93,8 +93,8 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <span>{{mechanic.comment}}</span>
-            <mat-action-row *ngIf="order.status == 'Done'">
-              <button mat-raised-button color="primary" routerLink='/review-info/{{order.reviewId}}'>Review</button>
+            <mat-action-row *ngIf="order?.status == 'Done'">
+              <button mat-raised-button color="primary" routerLink='/review-info/{{order?.reviewId}}'>Review</button>
             </mat-action-row>
           </mat-expansion-panel>
         </mat-accordion>

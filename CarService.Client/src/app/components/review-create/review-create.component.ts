@@ -18,11 +18,11 @@ export class ReviewCreateComponent implements OnInit {
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
   firstCtrl: AbstractControl;
   reviewId: number;
   videoUrl: string;
   photoUrl: string;
-
 
   constructor(
     private route: ActivatedRoute,
@@ -34,12 +34,17 @@ export class ReviewCreateComponent implements OnInit {
     }
 
   ngOnInit() {
+
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
 
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+
+    });
+
+    this.thirdFormGroup = this._formBuilder.group({
+      
     });
 
     this.firstCtrl = this.firstFormGroup.controls['firstCtrl'];

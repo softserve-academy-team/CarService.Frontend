@@ -23,6 +23,10 @@ export class ReviewBodyComponent {
         url: this.Url,
         authToken: `Bearer ${localStorage.getItem("token")}`
       });
+
+      this.uploader.onAfterAddingFile = file => {
+        file.upload();
+      };
     });
   }
 
