@@ -17,36 +17,34 @@ export class ProfileService {
 
   getUserInfo(): Observable<UserDTO> {
     return this.httpClient.get<UserDTO>(
-      this.restUrlBuilder.build(this.carServiceApiBaseUrl, "profile", "user-info"),
-      { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, "profile", "user-info"));
   }
 
   editCustomer(customer: CustomerEditData) {
     return this.httpClient.put(
-      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'customer'), 
-      customer,
-      { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'customer'),
+      customer);
   }
 
   editMechanic(mechanic: MechanicEditData) {
     return this.httpClient.put(
-      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'mechanic'), 
-      mechanic,
-      { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'edit', 'mechanic'),
+      mechanic);
   }
 
-  addCarToFavourites(id: number, info: string) {
-    return this.httpClient.post<any>(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'add'), { autoRiaId: id, info: info },
-      { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
+  addCarToFavorites(id: number, info: string) {
+    return this.httpClient.post<any>(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'add'),
+      { autoRiaId: id, info: info });
   }
 
   getUserCreatedOrders() {
-    return this.httpClient.get(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'created-orders'),
-    { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
+    return this.httpClient.get(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'created-orders'));
   }
 
   getUserAppliedOrders() {
-    return this.httpClient.get(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'applied-orders'),
-    { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) });
+    return this.httpClient.get(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'applied-orders'));
   }
 }
