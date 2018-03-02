@@ -93,7 +93,7 @@
             </mat-expansion-panel-header>
             <span>{{mechanic.comment}}</span>
             <mat-action-row *ngIf="order.status == 'Done'">
-              <button mat-raised-button color="primary" routerLink='/review-info/{{order.orderId}}'>Review</button>
+              <button mat-raised-button color="primary" routerLink='/review-info/{{order.reviewId}}'>Review</button>
             </mat-action-row>
           </mat-expansion-panel>
         </mat-accordion>

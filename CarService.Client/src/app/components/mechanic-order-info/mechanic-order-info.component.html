@@ -10,7 +10,8 @@
             <h2>Order №{{order.orderId}}</h2>
           </div>
           <div>
-            <h2>Status: </h2><h2 [style.color]="color">{{status}}</h2>
+            <h2>Status: </h2>
+            <h2 [style.color]="color">{{status}}</h2>
           </div>
         </div>
         <div class="general-info">
@@ -90,6 +91,7 @@
         </div>
       </mat-card>
       <button mat-raised-button color="primary" (click)="addReview()" class="button-review" *ngIf="status == 'Pending'">Add Review</button>
+      <button mat-raised-button color="primary" routerLink='/review-info/{{order.reviewId}}' *ngIf="order.status == 'Done'">Review</button>
     </div>
   </mat-card>
 </div>
