@@ -162,7 +162,7 @@ export class OrderListComponent implements OnInit, AfterViewChecked {
   private createReviewProposition(): CreateReviewProposition {
     let reviewProp = new CreateReviewProposition();
     reviewProp.orderId = this.orderId;
-    reviewProp.reviewDescription = this.reviewDescription;
+    reviewProp.reviewComment = this.reviewDescription;
     reviewProp.reviewPrice = this.reviewPrice;
     return reviewProp;
   }

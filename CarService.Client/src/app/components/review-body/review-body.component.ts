@@ -23,7 +23,7 @@ export class ReviewBodyComponent {
       this.reviewId = d;
 
       this.videoUrl = `https://localhost:44340/api/review/save_video/${this.reviewId}`;
-      this.photoUrl = `https://localhost:44340/api/review/save_photo/${this.reviewId}`;
+      this.photoUrl = `http://localhost:5000/api/review/save_photo/${this.reviewId}`;
 
       this.videoUploader = new FileUploader({
         url: this.videoUrl,

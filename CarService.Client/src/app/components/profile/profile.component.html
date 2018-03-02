@@ -3,8 +3,14 @@
     <div class="image-container">
       <img *ngIf="!loading" src="{{user.avatar | userPhoto}}" class="avatar">
       <div>
-        <input type="file" ng2FileSelect [uploader]="uploader"/>
-        <button type="button" (click)="uploadAvatar()">Upload</button>
+        <!-- <input type="file" ng2FileSelect [uploader]="uploader"/>
+        <button type="button" (click)="uploadAvatar()">Upload</button> -->
+
+        <button (click)="fileInput.click()">
+          <mat-icon>library_add</mat-icon>
+          <span>Select</span>
+          <input #fileInput type="file" (change)="uploadAvatar()" style="display:none;" ng2FileSelect [uploader]="uploader"/>
+        </button>
       </div>
     </div>
     <div class="information-container">
