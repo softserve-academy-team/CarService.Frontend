@@ -16,7 +16,8 @@ import { MatSnackBar } from '@angular/material';
 export class CustomerOrderInfoComponent implements OnInit {
   private order: CustomerOrderInfo;
   private mechanic: ReviewProposition;
-
+  private color: string;
+  
   loading: boolean = false;
 
   constructor(
@@ -39,7 +40,25 @@ export class CustomerOrderInfoComponent implements OnInit {
 
       if (this.order.status == OrderStatus.Done || this.order.status == OrderStatus.Pending)
         this.mechanic = this.order.reviewPropositions.find(r => r.mechanicId === this.order.mechanicId);
-      },
+
+      switch (this.order.status) {
+        case "Active": {
+          this.color = "green";
+          break;
+        }
+        case "Pending": {
+          this.color = "orange";
+          break;
+        }
+        case "Done": {
+          this.color = "blue";
+          break;
+        }
+        default: {
+          this.color = "red";
+        }
+      }
+    },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
           console.log('An error occurred:', err.error.message);
