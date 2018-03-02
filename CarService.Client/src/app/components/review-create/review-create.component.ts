@@ -5,6 +5,8 @@ import { CreateReview } from '../../models/create-review';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { CommunicationService } from '../../services/communication.service';
+import { environment } from '../../../environments/environment';
+import { RestUrlBuilder } from '../../services/rest-url-builder';
 
 @Component({
   selector: 'app-review-create',
@@ -12,18 +14,24 @@ import { CommunicationService } from '../../services/communication.service';
   styleUrls: ['./review-create.component.scss']
 })
 export class ReviewCreateComponent implements OnInit {
-  isLinear = false;
+  private readonly carServiceApiBaseUrl: string;
+  isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   firstCtrl: AbstractControl;
   reviewId: number;
+  videoUrl: string;
+  photoUrl: string;
 
 
   constructor(
     private route: ActivatedRoute,
     private _formBuilder: FormBuilder, 
     private reviewService: ReviewService,
-    private communicationService: CommunicationService) { }
+    private communicationService: CommunicationService,
+    private restUrlBuilder: RestUrlBuilder) { 
+      this.carServiceApiBaseUrl = environment['CarServiceApiBaseUrl'];
+    }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -35,6 +43,9 @@ export class ReviewCreateComponent implements OnInit {
     });
 
     this.firstCtrl = this.firstFormGroup.controls['firstCtrl'];
+
+    this.photoUrl = this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'review', 'save_photo');
+    this.videoUrl = this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'review', 'save_video');
   }
 
   createReview() {
