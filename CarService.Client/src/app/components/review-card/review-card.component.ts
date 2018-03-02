@@ -16,6 +16,6 @@ export class ReviewCardComponent implements OnInit {
   }
 
   getLink(): string {
-    return "";
+    return `${this.link}/${this.review.reviewId}`;
   }
 }

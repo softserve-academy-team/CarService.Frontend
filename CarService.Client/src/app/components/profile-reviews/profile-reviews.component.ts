@@ -80,10 +80,10 @@ export class ProfileReviewsComponent implements OnInit {
   }
 
   routerLinkForBought(): string {
-    return "";
+    return "/review-info";
   }
 
   routerLinkForCreated(): string {
-    return "";
+    return "/review-info";
   }
 }
