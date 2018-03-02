@@ -41,6 +41,10 @@ export class ProfileComponent implements OnInit {
       authToken: `Bearer ${localStorage.getItem("token")}`
     });
 
+    this.uploader.onSuccessItem = file => {
+      this.getUserInfo();
+    };
+
     this.getUserInfo();
     this.communicationService.isUpdatedReceived.subscribe(d => {
       if (d === true)
