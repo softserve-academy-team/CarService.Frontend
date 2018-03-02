@@ -1,0 +1,25 @@
+<mat-card class="list-card">
+  <a routerLink={{getLink()}}>
+    <img src="{{review.photoLink}}">
+  </a>
+  <div class="content">
+    <div class="header-container">
+      <div>
+        <h4>
+          Review № {{review.reviewId}}
+        </h4>
+      </div>
+      <div>
+        <h4 class="header-status">City: {{review.city}}</h4>
+      </div>
+    </div>
+    <div class="car-name">
+      <h4>{{review.markName}} {{review.modelName}} {{review.year}}</h4>
+    </div>
+    <div class="publish-date">
+      <h4 class="header-status">
+        {{review.date}}
+      </h4>
+    </div>
+  </div>
+</mat-card>

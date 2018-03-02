@@ -65,4 +65,14 @@ export class ProfileService {
     return this.httpClient.get(
       this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'applied-orders'));
   }
+
+  getUserBoughtReviews() {
+    return this.httpClient.get(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'bought-reviews'));
+  }
+
+  getUserCreatedReviews() {
+    return this.httpClient.get(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'created-reviews'));
+  }
 }
