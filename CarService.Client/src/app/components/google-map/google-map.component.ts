@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-// import { ViewChild, ElementRef, NgZone } from '@angular/core';
-// import { FormControl } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { } from 'googlemaps';
-// import { MapsAPILoader } from '@agm/core';
 import { GoogleMapConfig } from '../../config-models/google-map-config';
-import { OrderLocation } from '../../models/order-location';
-import { BaseOrderInfo } from '../../models/base-order-info';
+import { CityLocation } from '../../models/city-location';
 import { OrderService } from '../../services/order.service';
 
 @Component({
@@ -22,19 +18,10 @@ export class GoogleMapComponent implements OnInit {
   private longitude: number;
   private zoom: number;
 
-  // private searchControl: FormControl;
-  // @ViewChild("search")
-  // private searchElementRef: ElementRef;
+  @Input()
+  private citiesLocations: CityLocation[];
 
-  private ordersLocations: OrderLocation[] = [];
-
-  private order: BaseOrderInfo;
-
-  constructor(
-    private orderService: OrderService,
-    // private mapsAPILoader: MapsAPILoader,
-    // private ngZone: NgZone
-  ) {
+  constructor(private orderService: OrderService) {
     this.mapConfig = environment["GoogleMap"];
   }
 
@@ -42,36 +29,7 @@ export class GoogleMapComponent implements OnInit {
     this.latitude = this.mapConfig.defaultLat;
     this.longitude = this.mapConfig.defaultLng;
     this.zoom = this.mapConfig.defaultZoom;
-
-    // this.searchControl = new FormControl();
-
-    // this.setCurrentPosition();
-
-    //this.initAutocomplete();
-
-    this.ordersLocations = this.orderService.getAllOrdersLocations();
   }
-
-  // private initAutocomplete() {
-  //   this.mapsAPILoader.load().then(() => {
-  //     let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-  //       types: ["address"]
-  //     });
-  //     autocomplete.addListener("place_changed", () => {
-  //       this.ngZone.run(() => {
-  //         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-  //         if (place.geometry === undefined || place.geometry === null) {
-  //           return;
-  //         }
-
-  //         this.latitude = place.geometry.location.lat();
-  //         this.longitude = place.geometry.location.lng();
-  //         this.zoom = this.mapConfig.defaultSearchZoom;
-  //       });
-  //     });
-  //   });
-  // }
 
   private setCurrentPosition() {
     if ("geolocation" in navigator) {
@@ -83,8 +41,8 @@ export class GoogleMapComponent implements OnInit {
     }
   }
 
-  private showDetailedInfo(location: OrderLocation) {
-    this.order = this.orderService.getBaseOrderInfo(location.orderId);
+  searchByCity(cityName: string) {
+    this.orderService.cityMarkerButtonClicked.emit(cityName);
   }
 
 }

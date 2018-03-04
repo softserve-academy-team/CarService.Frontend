@@ -10,6 +10,7 @@ import { BaseOrderInfo } from '../../models/base-order-info';
 })
 export class OrderCardComponent {
 
-  @Input() order: BaseOrderInfo;
+  @Input()
+  private order: BaseOrderInfo;
 
 }

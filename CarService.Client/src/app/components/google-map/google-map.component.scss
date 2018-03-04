@@ -1,10 +1,3 @@
-// .map-search {
-//   min-width: 150px;
-//   max-width: 400px;
-//   width: 100%;
-//   padding-left: 1em;
-//   overflow: hidden;
-// }
 .map {
   width: 100%;
   height: 100vh;
@@ -13,4 +6,5 @@
 :host::ng-deep .order-card {
   margin: 0 !important;
   padding: 0 !important;
+  box-shadow: none !important;
 }

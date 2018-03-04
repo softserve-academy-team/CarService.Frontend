@@ -1,0 +1,68 @@
+<mat-card class="order-filter-card">
+  <div class="search-grid-column">
+    <mat-form-field class="search-grid-element">
+      <mat-select placeholder="Type" [formControl]="typeControl" [(ngModel)]="type">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{type.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="search-grid-element">
+      <input matInput placeholder="Mark name" [matAutocomplete]="markAuto" [formGroup]="searchFormGroup" [formControl]="markControl"
+        [(ngModel)]="markName">
+      <mat-error *ngIf="markControl.hasError('maxlength')" class="search-input-error">
+        Max length -
+        <strong>{{config.textMaxLength}}</strong> characters
+      </mat-error>
+      <mat-autocomplete #markAuto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let mark of filteredMarks | async" [value]="mark">
+          <span>{{mark.name}}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="search-grid-element">
+      <input matInput placeholder="Model name" [matAutocomplete]="modelAuto" [formGroup]="searchFormGroup" [formControl]="modelControl"
+        [(ngModel)]="modelName">
+      <mat-error *ngIf="modelControl.hasError('maxlength')" class="search-input-error">
+        Max length -
+        <strong>{{config.textMaxLength}}</strong> characters
+      </mat-error>
+      <mat-autocomplete #modelAuto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let model of filteredModels | async" [value]="model">
+          <span>{{model.name}}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div class="search-grid-column">
+    <mat-form-field class="search-grid-element">
+      <input #searchCity matInput placeholder="Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" [formGroup]="searchFormGroup"
+        [formControl]="cityControl" [(ngModel)]="city">
+      <mat-error *ngIf="cityControl.hasError('maxlength')" class="search-input-error">
+        Max length -
+        <strong>{{config.textMaxLength}}</strong> characters
+      </mat-error>
+    </mat-form-field>
+    <div class="search-grid-element search-year">
+      <mat-form-field class="search-year-child">
+        <mat-select placeholder="Since" [(ngModel)]="minYear">
+          <mat-option *ngFor="let year of years" [value]="year">
+            {{year}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="search-year-child">
+        <mat-select placeholder="To" [(ngModel)]="maxYear">
+          <mat-option *ngFor="let year of years" [value]="year">
+            {{year}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="search-grid-element">
+      <div class="search-button">
+        <button mat-raised-button color="primary" (click)="search()">Search orders</button>
+      </div>
+    </div>
+  </div>
+</mat-card>

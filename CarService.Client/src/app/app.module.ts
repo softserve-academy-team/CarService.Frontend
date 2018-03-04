@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatInputModule, MatDivider } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatDivider, MatNativeDateModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
@@ -16,6 +16,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
@@ -45,6 +46,7 @@ import { OrderCardComponent } from './components/order-card/order-card.component
 
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { OrderFilterComponent } from './components/order-filter/order-filter.component';
 
 
 @NgModule({
@@ -65,7 +67,8 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
     OrderListComponent,
     CarPhotoPipe,
     UserPhotoPipe,
-    OrderCardComponent
+    OrderCardComponent,
+    OrderFilterComponent
   ],
   imports: [
     AppRoutingModule,
@@ -88,6 +91,8 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
     FormsModule,
     MatSelectModule,
     MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBBzn2O9Ly8zKnsaf_kltqQNrpSLCSlA6U',
       libraries: ["places"]

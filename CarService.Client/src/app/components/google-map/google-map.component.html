@@ -1,14 +1,8 @@
-<!-- <mat-form-field class="map-search">
-  <input matInput placeholder="Search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
-    #search [formControl]="searchControl">
-</mat-form-field> -->
 <agm-map class="map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
   <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
-    <agm-marker *ngFor="let location of ordersLocations" [latitude]="location.lat" [longitude]="location.lng" (markerClick)="showDetailedInfo(location)">
-      <agm-info-window [disableAutoPan]="true">
-        <app-order-card *ngIf="order" [order]="order"></app-order-card>
-        <p *ngIf="!order">Order data not found!</p>
-      </agm-info-window>
+    <agm-marker *ngFor="let cityLocation of citiesLocations" [latitude]="cityLocation.lat" [longitude]="cityLocation.lng" (markerClick)="searchByCity(cityLocation.cityName)">
+      <!-- <agm-info-window [disableAutoPan]="true">
+      </agm-info-window> -->
     </agm-marker>
   </agm-marker-cluster>
 </agm-map>

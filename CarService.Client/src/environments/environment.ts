@@ -17,5 +17,10 @@ export const environment = {
     defaultLng: 31.1656,
     defaultZoom: 6,
     defaultSearchZoom: 12
+  },
+  OrderSearch: {
+    minYear: 1900,
+    maxYear: 2018,
+    textMaxLength: 20
   }
 };

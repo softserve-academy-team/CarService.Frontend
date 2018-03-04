@@ -1,0 +1,41 @@
+.order-filter-card {
+  display: flex;
+  flex-direction: row;
+  margin: 0.4em;
+  padding: 0.4em;
+  min-height: 200px;
+}
+
+.search-grid-column {
+  display: flex;
+  flex-direction: column;
+  width: 50%
+}
+
+.search-grid-element {
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+  overflow-x: hidden;
+}
+
+.search-input-error {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-year {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-year-child {
+  width: 45%;
+}
+
+.search-button {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.65em;
+  padding-bottom: 1.169em;
+}
