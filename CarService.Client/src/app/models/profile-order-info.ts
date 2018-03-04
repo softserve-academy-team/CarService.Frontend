@@ -1,12 +1,13 @@
 import { OrderStatus } from "../components/order-status";
 
 export class ProfileOrderInfo {
-    orderId: number;
-    //date = new Date(Date.now());
-    date: string;
-    status: OrderStatus;
-    markName: string;
-    modelName: string;
-    year: string;
-    photoLink: string;
+    constructor(
+        public orderId?: number,
+        public date?: string,
+        public status?: OrderStatus,
+        public markName?: string,
+        public modelName?: string,
+        public year?: number,
+        public photoLink?: string
+    ) { }
 }

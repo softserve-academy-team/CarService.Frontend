@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { CarListComponent } from './car-list.component';
-import { MatDividerModule, MatCardModule } from '@angular/material';
+import { MatDividerModule, MatCardModule, MatProgressSpinnerModule } from '@angular/material';
 import { BaseCarInfo } from '../../models/base-car-info';
 import { CarService } from '../../services/car.service';
 import { DebugElement } from '@angular/core/src/debug/debug_node';
@@ -64,7 +64,7 @@ describe('Car-ListComponent', () => {
   beforeEach(async() => {
     TestBed.configureTestingModule({
       declarations: [CarListComponent, RouterLinkStubDirective, FilterComponent],
-      imports: [MatDividerModule, MatCardModule],
+      imports: [MatDividerModule, MatCardModule, MatProgressSpinnerModule],
       providers: [{ provide: CarService, useValue: mockRepository}, CommunicationService]
     });
     fixture = TestBed.createComponent(CarListComponent);
