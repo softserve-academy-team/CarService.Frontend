@@ -13,6 +13,11 @@ declare let require: any;
 })
 export class ProfileOrdersComponent implements OnInit {
   isMechanic: boolean;
+  loadingCreated: boolean;
+  loadingApplied: boolean;
+  enabledCreatedOrders = true;
+  enabledAppliedOrders = true;
+
   private createdOrders: ProfileOrderInfo[];
   private appliedOrders: ProfileOrderInfo[];
   private decode = require('jwt-decode');
@@ -34,8 +39,15 @@ export class ProfileOrdersComponent implements OnInit {
   }
 
   private getUserCreatedOrders() {
+    this.loadingCreated = true;
+    
     this.profileService.getUserCreatedOrders().subscribe((data: ProfileOrderInfo[]) => {
       this.createdOrders = data;
+      if (!this.createdOrders ||  this.createdOrders.length == 0)
+      {
+        this.enabledCreatedOrders = false;
+        console.log(this.createdOrders);
+      }
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -45,9 +57,13 @@ export class ProfileOrdersComponent implements OnInit {
         }
       }
     );
+
+    this.loadingCreated = false;
   }
 
   private getUserAppliedOrders() {
+    this.loadingApplied = true;
+
     this.profileService.getUserAppliedOrders().subscribe((data: ProfileOrderInfo[]) => {
       this.appliedOrders = data;
     },
@@ -59,5 +75,9 @@ export class ProfileOrdersComponent implements OnInit {
         }
       }
     );
+
+    this.loadingApplied = false;
+    if (!this.appliedOrders || this.appliedOrders.length == 0)
+      this.enabledAppliedOrders = false;
   }
 }

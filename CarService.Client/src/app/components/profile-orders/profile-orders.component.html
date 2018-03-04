@@ -2,58 +2,26 @@
   <mat-tab-group class="tabs">
     <mat-tab label="My Created Orders">
       <div>
+        <button mat-raised-button *ngIf="!enabledCreatedOrders" color="primary" class="nav-button" [routerLink]="['/car-list']">Create New Order</button>
         <div class="list-container">
-          <mat-card *ngFor="let order of createdOrders" class="list-card">
-            <img src="{{order.photoLink}}">
-            <div class="content">
-              <div class="header-container">
-                <h4 class="order-list-header-text">
-                  Order № {{order.orderId}}
-                </h4>
-                <h4 class="header-status">
-                  Status: {{order.status}}
-                </h4>
-              </div>
-              <div class="car-name">
-                <h4>{{order.markName}} {{order.modelName}} {{order.year}}</h4>
-              </div>
-              <div class="publish-date">
-                <h4 class="header-status">
-                  {{order.date}}
-                </h4>
-              </div>
-            </div>
-          </mat-card>
+          <div *ngFor="let order of createdOrders">
+            <app-profile-order-card [order]="order"></app-profile-order-card>
+          </div>
         </div>
       </div>
+      <mat-spinner *ngIf="loadingCreated" class="spinner"></mat-spinner>
     </mat-tab>
 
     <mat-tab label="My Applied Orders" [disabled]="!isMechanic">
+      <button mat-raised-button *ngIf="!enabledAppliedOrders"  color="primary" class="nav-button" [routerLink]="['']">Find Order</button>
       <div>
         <div class="list-container">
-          <mat-card *ngFor="let order of appliedOrders" class="list-card">
-            <img src="{{order.photoLink}}">
-            <div class="content">
-              <div class="header-container">
-                <h4 class="order-list-header-text">
-                  Order № {{order.orderId}}
-                </h4>
-                <h4 class="header-status">
-                  Status: {{order.status}}
-                </h4>
-              </div>
-              <div class="car-name">
-                <h4>{{order.markName}} {{order.modelName}} {{order.year}}</h4>
-              </div>
-              <div class="publish-date">
-                <h4 class="header-status">
-                  {{order.date}}
-                </h4>
-              </div>
-            </div>
-          </mat-card>
+          <div *ngFor="let order of appliedOrders">
+            <app-profile-order-card [order]="order"></app-profile-order-card>
+          </div>
         </div>
       </div>
+      <mat-spinner *ngIf="loadingApplied" class="spinner"></mat-spinner>
     </mat-tab>
   </mat-tab-group>
 </div>

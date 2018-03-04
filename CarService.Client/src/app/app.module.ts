@@ -33,6 +33,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { RegistrationService } from './services/registration.service';
 import { ProfileService } from './services/profile.service';
 import { PasswordValidation } from './validation/password-validation';
+import { ProfileOrderCardComponent } from './components/profile-order-card/profile-order-card.component';
 
 @NgModule({
     declarations: [
@@ -53,7 +54,8 @@ import { PasswordValidation } from './validation/password-validation';
         EditProfileComponent,
         EmailConfirmComponent,
         PersonalAccountComponent,
-        ProfileOrdersComponent
+        ProfileOrdersComponent,
+        ProfileOrderCardComponent
     ],
     imports: [
         AppRoutingModule,
