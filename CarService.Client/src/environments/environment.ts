@@ -16,7 +16,8 @@ export const environment = {
     defaultLat: 48.3794,
     defaultLng: 31.1656,
     defaultZoom: 6,
-    defaultSearchZoom: 12
+    defaultSearchZoom: 12,
+    gestureHandling: "greedy"
   },
   OrderSearch: {
     minYear: 1900,

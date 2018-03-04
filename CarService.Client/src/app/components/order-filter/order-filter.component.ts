@@ -80,6 +80,11 @@ export class OrderFilterComponent implements OnInit {
         this.markSelectedHandler();
       }
     });
+    this.modelControl.valueChanges.subscribe((value) => {
+      if (value != undefined) {
+        this.modelSelectedHandler();
+      }
+    });
 
     this.orderService.cityMarkerButtonClicked.subscribe((cityName: string) => {
       this.cityMarkerButtonClickedHandler(cityName);
@@ -198,11 +203,26 @@ export class OrderFilterComponent implements OnInit {
     }
   }
 
+  private modelSelectedHandler() {
+    this.fillModelControl();
+  }
+
   private fillMarkControl() {
     if (this.markName != undefined && this.markName != null && this.markName != "") {
-      let mark = this.marks.find(m => m.name == this.markName);
+      let lowerMarkName = this.markName.toString().toLowerCase();
+      let mark = this.marks.find(m => m.name.toLowerCase() == lowerMarkName);
       if (mark != undefined && mark != null) {
         this.markControl.setValue(mark);
+      }
+    }
+  }
+
+  private fillModelControl() {
+    if (this.modelName != undefined && this.modelName != null && this.modelName != "") {
+      let lowerModelName = this.modelName.toString().toLowerCase();
+      let model = this.models.find(m => m.name.toLowerCase() == lowerModelName);
+      if (model != undefined && model != null) {
+        this.modelControl.setValue(model);
       }
     }
   }

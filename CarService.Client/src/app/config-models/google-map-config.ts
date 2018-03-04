@@ -3,4 +3,5 @@ export class GoogleMapConfig {
     defaultLng: number;
     defaultZoom: number;
     defaultSearchZoom: number;
+    gestureHandling: string;
 }
