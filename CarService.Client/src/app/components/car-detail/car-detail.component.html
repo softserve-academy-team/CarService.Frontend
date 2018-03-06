@@ -18,7 +18,8 @@
           <p class="carPriceUAH">{{detailCarById.priceUAH}}₴</p>
         </div>
         <div>
-          <button mat-raised-button color="primary" (click)="addCarToFavorites()">Add to Favorites</button>
+          <button *ngIf="!isCarInFavorites" mat-raised-button color="primary" (click)="addCarToFavorites()">Add to Favorites</button>
+          <button *ngIf="isCarInFavorites" mat-raised-button color="primary" (click)="deleteCarFromFavorites()">Delete from Favorites</button>
         </div>
         <div class="info-container">
           <div class="info-item">

@@ -38,6 +38,18 @@ export class ProfileService {
       id);
   }
 
+  deleteCarFromFavorites(id: number) {
+    return this.httpClient.post<any>(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'favorites', 'delete'),
+      id);
+  }
+
+  isCarInFavorites(id: number) {
+    return this.httpClient.post<any>(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'favorites', 'isCarInFavorites'),
+      id);
+  }
+
   getAllCarsFromFavorites() {
     return this.httpClient.get<any>(
       this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'favorites', 'get'));
