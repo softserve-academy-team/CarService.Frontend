@@ -31,6 +31,7 @@ import { ProfileService } from './services/profile.service';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { PasswordValidation } from './validation/password-validation';
 import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
+import { CustomerOrderInfoComponent } from './components/customer-order-info/customer-order-info.component';
 
 @NgModule({
     declarations: [
@@ -49,7 +50,8 @@ import { EmailConfirmComponent } from './components/email-confirm/email-confirm.
         CarDetailGalleryComponent,
         ProfileComponent,
         EditProfileComponent,
-        EmailConfirmComponent
+        EmailConfirmComponent,
+        CustomerOrderInfoComponent
     ],
     imports: [
         AppRoutingModule,

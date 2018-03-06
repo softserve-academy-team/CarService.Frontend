@@ -11,6 +11,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
+import { CustomerOrderInfoComponent } from './components/customer-order-info/customer-order-info.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'profile/edit-profile', component: EditProfileComponent},
   { path: 'sign-in', component: SignInComponent },
-  { path: 'email-confirm' , component:EmailConfirmComponent}
+  { path: 'email-confirm' , component:EmailConfirmComponent},
+  { path: 'order-info/:id', component: CustomerOrderInfoComponent }
 ];
 
 @NgModule({

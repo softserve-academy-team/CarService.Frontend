@@ -1,0 +1,37 @@
+<div class="order-cotainer">
+  <div class="header-container">
+    <div class="img-container">
+      <img src="{{order.photoLink}}">
+    </div>
+    <div class="general-info-container">
+      <div class="order-name">
+        <h2>Order №{{order.orderId}}</h4>
+      </div>
+      <div class="additional-info">
+          <div>
+            <a routerLink="/cardetail/{{order.autoRiaId}}">
+              <h5>
+                {{order.markName}} {{order.modelName}} {{order.year}}
+              </h5>
+            </a>
+          </div>
+          <div>
+            <h5>{{order.date}}</h5>
+          </div>
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="content-container">
+    <div>
+      <h5>Status: {{order.status}}</h5>
+    </div>
+    <div class="main-content">
+      <div class="propositons-container">
+        <mat-accordion>
+          
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>
