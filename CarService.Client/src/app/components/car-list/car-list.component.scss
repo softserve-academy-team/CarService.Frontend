@@ -3,8 +3,13 @@
 }
 
 .car-list-container {
-    margin: auto !important;
+    margin: auto;
+    min-width: 600px;
     max-width: 760px;
+}
+
+.spinner {
+    margin: auto;
 }
 
 .car-container {
@@ -14,7 +19,6 @@
 
 .car-list {
     width: 100%;
-    //min-width: 540px;
     font-family: Roboto,"Helvetica Neue",sans-serif;
 }
 
@@ -108,14 +112,14 @@
     }
 }
 
-@media screen and (min-width: 540px) {
+@media screen and (min-width: 600px) {
     .car-container {
         display: flex;
         flex-direction: row;
     }
 
     .car-list-container {
-        min-width: 540px;
+        min-width: 600px;
     }
 
     .car-element {
@@ -129,7 +133,7 @@
     }
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 600px) {
     .car-container {
         display: flex;
         flex-direction: column;
@@ -145,6 +149,6 @@
     }
 
     .car-list-container {
-        min-width: 280px;
+        min-width: 300px;
     }
 }

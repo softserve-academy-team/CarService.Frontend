@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatInputModule, MatDivider, MatTableModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatDivider, MatTableModule, MatMenuModule, MatSidenavModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-field';
@@ -10,7 +10,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
+
 @NgModule({
   imports: [
     MatAutocompleteModule,
@@ -27,6 +30,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSnackBarModule,
     MatMenuModule,
     MatTableModule,
+    MatSidenavModule,
+    MatProgressSpinnerModule,
+    MatTabsModule,
     MatExpansionModule
   ],
   exports: [
@@ -44,6 +50,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSnackBarModule,
     MatMenuModule,
     MatTableModule,
+    MatSidenavModule,
+    MatProgressSpinnerModule,
+    MatTabsModule,
     MatExpansionModule
   ]
 })

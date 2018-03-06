@@ -68,13 +68,8 @@
 
         <mat-form-field class="edit-form-field">
           <input matInput placeholder="Phone Number" [formGroup]="editFormGroup" [formControl]="phoneNumber">
-          <mat-error *ngIf="phoneNumber.hasError('required')">
-            Phone Number is
-            <strong>required</strong>
-          </mat-error>
-          <mat-error *ngIf="!phoneNumber.hasError('required')
-                         && phoneNumber.hasError('pattern')
-                         || phoneNumber.hasError('maxlength')">
+          <mat-error *ngIf="phoneNumber.hasError('pattern')
+                            || phoneNumber.hasError('maxlength')">
             The Phone Number must be in form +38xxxxx and 
             <strong>13</strong> characters in length
           </mat-error>
@@ -82,10 +77,6 @@
 
         <mat-form-field class="edit-form-field">
           <input matInput placeholder="Card Number" [formGroup]="editFormGroup" [formControl]="cardNumber">
-          <mat-error *ngIf="cardNumber.hasError('required')">
-            Phone Number is
-            <strong>required</strong>
-          </mat-error>
           <mat-error *ngIf="!cardNumber.hasError('required')
                          && cardNumber.hasError('pattern')
                          || cardNumber.hasError('maxlength')">
@@ -130,12 +121,6 @@
       </form>
     </mat-card-content>
     <mat-card-actions class="edit-actions">
-      <!--
-      <button mat-raised-button color="primary" (click)="changeRegistrationForm()">
-        <p *ngIf="isMechanic">Save</p>
-        <p *ngIf="!isMechanic">Register as mechanic</p>
-      </button>
-    -->
       <button mat-raised-button color="primary" (click)="save()">Save</button>
     </mat-card-actions>
   </mat-card>

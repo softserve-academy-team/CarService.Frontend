@@ -18,6 +18,15 @@ import { FilterComponent } from './components/filter/filter.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { PersonalAccountComponent } from './components/personal-account/personal-account.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
+import { ProfileOrdersComponent } from './components/profile-orders/profile-orders.component';
+import { ProfileOrderCardComponent } from './components/profile-order-card/profile-order-card.component';
+import { BaseCarInfoCardComponent } from './components/base-car-info-card/base-car-info-card.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { CustomerOrderInfoComponent } from './components/customer-order-info/customer-order-info.component';
 
 import { RestUrlBuilder } from './services/rest-url-builder';
 import { CarService } from './services/car.service';
@@ -25,13 +34,9 @@ import { FilterService } from './services/filter.service';
 import { CommunicationService } from './services/communication.service';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
-import { RegistrationService } from './services/registration.service'; 
-import { ProfileComponent } from './components/profile/profile.component';
+import { RegistrationService } from './services/registration.service';
 import { ProfileService } from './services/profile.service';
-import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { PasswordValidation } from './validation/password-validation';
-import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
-import { CustomerOrderInfoComponent } from './components/customer-order-info/customer-order-info.component';
 
 @NgModule({
     declarations: [
@@ -51,6 +56,11 @@ import { CustomerOrderInfoComponent } from './components/customer-order-info/cus
         ProfileComponent,
         EditProfileComponent,
         EmailConfirmComponent,
+        PersonalAccountComponent,
+        ProfileOrdersComponent,
+        ProfileOrderCardComponent,
+        BaseCarInfoCardComponent,
+        FavoritesComponent,
         CustomerOrderInfoComponent
     ],
     imports: [
@@ -70,7 +80,13 @@ import { CustomerOrderInfoComponent } from './components/customer-order-info/cus
         CommunicationService,
         RegistrationService,
         ProfileService,
-        AuthService
+        AuthService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
+
     ],
     bootstrap: [AppComponent]
 })
