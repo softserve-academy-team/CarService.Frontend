@@ -1,0 +1,4 @@
+<div class="car-list-container">
+  <app-base-car-info-card *ngFor="let carItem of cars" class="car-list" [car]='carItem'></app-base-car-info-card>
+  <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
+</div>

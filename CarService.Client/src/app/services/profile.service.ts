@@ -32,11 +32,17 @@ export class ProfileService {
       mechanic);
   }
 
-  addCarToFavorites(id: number, info: string) {
+  addCarToFavorites(id: number) {
     return this.httpClient.post<any>(
-      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'add'),
-      { autoRiaId: id, info: info });
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'favorites', 'add'),
+      id);
   }
+
+  getAllCarsFromFavorites() {
+    return this.httpClient.get<any>(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'favorites', 'get'));
+  }
+
 
   getUserCreatedOrders() {
     return this.httpClient.get(

@@ -35,6 +35,7 @@ import { ProfileService } from './services/profile.service';
 import { PasswordValidation } from './validation/password-validation';
 import { ProfileOrderCardComponent } from './components/profile-order-card/profile-order-card.component';
 import { BaseCarInfoCardComponent } from './components/base-car-info-card/base-car-info-card.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 @NgModule({
     declarations: [
@@ -57,7 +58,8 @@ import { BaseCarInfoCardComponent } from './components/base-car-info-card/base-c
         PersonalAccountComponent,
         ProfileOrdersComponent,
         ProfileOrderCardComponent,
-        BaseCarInfoCardComponent
+        BaseCarInfoCardComponent,
+        FavoritesComponent
     ],
     imports: [
         AppRoutingModule,

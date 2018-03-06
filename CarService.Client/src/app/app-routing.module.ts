@@ -13,6 +13,7 @@ import { PersonalAccountComponent } from './components/personal-account/personal
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { ProfileOrdersComponent } from './components/profile-orders/profile-orders.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
     { path: 'profile', component: ProfileComponent, outlet: 'personalAccountOutlet' },
     { path: 'profile/edit-profile', component: EditProfileComponent, outlet: 'personalAccountOutlet'},
     { path: 'profile-orders', component: ProfileOrdersComponent, outlet: 'personalAccountOutlet'},
+    { path: 'favorites', component: FavoritesComponent, outlet: 'personalAccountOutlet'}
   ]},
 
   { path: 'sign-in', component: SignInComponent },

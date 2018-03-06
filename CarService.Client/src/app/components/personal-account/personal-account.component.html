@@ -3,9 +3,9 @@
   [fixedInViewport]=true [fixedTopGap]=120
   [fixedBottomGap]=400>
     <div>
-      <button mat-button disabled>
+      <button mat-button [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['favorites'] } }]">
         <mat-icon>star_border</mat-icon>
-        <span>Favourites</span>
+        <span>Favorites</span>
       </button>
       <button mat-button [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['profile-orders'] } }]">
         <mat-icon>work</mat-icon>

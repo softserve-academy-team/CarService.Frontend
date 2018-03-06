@@ -15,9 +15,9 @@
         <mat-icon>account_circle</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item disabled>
+        <button mat-menu-item [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['favorites'] } }]">
           <mat-icon>star_border</mat-icon>
-          <span>Favourites</span>
+          <span>Favorites</span>
         </button>
         <button mat-menu-item [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['profile-orders'] } }]">
           <mat-icon>work</mat-icon>
