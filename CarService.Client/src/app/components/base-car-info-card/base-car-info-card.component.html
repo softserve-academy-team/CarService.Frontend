@@ -1,0 +1,38 @@
+<mat-card class="car-container">
+  <div class="auto-img-container">
+    <a routerLink="/cardetail/{{car.autoId}}">
+      <img src="{{car.photoLink}}" class="auto-img" />
+    </a>
+  </div>
+  <div class="car-element">
+    <div class="car-name">
+      <h2>{{car.markName}} {{car.modelName}} {{car.year}}</h2>
+    </div>
+    <div class="info-container">
+      <div class="price-block">
+        <p class="carPriceUSD">{{car.priceUSD}}$ /</p>
+        <p class="carPriceUAH">{{car.priceUAH}}₴</p>
+      </div>
+    </div>
+    <div class="info-container">
+      <div class="info-item">
+        <img src="../assets/icons-sedan.png" class="icon" />
+        <p>{{car.race}}</p>
+      </div>
+      <div class="info-item">
+        <img src="../assets/icons-gearbox.png" class="icon" />
+        <p>{{car.gearBoxName}}</p>
+      </div>
+    </div>
+    <div class="info-container">
+      <div class="info-item">
+        <img src="../assets/icons-engine.png" class="icon" />
+        <p>{{car.fuelName}}</p>
+      </div>
+      <div class="info-item">
+        <img src="../assets/icons-place-marker.png" class="icon" />
+        <p>{{car.city}}</p>
+      </div>
+    </div>
+  </div>
+</mat-card>
