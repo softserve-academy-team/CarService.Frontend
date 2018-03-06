@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
   private user: UserDTO;
   private userInfo: Element[];
   dataSource = new MatTableDataSource(this.userInfo);
+  
+  loading: boolean;
 
   constructor(
     private profileService: ProfileService, 
@@ -26,6 +28,8 @@ export class ProfileComponent implements OnInit {
   }
 
   private getUserInfo() {
+    this.loading = true;
+
     this.profileService.getUserInfo().subscribe((data: UserDTO) => {
       this.user = data;
       this.userInfo = [
@@ -44,7 +48,7 @@ export class ProfileComponent implements OnInit {
         this.userInfo.push({name: "Rate", value: this.user.mechanicRate.toString()});
       }
 
-      console.log(this.userInfo);
+      this.loading = false;
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {

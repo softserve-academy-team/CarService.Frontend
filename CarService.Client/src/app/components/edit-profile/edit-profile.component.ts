@@ -20,9 +20,9 @@ declare let require: any;
 })
 export class EditProfileComponent implements OnInit {
   private user: UserDTO;
-  
-  private maxSpecializationLength = 40; 
-  private cardNumberLength = 16; 
+
+  private maxSpecializationLength = 40;
+  private cardNumberLength = 16;
 
   private toRegexRange = require('to-regex-range');
 
@@ -44,9 +44,9 @@ export class EditProfileComponent implements OnInit {
     private passwordValidation: PasswordValidation,
     private profileService: ProfileService,
     private router: Router,
-    private authService: AuthService) { 
-      this.config = environment["RegistrationConfig"];
-    }
+    private authService: AuthService) {
+    this.config = environment["RegistrationConfig"];
+  }
 
   ngOnInit() {
     this.getUserInfo();
@@ -114,7 +114,6 @@ export class EditProfileComponent implements OnInit {
 
   private getCardNumberFormControl(initValue: string): FormControl {
     return new FormControl(initValue, [
-      Validators.required,
       Validators.pattern("[0-9]{16}"),
       Validators.maxLength(this.cardNumberLength)
     ]);
@@ -122,7 +121,6 @@ export class EditProfileComponent implements OnInit {
 
   private getPhoneNumberFormControl(initValue: string): FormControl {
     return new FormControl(initValue, [
-      Validators.required,
       Validators.pattern(/\+38[0-9]{10}/),
       Validators.maxLength(13)
     ]);
@@ -161,7 +159,7 @@ export class EditProfileComponent implements OnInit {
     mechanic.lastName = this.lastName.value;
     mechanic.city = this.city.value;
     mechanic.phoneNumber = this.phoneNumber.value;
-    mechanic.cardNumber =  this.cardNumber.value;
+    mechanic.cardNumber = this.cardNumber.value;
     mechanic.workExperience = this.experience.value;
     mechanic.specialization = this.specialization.value;
     return mechanic;
@@ -194,7 +192,7 @@ export class EditProfileComponent implements OnInit {
           }
         );
       }
-      this.router.navigate(['../profile']);
+      this.router.navigate(['/personalAccount', { outlets: { personalAccountOutlet: ['profile'] } }]);
     } else {
       console.log("Input data error.");
     }
