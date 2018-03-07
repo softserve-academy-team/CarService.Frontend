@@ -10,6 +10,7 @@ import { UnregisterUserDialogComponent } from '../../dialogs/unregister-user-dia
 import { CreateOrder } from '../../models/create-order';
 import { OrderService } from '../../services/order.service';
 import { MatSnackBar } from '@angular/material';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -23,18 +24,21 @@ export class CarDetailComponent implements OnInit {
   private carPhotosAll: Array<string> = [];
   private orderDescription: string;
   private agreeLoginUser: boolean;
+  private isCarInFavorites: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private carService: CarService,
     private orderService: OrderService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private profileService: ProfileService
   ) { }
 
   ngOnInit() {
     this.getDetailCarById();
     this.getCarPhotos();
+    this.isCarInFavoritesMethod();
   }
 
   getDetailCarById(): void {
@@ -121,6 +125,49 @@ export class CarDetailComponent implements OnInit {
   postCreatedOrder(): void {
     let order = this.createOrder();
     this.orderService.createOrder(order).subscribe(data => {
+      this.isCarInFavorites = true;
+    },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log('An error occurred:', err.error.message);
+        } else {
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+        }
+      }
+    );
+  }
+
+  addCarToFavorites(): void {
+    this.profileService.addCarToFavorites(+this.route.snapshot.paramMap.get('id')).subscribe(data => {
+      this.isCarInFavorites = true;
+    },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log('An error occurred:', err.error.message);
+        } else {
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+        }
+      }
+    );
+  }
+
+  deleteCarFromFavorites(): void {
+    this.profileService.deleteCarFromFavorites(+this.route.snapshot.paramMap.get('id')).subscribe(data => {
+      this.isCarInFavorites = false;
+    },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log('An error occurred:', err.error.message);
+        } else {
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+        }
+      }
+    );
+  }
+
+  isCarInFavoritesMethod(): void {
+    this.profileService.isCarInFavorites(+this.route.snapshot.paramMap.get('id')).subscribe(data => {
+      this.isCarInFavorites = data;
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {

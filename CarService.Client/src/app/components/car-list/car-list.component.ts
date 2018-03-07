@@ -14,6 +14,8 @@ export class CarListComponent implements OnInit {
 
   private listOfRandomCars: BaseCarInfo[];
 
+  loading: boolean;
+
   constructor(
     private carService: CarService,
     private communicationService: CommunicationService
@@ -24,12 +26,15 @@ export class CarListComponent implements OnInit {
   }
 
   private getListOfRandomCars() {
+    this.loading = true;
+
     this.carService.getListOfRandomCars().subscribe((data: BaseCarInfo[]) => {
       this.listOfRandomCars = data;
       this.communicationService.infoReceived.subscribe(d => {
         this.listOfRandomCars = d;
       });
-
+      
+      this.loading = false;
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -39,7 +44,5 @@ export class CarListComponent implements OnInit {
         }
       }
     );
-
-
   }
 }

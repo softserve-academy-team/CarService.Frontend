@@ -1,0 +1,34 @@
+.car-list-container {
+    margin: auto;
+    min-width: 600px;
+    max-width: 760px;
+}
+
+.car-list {
+    width: 100%;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+@media screen and (min-width: 870px) {
+    .car-list-container {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .car-list-container {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .car-list-container {
+        min-width: 600px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .car-list-container {
+        min-width: 300px;
+    }
+}
