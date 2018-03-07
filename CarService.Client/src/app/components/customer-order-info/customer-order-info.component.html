@@ -1,37 +1,53 @@
 <div class="order-cotainer">
   <div class="header-container">
     <div class="img-container">
-      <img src="{{order.photoLink}}">
+      <img src="{{order.photoLink}}" class="car-image">
     </div>
     <div class="general-info-container">
-      <div class="order-name">
-        <h2>Order №{{order.orderId}}</h4>
+      <div class="general-info">
+        <div class="order-name">
+          <h2>Order №{{order.orderId}}</h2>
+        </div>
+        <div>
+          <h2>Status: {{order.status}}</h2>
+        </div>
       </div>
-      <div class="additional-info">
-          <div>
-            <a routerLink="/cardetail/{{order.autoRiaId}}">
-              <h5>
-                {{order.markName}} {{order.modelName}} {{order.year}}
-              </h5>
-            </a>
-          </div>
-          <div>
-            <h5>{{order.date}}</h5>
-          </div>
+      <div class="general-info">
+        <div>
+          <a routerLink="/cardetail/{{order.autoRiaId}}">
+            <h4>
+              {{order.markName}} {{order.modelName}} {{order.year}}
+            </h4>
+          </a>
+        </div>
+        <div>
+          <h4>{{order.date}}</h4>
+        </div>
       </div>
     </div>
   </div>
   <mat-divider></mat-divider>
   <div class="content-container">
-    <div>
-      <h5>Status: {{order.status}}</h5>
+    <div *ngIf="!loading && order.status == 'Active' && order.reviewPropositions.length==0" class="no-propositions">
+      <span>You don't have any propositions.</span>
     </div>
-    <div class="main-content">
-      <div class="propositons-container">
-        <mat-accordion>
-          
-        </mat-accordion>
-      </div>
+    <div class="propositons-container">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let propositon of order.reviewPropositions">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div>
+                <span>{{propositon.firstName}} {{propositon.lastName}}</span>
+                <span>{{propositon.mechanicRate}}</span>
+                <app-mechanic-rate></app-mechanic-rate>
+              </div>
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <span>{{propositon.comment}}</span>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
   </div>
 </div>

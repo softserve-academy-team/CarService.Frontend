@@ -1,0 +1,48 @@
+$car-img-width: 220px;
+
+* {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+.order-container {
+    padding: 15px;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.img-container {
+    padding: 10px;
+}
+
+.general-info-container {
+    padding: 15px;
+    width: 100%;
+}
+
+.general-info, add {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.general-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.car-image {
+    width: $car-img-width;
+}
+
+.content-container {
+    padding: 15px;
+}
+
+.no-propositions {
+    padding: 20px;
+    text-align: center;
+}

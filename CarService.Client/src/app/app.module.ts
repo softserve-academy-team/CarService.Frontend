@@ -37,6 +37,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { RegistrationService } from './services/registration.service';
 import { ProfileService } from './services/profile.service';
 import { PasswordValidation } from './validation/password-validation';
+import { MechanicRateComponent } from './components/mechanic-rate/mechanic-rate.component';
 
 @NgModule({
     declarations: [
@@ -61,7 +62,8 @@ import { PasswordValidation } from './validation/password-validation';
         ProfileOrderCardComponent,
         BaseCarInfoCardComponent,
         FavoritesComponent,
-        CustomerOrderInfoComponent
+        CustomerOrderInfoComponent,
+        MechanicRateComponent
     ],
     imports: [
         AppRoutingModule,

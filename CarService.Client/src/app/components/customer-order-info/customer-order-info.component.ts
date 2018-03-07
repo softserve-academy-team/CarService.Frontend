@@ -7,9 +7,12 @@ import { CustomerOrderInfo } from '../../models/customer-order-info';
   styleUrls: ['./customer-order-info.component.scss']
 })
 export class CustomerOrderInfoComponent implements OnInit {
-  private order: CustomerOrderInfo;
+  private order: CustomerOrderInfo = new CustomerOrderInfo();
   
-  constructor() { }
+  loading: boolean = false;
+
+  constructor() { 
+  }
 
   ngOnInit() {
   }
