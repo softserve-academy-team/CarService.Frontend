@@ -25,12 +25,15 @@ import { FilterService } from './services/filter.service';
 import { CommunicationService } from './services/communication.service';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
-import { RegistrationService } from './services/registration.service'; 
+import { RegistrationService } from './services/registration.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileService } from './services/profile.service';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { PasswordValidation } from './validation/password-validation';
 import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
+import { CreateOrderDialogComponent } from './dialogs/create-order-dialog/create-order-dialog.component';
+import { UnregisterUserDialogComponent } from './dialogs/unregister-user-dialog/unregister-user-dialog.component'
+import { OrderService } from './services/order.service';
 
 @NgModule({
     declarations: [
@@ -49,7 +52,9 @@ import { EmailConfirmComponent } from './components/email-confirm/email-confirm.
         CarDetailGalleryComponent,
         ProfileComponent,
         EditProfileComponent,
-        EmailConfirmComponent
+        EmailConfirmComponent,
+        CreateOrderDialogComponent,
+        UnregisterUserDialogComponent
     ],
     imports: [
         AppRoutingModule,
@@ -68,8 +73,11 @@ import { EmailConfirmComponent } from './components/email-confirm/email-confirm.
         CommunicationService,
         RegistrationService,
         ProfileService,
-        AuthService
+        AuthService,
+        OrderService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [CreateOrderDialogComponent,
+        UnregisterUserDialogComponent]
 })
 export class AppModule { }
