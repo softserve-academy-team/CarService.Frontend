@@ -1,10 +1,10 @@
 <div class="order-list">
   <div class="order-list-left-side">
-    <app-order-filter class="order-filter"></app-order-filter>
-    <div class="order-container">
+    <app-order-filter [orderSearchConfig]="orderSearchConfig" class="order-filter"></app-order-filter>
+    <div #scroll class="order-container" (scroll)="onScroll()">
       <app-order-card *ngFor="let order of orders" [order]="order"></app-order-card>
       <mat-card *ngIf="orders.length==0" class="empty-order-list-message">Order list empty</mat-card>
     </div>
   </div>
-  <app-google-map [citiesLocations]="citiesLocations" class="google-map"></app-google-map>
+  <app-google-map [cities]="cities" [mapConfig]="mapConfig" class="google-map"></app-google-map>
 </div>

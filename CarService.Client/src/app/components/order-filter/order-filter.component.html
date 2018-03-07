@@ -12,7 +12,7 @@
         [(ngModel)]="markName">
       <mat-error *ngIf="markControl.hasError('maxlength')" class="search-input-error">
         Max length -
-        <strong>{{config.textMaxLength}}</strong> characters
+        <strong>{{orderSearchConfig.textMaxLength}}</strong> characters
       </mat-error>
       <mat-autocomplete #markAuto="matAutocomplete" [displayWith]="displayFn">
         <mat-option *ngFor="let mark of filteredMarks | async" [value]="mark">
@@ -25,7 +25,7 @@
         [(ngModel)]="modelName">
       <mat-error *ngIf="modelControl.hasError('maxlength')" class="search-input-error">
         Max length -
-        <strong>{{config.textMaxLength}}</strong> characters
+        <strong>{{orderSearchConfig.textMaxLength}}</strong> characters
       </mat-error>
       <mat-autocomplete #modelAuto="matAutocomplete" [displayWith]="displayFn">
         <mat-option *ngFor="let model of filteredModels | async" [value]="model">
@@ -40,7 +40,7 @@
         [formControl]="cityControl" [(ngModel)]="city">
       <mat-error *ngIf="cityControl.hasError('maxlength')" class="search-input-error">
         Max length -
-        <strong>{{config.textMaxLength}}</strong> characters
+        <strong>{{orderSearchConfig.textMaxLength}}</strong> characters
       </mat-error>
     </mat-form-field>
     <div class="search-grid-element search-year">

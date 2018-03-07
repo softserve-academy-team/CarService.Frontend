@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { startWith } from 'rxjs/operators/startWith';
 import { map } from 'rxjs/operators/map';
 import { MapsAPILoader } from '@agm/core';
-import { environment } from '../../../environments/environment';
 import { OrderSearchConfig } from '../../config-models/order-search-config';
 import { NameValuePair } from '../../models/name-value-pair';
 import { OrderSearchModel } from '../../models/order-search-model';
@@ -19,7 +18,8 @@ import { FilterService } from '../../services/filter.service';
 })
 export class OrderFilterComponent implements OnInit {
 
-  private readonly config: OrderSearchConfig;
+  @Input()
+  private readonly orderSearchConfig: OrderSearchConfig;
 
   private types: NameValuePair[] = [];
   private marks: NameValuePair[] = [];
@@ -48,14 +48,14 @@ export class OrderFilterComponent implements OnInit {
   constructor(private mapsAPILoader: MapsAPILoader,
     private formBuilder: FormBuilder,
     private orderService: OrderService,
-    private filterService: FilterService) {
+    private filterService: FilterService) { }
 
-    this.config = environment.OrderSearch;
-
+  ngOnInit() {
     this.filterService.getCarTypes().subscribe((types: NameValuePair[]) => {
       this.types = types;
     });
-    for (let i = this.config.maxYear; i >= this.config.minYear; --i) {
+
+    for (let i = this.orderSearchConfig.maxYear; i >= this.orderSearchConfig.minYear; --i) {
       this.years.push(i);
     }
 
@@ -65,9 +65,7 @@ export class OrderFilterComponent implements OnInit {
     this.markControl = this.searchFormGroup.controls.mark;
     this.modelControl = this.searchFormGroup.controls.model;
     this.cityControl = this.searchFormGroup.controls.city;
-  }
 
-  ngOnInit() {
     this.initAutocomplete();
 
     this.typeControl.valueChanges.subscribe((value) => {
@@ -102,7 +100,7 @@ export class OrderFilterComponent implements OnInit {
 
   private getTextFormControl(): FormControl {
     return new FormControl('', [
-      Validators.maxLength(this.config.textMaxLength)
+      Validators.maxLength(this.orderSearchConfig.textMaxLength)
     ]);
   }
 
@@ -234,8 +232,7 @@ export class OrderFilterComponent implements OnInit {
   search() {
     if (this.searchFormGroup.valid) {
       let orderSearchModel = this.createOrderSearchModel();
-      console.log(orderSearchModel);
-      this.orderService.newOrdersFound.emit([]);
+      this.orderService.orderSearchButtonClicked.emit(orderSearchModel);
     } else {
       console.log("Input data error.");
     }

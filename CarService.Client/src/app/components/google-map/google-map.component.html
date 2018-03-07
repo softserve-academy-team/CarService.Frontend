@@ -1,8 +1,6 @@
 <agm-map class="map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [gestureHandling]="mapConfig.gestureHandling">
   <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
     <agm-marker *ngFor="let cityLocation of citiesLocations" [latitude]="cityLocation.lat" [longitude]="cityLocation.lng" (markerClick)="searchByCity(cityLocation.cityName)">
-      <!-- <agm-info-window [disableAutoPan]="true">
-      </agm-info-window> -->
     </agm-marker>
   </agm-marker-cluster>
 </agm-map>

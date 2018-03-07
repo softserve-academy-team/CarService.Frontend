@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs/Observable';
 import { } from 'googlemaps';
 import { GoogleMapConfig } from '../../config-models/google-map-config';
 import { CityLocation } from '../../models/city-location';
+import { MapsService } from '../../services/maps-service';
 import { OrderService } from '../../services/order.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { OrderService } from '../../services/order.service';
 })
 export class GoogleMapComponent implements OnInit {
 
+  @Input()
   private readonly mapConfig: GoogleMapConfig;
 
   private latitude: number;
@@ -19,26 +21,26 @@ export class GoogleMapComponent implements OnInit {
   private zoom: number;
 
   @Input()
-  private citiesLocations: CityLocation[];
+  private cities: Observable<string[]>;
+  private citiesLocations: CityLocation[] = [];
 
-  constructor(private orderService: OrderService) {
-    this.mapConfig = environment["GoogleMap"];
-  }
+  constructor(private mapsService: MapsService,
+    private orderService: OrderService) { }
 
   ngOnInit() {
     this.latitude = this.mapConfig.defaultLat;
     this.longitude = this.mapConfig.defaultLng;
     this.zoom = this.mapConfig.defaultZoom;
-  }
 
-  private setCurrentPosition() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = this.mapConfig.defaultSearchZoom;
+    this.cities.subscribe(cities => {
+      cities.forEach(city => {
+        let cityLocation = new CityLocation();
+        cityLocation.cityName = city;
+        this.mapsService.getCityLocation(city).subscribe(cityLocation => {
+          this.citiesLocations.push(cityLocation);
+        }, error => console.log(error), () => { });
       });
-    }
+    });
   }
 
   searchByCity(cityName: string) {

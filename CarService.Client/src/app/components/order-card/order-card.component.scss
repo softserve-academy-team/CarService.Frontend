@@ -4,6 +4,8 @@
   padding: 0.4em;
   >img {
     object-fit: cover;
+    min-width: 144px;
+    min-height: 108px;
     width: 144px;
     height: 108px;
     margin-right: 0.2em;

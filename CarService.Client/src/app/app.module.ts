@@ -44,9 +44,10 @@ import { UserPhotoPipe } from './pipes/user-photo.pipe';
 import { OrderService } from './services/order.service';
 import { OrderCardComponent } from './components/order-card/order-card.component';
 
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { OrderFilterComponent } from './components/order-filter/order-filter.component';
+import { MapsService } from './services/maps-service';
 
 
 @NgModule({
@@ -107,7 +108,8 @@ import { OrderFilterComponent } from './components/order-filter/order-filter.com
     FilterService,
     CommunicationService,
     RegistrationService,
-    OrderService
+    OrderService,
+    MapsService
   ],
   bootstrap: [AppComponent]
 })
