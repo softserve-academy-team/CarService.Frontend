@@ -26,7 +26,10 @@ import { ProfileOrdersComponent } from './components/profile-orders/profile-orde
 import { ProfileOrderCardComponent } from './components/profile-order-card/profile-order-card.component';
 import { BaseCarInfoCardComponent } from './components/base-car-info-card/base-car-info-card.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { CreateOrderDialogComponent } from './dialogs/create-order-dialog/create-order-dialog.component';
+import { UnregisterUserDialogComponent } from './dialogs/unregister-user-dialog/unregister-user-dialog.component';
 import { CustomerOrderInfoComponent } from './components/customer-order-info/customer-order-info.component';
+import { MechanicRateComponent } from './components/mechanic-rate/mechanic-rate.component';
 
 import { RestUrlBuilder } from './services/rest-url-builder';
 import { CarService } from './services/car.service';
@@ -37,7 +40,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { RegistrationService } from './services/registration.service';
 import { ProfileService } from './services/profile.service';
 import { PasswordValidation } from './validation/password-validation';
-import { MechanicRateComponent } from './components/mechanic-rate/mechanic-rate.component';
+import { OrderService } from './services/order.service';
 
 @NgModule({
     declarations: [
@@ -57,6 +60,8 @@ import { MechanicRateComponent } from './components/mechanic-rate/mechanic-rate.
         ProfileComponent,
         EditProfileComponent,
         EmailConfirmComponent,
+        CreateOrderDialogComponent,
+        UnregisterUserDialogComponent,
         PersonalAccountComponent,
         ProfileOrdersComponent,
         ProfileOrderCardComponent,
@@ -83,6 +88,7 @@ import { MechanicRateComponent } from './components/mechanic-rate/mechanic-rate.
         RegistrationService,
         ProfileService,
         AuthService,
+        OrderService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
@@ -90,6 +96,8 @@ import { MechanicRateComponent } from './components/mechanic-rate/mechanic-rate.
         }
 
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [CreateOrderDialogComponent,
+        UnregisterUserDialogComponent]
 })
 export class AppModule { }
