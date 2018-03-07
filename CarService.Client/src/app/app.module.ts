@@ -33,6 +33,9 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { RegistrationService } from './services/registration.service';
 import { ProfileService } from './services/profile.service';
 import { PasswordValidation } from './validation/password-validation';
+import { CreateOrderDialogComponent } from './dialogs/create-order-dialog/create-order-dialog.component';
+import { UnregisterUserDialogComponent } from './dialogs/unregister-user-dialog/unregister-user-dialog.component'
+import { OrderService } from './services/order.service';
 import { ProfileOrderCardComponent } from './components/profile-order-card/profile-order-card.component';
 import { BaseCarInfoCardComponent } from './components/base-car-info-card/base-car-info-card.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
@@ -55,6 +58,8 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
         ProfileComponent,
         EditProfileComponent,
         EmailConfirmComponent,
+        CreateOrderDialogComponent,
+        UnregisterUserDialogComponent,
         PersonalAccountComponent,
         ProfileOrdersComponent,
         ProfileOrderCardComponent,
@@ -79,6 +84,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
         RegistrationService,
         ProfileService,
         AuthService,
+        OrderService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
@@ -86,6 +92,8 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
         }
 
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [CreateOrderDialogComponent,
+        UnregisterUserDialogComponent]
 })
 export class AppModule { }
