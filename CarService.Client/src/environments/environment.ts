@@ -13,5 +13,17 @@ export const environment = {
     experienceMaxValue: 60,
     emailMinLength: 6,
     emailMaxLength: 30
+  },
+  GoogleMap: {
+    defaultLat: 48.3794,
+    defaultLng: 31.1656,
+    defaultZoom: 6,
+    defaultSearchZoom: 12,
+    gestureHandling: "greedy"
+  },
+  OrderSearch: {
+    minYear: 1900,
+    maxYear: 2018,
+    textMaxLength: 20
   }
 };

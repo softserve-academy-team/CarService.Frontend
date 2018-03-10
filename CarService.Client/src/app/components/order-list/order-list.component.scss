@@ -1,0 +1,33 @@
+.order-list {
+  display: flex;
+}
+
+.order-list-left-side {
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  width: 30%;
+  height: 100vh;
+}
+
+.order-filter {
+  margin-bottom: 0.4em;
+}
+
+.order-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.empty-order-list-message {
+  display: flex;
+  justify-content: center;
+  margin: 0.4em;
+  padding: 0.6em;
+}
+
+.google-map {
+  width: 70%;
+  margin: 0.4em;
+}
