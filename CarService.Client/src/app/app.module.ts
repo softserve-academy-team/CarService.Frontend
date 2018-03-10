@@ -35,65 +35,89 @@ import { ProfileService } from './services/profile.service';
 import { PasswordValidation } from './validation/password-validation';
 import { CreateOrderDialogComponent } from './dialogs/create-order-dialog/create-order-dialog.component';
 import { UnregisterUserDialogComponent } from './dialogs/unregister-user-dialog/unregister-user-dialog.component'
-import { OrderService } from './services/order.service';
 import { ProfileOrderCardComponent } from './components/profile-order-card/profile-order-card.component';
 import { BaseCarInfoCardComponent } from './components/base-car-info-card/base-car-info-card.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 
-@NgModule({
-    declarations: [
-        AppComponent,
-        CarouselComponent,
-        CarDetailComponent,
-        CarListComponent,
-        FooterComponent,
-        NavbarComponent,
-        AboutComponent,
-        CarDetailGalleryComponent,
-        RegistrationComponent,
-        SignInComponent,
-        FilterComponent,
-        HomeComponent,
-        CarDetailGalleryComponent,
-        ProfileComponent,
-        EditProfileComponent,
-        EmailConfirmComponent,
-        CreateOrderDialogComponent,
-        UnregisterUserDialogComponent,
-        PersonalAccountComponent,
-        ProfileOrdersComponent,
-        ProfileOrderCardComponent,
-        BaseCarInfoCardComponent,
-        FavoritesComponent
-    ],
-    imports: [
-        AppRoutingModule,
-        BrowserModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MaterialModule
-    ],
-    providers: [
-        RestUrlBuilder,
-        CarService,
-        PasswordValidation,
-        FilterService,
-        CommunicationService,
-        RegistrationService,
-        ProfileService,
-        AuthService,
-        OrderService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthInterceptor,
-            multi: true
-        }
+import { GoogleMapComponent } from './components/google-map/google-map.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
 
-    ],
-    bootstrap: [AppComponent],
-    entryComponents: [CreateOrderDialogComponent,
-        UnregisterUserDialogComponent]
+import { CarPhotoPipe } from './pipes/car-photo.pipe';
+import { UserPhotoPipe } from './pipes/user-photo.pipe';
+import { OrderService } from './services/order.service';
+import { OrderCardComponent } from './components/order-card/order-card.component';
+
+import { AgmCoreModule, MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { OrderFilterComponent } from './components/order-filter/order-filter.component';
+import { MapsService } from './services/maps-service';
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    CarouselComponent,
+    CarDetailComponent,
+    CarListComponent,
+    FooterComponent,
+    NavbarComponent,
+    AboutComponent,
+    CarDetailGalleryComponent,
+    RegistrationComponent,
+    SignInComponent,
+    FilterComponent,
+    HomeComponent,
+    ProfileComponent,
+    EditProfileComponent,
+    EmailConfirmComponent,
+    CreateOrderDialogComponent,
+    UnregisterUserDialogComponent,
+    PersonalAccountComponent,
+    ProfileOrdersComponent,
+    ProfileOrderCardComponent,
+    BaseCarInfoCardComponent,
+    FavoritesComponent,
+    GoogleMapComponent,
+    OrderListComponent,
+    CarPhotoPipe,
+    UserPhotoPipe,
+    OrderCardComponent,
+    OrderFilterComponent
+  ],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBBzn2O9Ly8zKnsaf_kltqQNrpSLCSlA6U',
+      libraries: ["places"]
+    }),
+    AgmJsMarkerClustererModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    RestUrlBuilder,
+    CarService,
+    PasswordValidation,
+    FilterService,
+    CommunicationService,
+    RegistrationService,
+    ProfileService,
+    AuthService,
+    OrderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    MapsService
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [CreateOrderDialogComponent,
+    UnregisterUserDialogComponent]
 })
 export class AppModule { }

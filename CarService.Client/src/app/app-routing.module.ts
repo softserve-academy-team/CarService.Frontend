@@ -7,6 +7,8 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { FilterComponent } from './components/filter/filter.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { GoogleMapComponent } from './components/google-map/google-map.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
 import { PersonalAccountComponent } from './components/personal-account/personal-account.component';
@@ -20,16 +22,19 @@ const routes: Routes = [
   { path: 'car-list', component: CarListComponent },
   { path: 'cardetail/:id', component: CarDetailComponent },
   { path: 'registration', component: RegistrationComponent },
-
-  { path: 'personalAccount', component: PersonalAccountComponent, children: [
-    { path: 'profile', component: ProfileComponent, outlet: 'personalAccountOutlet' },
-    { path: 'profile/edit-profile', component: EditProfileComponent, outlet: 'personalAccountOutlet'},
-    { path: 'profile-orders', component: ProfileOrdersComponent, outlet: 'personalAccountOutlet'},
-    { path: 'favorites', component: FavoritesComponent, outlet: 'personalAccountOutlet'}
-  ]},
+  { path: 'google-map', component: GoogleMapComponent },
+  { path: 'order-list', component: OrderListComponent },
+  {
+    path: 'personalAccount', component: PersonalAccountComponent, children: [
+      { path: 'profile', component: ProfileComponent, outlet: 'personalAccountOutlet' },
+      { path: 'profile/edit-profile', component: EditProfileComponent, outlet: 'personalAccountOutlet' },
+      { path: 'profile-orders', component: ProfileOrdersComponent, outlet: 'personalAccountOutlet' },
+      { path: 'favorites', component: FavoritesComponent, outlet: 'personalAccountOutlet' }
+    ]
+  },
 
   { path: 'sign-in', component: SignInComponent },
-  { path: 'email-confirm' , component:EmailConfirmComponent}
+  { path: 'email-confirm', component: EmailConfirmComponent }
 ];
 
 @NgModule({

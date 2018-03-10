@@ -5,7 +5,7 @@
     </div>
     <div class="carinspection">
       <button mat-button [routerLink]="['car-list']">Search for inspection</button>
-      <button mat-button>Do inspection</button>
+      <button mat-button [routerLink]="['order-list']">Do inspection</button>
     </div>
     <div class="authorization">
       <button *ngIf="!authService.isAuthentificated" mat-button [routerLink]="['sign-in']">Sign in</button>
