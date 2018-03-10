@@ -27,14 +27,14 @@ hide: boolean;
 
   leftClick() {
     if (this.numOfCurrImg === 0) {
-      this.numOfCurrImg = this.numOfImages - 1;
+      this.numOfCurrImg = this.carImages.length - 1;
     } else {
       --this.numOfCurrImg;
     }
   }
 
   rightClick() {
-    if (this.numOfCurrImg === this.numOfImages - 1) {
+    if (this.numOfCurrImg === this.carImages.length - 1) {
       this.numOfCurrImg = 0;
     } else {
       ++this.numOfCurrImg;

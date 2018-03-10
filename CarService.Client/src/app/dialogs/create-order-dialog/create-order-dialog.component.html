@@ -1,0 +1,16 @@
+<div style="text-align:center">
+  <h1 mat-dialog-title>Create Order</h1>
+  <div class="example-container">
+    <h3>Dear customer, your order is about to be published</h3>
+  </div>
+
+  <div class="example-container">
+    <mat-form-field>
+      <textarea matInput [(ngModel)]="data.orderDescription" placeholder="Description"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="buttons-container">
+    <button style="margin-right: 50px;" class="mat-raised-button" (click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+  </div>
+</div>

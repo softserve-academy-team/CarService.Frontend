@@ -1,0 +1,94 @@
+.car-container {
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.car-element {
+    display: flex;
+    flex-direction: column;
+    min-width: 240px;
+}
+
+.info-container, .car-name {
+    display: -webkit-box;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 30px;
+    padding: 2px;
+}
+
+.car-name {
+    height: auto;
+    min-height: 30px;
+}
+
+.car-name h2 {
+    font-size: 16pt;
+    color: #256799;
+    margin: 0px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 12pt;
+    width: 50%;
+}
+
+.carPriceUSD {
+    font-size: 17pt;
+    color: green;
+}
+
+.carPriceUAH {
+    font-size: 12pt;
+    color: grey;
+}
+
+.price-block, .car-info, .info-item {
+    margin: auto 0;
+}
+
+.price-block p {
+    display: inline;
+}
+
+.icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .car-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .car-element {
+        padding-left: 20px;
+        width: 60%;
+    }
+
+    .auto-img {
+        height: 160px;
+        width: 240px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .car-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .car-element {
+        width: 100%;
+    }
+
+    .auto-img {
+        width: 100%;
+        height: auto;
+    }
+}

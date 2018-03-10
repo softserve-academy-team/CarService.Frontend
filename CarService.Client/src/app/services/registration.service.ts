@@ -19,7 +19,7 @@ export class RegistrationService {
         return this.httpClient.post(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'account', 'registration', 'customer'), customer);
     }
     registerMechanic(mechanic: MechanicRegistrationData) {
-        return this.httpClient.post(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'account', 'registration', 'customer'), mechanic);
+        return this.httpClient.post(this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'account', 'registration', 'mechanic'), mechanic);
     }
 
 }

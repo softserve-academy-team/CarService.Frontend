@@ -1,0 +1,22 @@
+<div class="component-container">
+  <div class="profile-container">
+    <div class="image-container">
+      <img *ngIf="!loading" src="https://labelstech.com/wp-content/uploads/2017/02/47199326-profile-pictures.png" class="avatar">
+    </div>
+    <div class="information-container">
+      <div *ngFor="let property of userInfo" class="properties">
+        <div class="item-container">
+          <div class="item">
+            <span>{{property.name}}: </span>
+          </div>
+          <div class="item">
+            <span>{{property.value}}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+      <button mat-raised-button *ngIf="!loading" color="primary" class="edit-button" [routerLink]="['edit-profile']">Edit Profile Information</button>
+    </div>
+  </div>
+  <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
+</div>

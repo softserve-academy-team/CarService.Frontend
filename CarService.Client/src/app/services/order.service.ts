@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import { OrderSearchModel } from '../models/order-search-model';
 import { BaseOrderInfo } from '../models/base-order-info';
+import { CreateOrder } from '../models/create-order';
 import { RestUrlBuilder } from './rest-url-builder';
 
 @Injectable()
@@ -35,6 +36,10 @@ export class OrderService {
                 .set("skip", skip.toString())
                 .append("take", take.toString())
         });
+    }
+
+    createOrder(order: CreateOrder) {
+        return this.httpClient.post(this.urlBuilder.build(this.carServiceApiBaseUrl, 'order', 'create-order'), order);
     }
 
 }

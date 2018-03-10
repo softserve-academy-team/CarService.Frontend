@@ -1,41 +1,44 @@
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatInputModule, MatDivider, MatNativeDateModule } from '@angular/material';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { CarDetailGalleryComponent } from './components/car-detail-gallery/car-detail-gallery.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
+import { FilterComponent } from './components/filter/filter.component';
 import { CarListComponent } from './components/car-list/car-list.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { PersonalAccountComponent } from './components/personal-account/personal-account.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
+import { ProfileOrdersComponent } from './components/profile-orders/profile-orders.component';
 
 import { RestUrlBuilder } from './services/rest-url-builder';
 import { CarService } from './services/car.service';
-import { FilterComponent } from './components/filter/filter.component';
 import { FilterService } from './services/filter.service';
-import { HomeComponent } from './components/home/home.component';
 import { CommunicationService } from './services/communication.service';
-import { CarDetailGalleryComponent } from './components/car-detail-gallery/car-detail-gallery.component';
-import { RegistrationComponent } from './components/registration/registration.component';
-import { PasswordValidation } from './validation/password-validation';
+import { AuthService } from './services/auth.service';
+import { AuthInterceptor } from './services/auth.interceptor';
 import { RegistrationService } from './services/registration.service';
+import { ProfileService } from './services/profile.service';
+import { PasswordValidation } from './validation/password-validation';
+import { CreateOrderDialogComponent } from './dialogs/create-order-dialog/create-order-dialog.component';
+import { UnregisterUserDialogComponent } from './dialogs/unregister-user-dialog/unregister-user-dialog.component'
+import { ProfileOrderCardComponent } from './components/profile-order-card/profile-order-card.component';
+import { BaseCarInfoCardComponent } from './components/base-car-info-card/base-car-info-card.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+
 import { GoogleMapComponent } from './components/google-map/google-map.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 
@@ -61,9 +64,19 @@ import { MapsService } from './services/maps-service';
     AboutComponent,
     CarDetailGalleryComponent,
     RegistrationComponent,
+    SignInComponent,
     FilterComponent,
     HomeComponent,
-    CarDetailGalleryComponent,
+    ProfileComponent,
+    EditProfileComponent,
+    EmailConfirmComponent,
+    CreateOrderDialogComponent,
+    UnregisterUserDialogComponent,
+    PersonalAccountComponent,
+    ProfileOrdersComponent,
+    ProfileOrderCardComponent,
+    BaseCarInfoCardComponent,
+    FavoritesComponent,
     GoogleMapComponent,
     OrderListComponent,
     CarPhotoPipe,
@@ -77,23 +90,8 @@ import { MapsService } from './services/maps-service';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatGridListModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatDividerModule,
-    MatInputModule,
-    MatListModule,
-    MatToolbarModule,
-    MatInputModule,
     FormsModule,
-    MatSelectModule,
-    MatToolbarModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
+    MaterialModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBBzn2O9Ly8zKnsaf_kltqQNrpSLCSlA6U',
       libraries: ["places"]
@@ -108,9 +106,18 @@ import { MapsService } from './services/maps-service';
     FilterService,
     CommunicationService,
     RegistrationService,
+    ProfileService,
+    AuthService,
     OrderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     MapsService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateOrderDialogComponent,
+    UnregisterUserDialogComponent]
 })
 export class AppModule { }
