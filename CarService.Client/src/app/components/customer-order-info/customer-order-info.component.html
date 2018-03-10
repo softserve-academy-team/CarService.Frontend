@@ -1,53 +1,103 @@
-<div class="order-cotainer">
-  <div class="header-container">
-    <div class="img-container">
-      <img src="{{order.photoLink}}" class="car-image">
-    </div>
-    <div class="general-info-container">
-      <div class="general-info">
-        <div class="order-name">
-          <h2>Order №{{order.orderId}}</h2>
+<div>
+  <mat-card class="order-container">
+    <div class="header-container">
+      <div class="img-container">
+        <img src="{{order.photoLink}}" class="car-image">
+      </div>
+      <div class="general-info-container">
+        <div class="general-info">
+          <div class="order-name">
+            <h2>Order №{{order.orderId}}</h2>
+          </div>
+          <div>
+            <h2>Status: {{order.status}}</h2>
+          </div>
         </div>
-        <div>
-          <h2>Status: {{order.status}}</h2>
+        <div class="general-info">
+          <div>
+            <a routerLink="/cardetail/{{order.autoRiaId}}">
+              <h4>
+                {{order.markName}} {{order.modelName}} {{order.year}}
+              </h4>
+            </a>
+          </div>
+          <div>
+            <h4>{{order.date}}</h4>
+          </div>
         </div>
       </div>
-      <div class="general-info">
-        <div>
-          <a routerLink="/cardetail/{{order.autoRiaId}}">
-            <h4>
-              {{order.markName}} {{order.modelName}} {{order.year}}
-            </h4>
-          </a>
-        </div>
-        <div>
-          <h4>{{order.date}}</h4>
-        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="content-container">
+      <div *ngIf="!loading && order.status == 'Active' && order.reviewPropositions.length==0" class="no-propositions">
+        <span>You don't have any propositions.</span>
+      </div>
+      <div class="propositons-container">
+        
+        <mat-accordion *ngIf="!loading && order.status == 'Active' && order.reviewPropositions.length > 0">
+          <div class="propositions-title">
+            <h3>Propositions:</h3>
+          </div>
+          <mat-expansion-panel *ngFor="let proposition of order.reviewPropositions">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div class="panel-title">
+                  <div class="mechanic-name">
+                    <p>{{proposition.firstName}} {{proposition.lastName}}</p>
+                  </div>
+                  <div class="stars-container">
+                    <app-mechanic-rate [rate]="proposition.mechanicRate"></app-mechanic-rate>
+                  </div>
+                  <div class="mechanic-rate">
+                    {{proposition.mechanicRate.toFixed(1)}}
+                  </div>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description class="description-container">
+                <div class="description-content">
+                  Proposition: {{proposition.price}}₴
+                </div>
+                <div class="description-content">
+                  {{proposition.date}}
+                </div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <span>{{proposition.comment}}</span>
+            <mat-action-row>
+              <button mat-raised-button (click)="acceptPreposition(proposition.id)" class="button-accept">Accept</button>
+            </mat-action-row>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-accordion *ngIf="order.status == 'Pending' || order.status == 'Done'">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div class="panel-title">
+                  <div class="mechanic-name">
+                    <p>{{mechanic.firstName}} {{mechanic.lastName}}</p>
+                  </div>
+                  <div class="stars-container">
+                    <app-mechanic-rate [rate]="mechanic.mechanicRate"></app-mechanic-rate>
+                  </div>
+                  <div class="mechanic-rate">
+                    {{mechanic.mechanicRate.toFixed(1)}}
+                  </div>
+                </div>
+              </mat-panel-title>
+              <mat-panel-description>
+                <div class="description-content">
+                  Price: {{mechanic.price}}₴
+                </div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <span>{{mechanic.comment}}</span>
+            <mat-action-row *ngIf="order.status == 'Done'">
+              <button mat-raised-button color="primary">Review</button>
+            </mat-action-row>
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
     </div>
-  </div>
-  <mat-divider></mat-divider>
-  <div class="content-container">
-    <div *ngIf="!loading && order.status == 'Active' && order.reviewPropositions.length==0" class="no-propositions">
-      <span>You don't have any propositions.</span>
-    </div>
-    <div class="propositons-container">
-      <mat-accordion>
-        <mat-expansion-panel *ngFor="let propositon of order.reviewPropositions">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <div>
-                <span>{{propositon.firstName}} {{propositon.lastName}}</span>
-                <span>{{propositon.mechanicRate}}</span>
-                <app-mechanic-rate></app-mechanic-rate>
-              </div>
-            </mat-panel-title>
-            <mat-panel-description>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <span>{{propositon.comment}}</span>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-  </div>
+  </mat-card>
 </div>

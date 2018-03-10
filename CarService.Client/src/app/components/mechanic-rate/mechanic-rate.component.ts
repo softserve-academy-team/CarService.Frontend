@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-mechanic-rate',
@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MechanicRateComponent implements OnInit {
 
+  @Input() rate: number;
+  maxRate = 5;
+  full: number;
+  half: number;
+  border: number;
+
   constructor() { }
 
   ngOnInit() {
+    this.full = Math.trunc(this.rate);
+    this.half = (this.rate - this.full) >= 0.5 ? 1 : 0;
+    this.border = Math.round(this.maxRate - this.rate);
   }
 
+  range(value: number) {
+    return Array(value);
+  }
 }

@@ -45,7 +45,7 @@ export class ProfileComponent implements OnInit {
       {
         this.userInfo.push({name: "Work Experience", value: this.user.workExperience.toString()});
         this.userInfo.push({name: "Specialization", value: this.user.specialization});
-        this.userInfo.push({name: "Rate", value: this.user.mechanicRate.toString()});
+        this.userInfo.push({name: "Rate", value: this.user.mechanicRate.toFixed(1).toString()});
       }
 
       this.loading = false;

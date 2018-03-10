@@ -1,5 +1,7 @@
 <mat-card class="list-card">
-  <img src="{{order.photoLink}}">
+  <a routerLink="/order-info/{{order.orderId}}">
+    <img src="{{order.photoLink}}">
+  </a>
   <div class="content">
     <div class="header-container">
       <h4>
