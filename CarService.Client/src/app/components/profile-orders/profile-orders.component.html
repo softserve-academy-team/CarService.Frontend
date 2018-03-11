@@ -5,7 +5,7 @@
         <button mat-raised-button *ngIf="!enabledCreatedOrders" color="primary" class="nav-button" [routerLink]="['/car-list']">Create New Order</button>
         <div class="list-container">
           <div *ngFor="let order of createdOrders">
-            <app-profile-order-card [order]="order"></app-profile-order-card>
+            <app-profile-order-card [order]="order" [link]="routerLinkForCreated()"></app-profile-order-card>
           </div>
         </div>
       </div>
@@ -13,11 +13,11 @@
     </mat-tab>
 
     <mat-tab label="My Applied Orders" [disabled]="!isMechanic">
-      <button mat-raised-button *ngIf="!enabledAppliedOrders"  color="primary" class="nav-button" [routerLink]="['']">Find Order</button>
+      <button mat-raised-button *ngIf="!enabledAppliedOrders" color="primary" class="nav-button" [routerLink]="['/order-list']">Find Order</button>
       <div>
         <div class="list-container">
           <div *ngFor="let order of appliedOrders">
-            <app-profile-order-card [order]="order"></app-profile-order-card>
+            <app-profile-order-card [order]="order" [link]="routerLinkForApplied()"></app-profile-order-card>
           </div>
         </div>
       </div>

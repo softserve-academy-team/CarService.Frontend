@@ -34,7 +34,8 @@ const routes: Routes = [
     ]
   },
   { path: 'sign-in', component: SignInComponent },
-  { path: 'email-confirm', component: EmailConfirmComponent }
+  { path: 'email-confirm', component: EmailConfirmComponent },
+  { path: 'order-info/:id', component: CustomerOrderInfoComponent }
 ];
 
 @NgModule({

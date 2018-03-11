@@ -46,7 +46,6 @@ export class ProfileOrdersComponent implements OnInit {
       if (!this.createdOrders ||  this.createdOrders.length == 0)
       {
         this.enabledCreatedOrders = false;
-        console.log(this.createdOrders);
       }
     },
       (err: HttpErrorResponse) => {
@@ -66,6 +65,10 @@ export class ProfileOrdersComponent implements OnInit {
 
     this.profileService.getUserAppliedOrders().subscribe((data: ProfileOrderInfo[]) => {
       this.appliedOrders = data;
+      if (!this.appliedOrders ||  this.appliedOrders.length == 0)
+      {
+        this.enabledAppliedOrders = false;
+      }
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -77,7 +80,13 @@ export class ProfileOrdersComponent implements OnInit {
     );
 
     this.loadingApplied = false;
-    if (!this.appliedOrders || this.appliedOrders.length == 0)
-      this.enabledAppliedOrders = false;
+  }
+
+  routerLinkForCreated(): string {
+    return "/order-info/";
+  }
+
+  routerLinkForApplied(): string {
+    return "";
   }
 }

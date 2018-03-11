@@ -40,14 +40,14 @@ export class OrderService {
     }
 
     createOrder(order: CreateOrder) {
-        return this.httpClient.post(this.urlBuilder.build(this.carServiceApiBaseUrl, 'order', 'create-order'), order);
+        return this.httpClient.post(this.urlBuilder.build(this.carServiceApiBaseUrl, 'orders', 'create-order'), order);
     }
 
-  getCustomerOrderInfo(orderId: number) {
-    return this.httpClient.get(this.urlBuilder.build(this.carServiceApiBaseUrl, 'order', 'order-info', orderId.toString()))
-  }
+    getCustomerOrderInfo(orderId: number) {
+        return this.httpClient.get(this.urlBuilder.build(this.carServiceApiBaseUrl, 'orders', 'order-info', orderId.toString()))
+    }
 
-  acceptReviewProposition(proposition: AcceptReviewProposition) {
-    return this.httpClient.put(this.urlBuilder.build(this.carServiceApiBaseUrl, 'order', 'accept-proposition'), proposition);
-  }
+    acceptReviewProposition(proposition: AcceptReviewProposition) {
+        return this.httpClient.put(this.urlBuilder.build(this.carServiceApiBaseUrl, 'orders', 'accept-proposition'), proposition);
+    }
 }

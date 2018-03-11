@@ -9,9 +9,14 @@ import { ProfileOrderInfo } from '../../models/profile-order-info';
 export class ProfileOrderCardComponent implements OnInit {
 
   @Input() order: ProfileOrderInfo;
-
+  @Input() link: string;
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getLink(): string {
+    return `${this.link}${this.order.orderId}`;
   }
 }
