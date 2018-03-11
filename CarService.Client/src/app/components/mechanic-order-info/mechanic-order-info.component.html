@@ -1,0 +1,36 @@
+<div>
+  <mat-card class="order-container">
+    <div class="header-container">
+      <div class="img-container">
+        <img src="{{order.photoLink}}" class="car-image">
+      </div>
+      <div class="general-info-container">
+        <div class="general-info">
+          <div>
+            <h2>Order №{{order.orderId}}</h2>
+          </div>
+          <div>
+            <h2>Status: {{order.status}}</h2>
+          </div>
+        </div>
+        <div class="general-info">
+          <div>
+            <a routerLink="/cardetail/{{order.autoRiaId}}">
+              <h4>
+                {{order.markName}} {{order.modelName}} {{order.year}}
+              </h4>
+            </a>
+          </div>
+          <div class="customer-info">
+            <div mat-card-avatar class="header-image"></div>
+            <div class="customer-name">
+              <h4>{{order.customerFirstName}} {{order.customerLastName}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    
+  </mat-card>
+</div>

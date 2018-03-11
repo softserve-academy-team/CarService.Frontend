@@ -14,7 +14,7 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./customer-order-info.component.scss']
 })
 export class CustomerOrderInfoComponent implements OnInit {
-  private order: CustomerOrderInfo = new CustomerOrderInfo();
+  private order: CustomerOrderInfo;
   private mechanic: ReviewProposition;
 
   loading: boolean = false;
@@ -23,7 +23,7 @@ export class CustomerOrderInfoComponent implements OnInit {
     private route: ActivatedRoute,
     private orderService: OrderService,
     private snackBar: MatSnackBar,
-    private router: Router,
+    private router: Router
   ) {
   }
 

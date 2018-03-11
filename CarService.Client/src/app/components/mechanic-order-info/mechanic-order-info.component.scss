@@ -40,67 +40,20 @@ $car-img-width: 220px;
     width: $car-img-width;
 }
 
-.content-container {
-    padding: 15px;
-    margin-top: 30px;
-}
-
-.propositions-title {
-    margin: 20px 0;
-}
-
-.no-propositions {
-    padding: 20px;
-    text-align: center;
-}
-
-mat-panel-title {
-    width: 55%;
-}
-
-.panel-title {
+.customer-info {
     display: flex;
     flex-direction: row;
-    //justify-content: center;
-    width: 100%;
+    justify-content: center;
 }
 
-%panel-title-content {
+.header-image {
+    background-image: url('https://labelstech.com/wp-content/uploads/2017/02/47199326-profile-pictures.png');
+    background-size: cover;
+}
+
+.customer-name {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 10px;
-}
-
-.stars-container {
-    @extend %panel-title-content;
-}
-
-.mechanic-name {
-    @extend %panel-title-content;
-    width: 40%;
-}
-
-.mechanic-rate {
-    @extend %panel-title-content;
-    margin-left: 10px;
-}
-
-.description-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.description-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: black;
-}
-
-.button-accept {
-    background-color:#00cc00;
-    color:white;
     margin-left: 10px;
 }

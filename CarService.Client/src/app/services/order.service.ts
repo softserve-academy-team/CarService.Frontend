@@ -47,6 +47,10 @@ export class OrderService {
         return this.httpClient.get(this.urlBuilder.build(this.carServiceApiBaseUrl, 'orders', 'order-info', orderId.toString()))
     }
 
+    getMechanicOrderInfo(orderId: number) {
+        return this.httpClient.get(this.urlBuilder.build(this.carServiceApiBaseUrl, 'orders', 'mechanic-order-info', orderId.toString()))
+    }
+
     acceptReviewProposition(proposition: AcceptReviewProposition) {
         return this.httpClient.put(this.urlBuilder.build(this.carServiceApiBaseUrl, 'orders', 'accept-proposition'), proposition);
     }

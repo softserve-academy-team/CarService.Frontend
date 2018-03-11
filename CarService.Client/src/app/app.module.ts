@@ -54,6 +54,7 @@ import { AgmCoreModule, MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { OrderFilterComponent } from './components/order-filter/order-filter.component';
 import { MapsService } from './services/maps-service';
+import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mechanic-order-info.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { MapsService } from './services/maps-service';
     OrderCardComponent,
     OrderFilterComponent,
     CustomerOrderInfoComponent,
-    MechanicRateComponent
+    MechanicRateComponent,
+    MechanicOrderInfoComponent
   ],
   imports: [
     AppRoutingModule,

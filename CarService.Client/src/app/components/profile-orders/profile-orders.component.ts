@@ -87,6 +87,6 @@ export class ProfileOrdersComponent implements OnInit {
   }
 
   routerLinkForApplied(): string {
-    return "";
+    return "/mechanic-order-info/";
   }
 }
