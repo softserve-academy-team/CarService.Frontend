@@ -10,14 +10,34 @@ export class ProfileOrderCardComponent implements OnInit {
   @Input() order: ProfileOrderInfo;
   @Input() link: string;
   private status: string;
-
+  private color: string;
+  
   constructor() { }
 
   ngOnInit() {
     if (this.order.isDoIt === true)
       this.status = this.order.status;
     else
-      this.status = "Don't get order"; 
+      this.status = "Denied"; 
+
+      switch(this.status)
+      {
+        case "Active": {
+          this.color = "green";
+          break;
+        }
+        case "Pending": {
+          this.color = "orange";
+          break;
+        }
+        case "Done": {
+          this.color = "blue";
+          break;
+        }
+        default: {
+          this.color = "red";
+        }
+      }
   }
 
   getLink(): string {

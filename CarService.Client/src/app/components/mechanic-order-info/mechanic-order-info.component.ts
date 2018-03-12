@@ -14,6 +14,7 @@ export class MechanicOrderInfoComponent implements OnInit {
   private order: MechanicOrderInfo;
   private status: string;
   private loading: boolean = false;
+  private color: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,9 +34,28 @@ export class MechanicOrderInfoComponent implements OnInit {
       this.order = data;
 
       if (!this.order.isDoIt)
-        this.status = "Don't get order";
+        this.status = "Denied";
       else
         this.status = this.order.status;
+
+      switch(this.status)
+      {
+        case "Active": {
+          this.color = "green";
+          break;
+        }
+        case "Pending": {
+          this.color = "orange";
+          break;
+        }
+        case "Done": {
+          this.color = "blue";
+          break;
+        }
+        default: {
+          this.color = "red";
+        }
+      }
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
