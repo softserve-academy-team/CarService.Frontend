@@ -76,4 +76,8 @@ export class MechanicOrderInfoComponent implements OnInit {
     });
     this.router.navigate(['']);
   }
+
+  addReview() {
+    
+  }
 }
