@@ -8,6 +8,7 @@ export class ProfileOrderInfo {
         public markName?: string,
         public modelName?: string,
         public year?: number,
-        public photoLink?: string
+        public photoLink?: string,
+        public isDoIt?: boolean
     ) { }
 }
