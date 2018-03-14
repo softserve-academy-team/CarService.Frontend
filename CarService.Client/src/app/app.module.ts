@@ -24,6 +24,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
 import { ProfileOrdersComponent } from './components/profile-orders/profile-orders.component';
+import { CustomerOrderInfoComponent } from './components/customer-order-info/customer-order-info.component';
+import { MechanicRateComponent } from './components/mechanic-rate/mechanic-rate.component';
 
 import { RestUrlBuilder } from './services/rest-url-builder';
 import { CarService } from './services/car.service';
@@ -34,8 +36,10 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { RegistrationService } from './services/registration.service';
 import { ProfileService } from './services/profile.service';
 import { PasswordValidation } from './validation/password-validation';
+
 import { CreateOrderDialogComponent } from './dialogs/create-order-dialog/create-order-dialog.component';
 import { UnregisterUserDialogComponent } from './dialogs/unregister-user-dialog/unregister-user-dialog.component'
+import { ReviewPropositionDialogComponent } from './dialogs/review-proposition-dialog/review-proposition-dialog.component'
 import { ProfileOrderCardComponent } from './components/profile-order-card/profile-order-card.component';
 import { BaseCarInfoCardComponent } from './components/base-car-info-card/base-car-info-card.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
@@ -55,6 +59,7 @@ import { MapsService } from './services/maps-service';
 import { ReviewCreateComponent } from './components/review-create/review-create.component';
 import { ReviewBodyComponent } from './components/review-body/review-body.component';
 import { ReviewService } from './services/review.service';
+import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mechanic-order-info.component';
 
 
 @NgModule({
@@ -76,6 +81,7 @@ import { ReviewService } from './services/review.service';
     EmailConfirmComponent,
     CreateOrderDialogComponent,
     UnregisterUserDialogComponent,
+    ReviewPropositionDialogComponent,
     PersonalAccountComponent,
     ProfileOrdersComponent,
     ProfileOrderCardComponent,
@@ -89,6 +95,9 @@ import { ReviewService } from './services/review.service';
     OrderFilterComponent,
     ReviewCreateComponent,
     ReviewBodyComponent,
+    CustomerOrderInfoComponent,
+    MechanicRateComponent,
+    MechanicOrderInfoComponent
   ],
   imports: [
     AppRoutingModule,
@@ -126,6 +135,7 @@ import { ReviewService } from './services/review.service';
   ],
   bootstrap: [AppComponent],
   entryComponents: [CreateOrderDialogComponent,
-    UnregisterUserDialogComponent]
+    UnregisterUserDialogComponent,
+    ReviewPropositionDialogComponent]
 })
 export class AppModule { }

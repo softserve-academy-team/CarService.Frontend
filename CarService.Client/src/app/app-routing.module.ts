@@ -17,6 +17,8 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { ProfileOrdersComponent } from './components/profile-orders/profile-orders.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { ReviewCreateComponent } from './components/review-create/review-create.component';
+import { CustomerOrderInfoComponent } from './components/customer-order-info/customer-order-info.component';
+import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mechanic-order-info.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,9 +36,10 @@ const routes: Routes = [
       { path: 'favorites', component: FavoritesComponent, outlet: 'personalAccountOutlet' }
     ]
   },
-
   { path: 'sign-in', component: SignInComponent },
-  { path: 'email-confirm', component: EmailConfirmComponent }
+  { path: 'email-confirm', component: EmailConfirmComponent },
+  { path: 'order-info/:id', component: CustomerOrderInfoComponent },
+  { path: 'mechanic-order-info/:id', component: MechanicOrderInfoComponent }
 ];
 
 @NgModule({

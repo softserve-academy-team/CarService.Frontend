@@ -1,0 +1,98 @@
+$car-img-width: 220px;
+$item-font-size: 11pt;
+
+* {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+.order-container {
+    margin: auto;
+    width: 50%;
+    max-width: 1100px;
+    min-width: 700px;
+    min-height: 600px;
+    margin-bottom: 40px;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.img-container {
+    padding: 10px;
+}
+
+.general-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    width: 100%;
+}
+
+.general-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.car-image {
+    width: $car-img-width;
+}
+
+.customer-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.header-image {
+    background-image: url('https://labelstech.com/wp-content/uploads/2017/02/47199326-profile-pictures.png');
+    background-size: cover;
+}
+
+%header-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.customer-name {
+    @extend %header-content;
+    margin-left: 10px;
+}
+
+.autoria-link {
+    @extend %header-content;
+}
+
+.content-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.item {
+    width: 50%;
+    padding: 15px;
+    font-size: $item-font-size;
+    height: auto;
+}
+
+.proposition-container {
+    margin-top: 40px;
+}
+
+.general-info h2 {
+    display: inline;
+}
+
+.button-review {
+    margin-top: 15px;
+}
