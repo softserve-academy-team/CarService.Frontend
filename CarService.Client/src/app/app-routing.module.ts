@@ -18,6 +18,7 @@ import { ProfileOrdersComponent } from './components/profile-orders/profile-orde
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { CustomerOrderInfoComponent } from './components/customer-order-info/customer-order-info.component';
 import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mechanic-order-info.component';
+import { ProfileReviewsComponent } from './components/profile-reviews/profile-reviews.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent, outlet: 'personalAccountOutlet' },
       { path: 'profile/edit-profile', component: EditProfileComponent, outlet: 'personalAccountOutlet' },
       { path: 'profile-orders', component: ProfileOrdersComponent, outlet: 'personalAccountOutlet' },
+      { path: 'profile-reviews', component: ProfileReviewsComponent, outlet: 'personalAccountOutlet' },
       { path: 'favorites', component: FavoritesComponent, outlet: 'personalAccountOutlet' }
     ]
   },

@@ -55,6 +55,8 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { OrderFilterComponent } from './components/order-filter/order-filter.component';
 import { MapsService } from './services/maps-service';
 import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mechanic-order-info.component';
+import { ProfileReviewsComponent } from './components/profile-reviews/profile-reviews.component';
+import { ReviewCardComponent } from './components/review-card/review-card.component';
 
 
 @NgModule({
@@ -89,7 +91,9 @@ import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mec
     OrderFilterComponent,
     CustomerOrderInfoComponent,
     MechanicRateComponent,
-    MechanicOrderInfoComponent
+    MechanicOrderInfoComponent,
+    ProfileReviewsComponent,
+    ReviewCardComponent
   ],
   imports: [
     AppRoutingModule,

@@ -23,7 +23,7 @@
           <mat-icon>work</mat-icon>
           <span>Orders</span>
         </button>
-        <button mat-menu-item disabled>
+        <button mat-menu-item [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['profile-reviews'] } }]">
           <mat-icon>assignment</mat-icon>
           <span>Reviews</span>
         </button>
@@ -34,10 +34,6 @@
         <button mat-menu-item [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['profile'] } }]">
           <mat-icon>person</mat-icon>
           <span>Profile</span>
-        </button>
-        <button mat-menu-item disabled>
-          <mat-icon>settings</mat-icon>
-          <span>Settings</span>
         </button>
         <button mat-menu-item (click)="authService.logout()">
           <mat-icon>exit_to_app</mat-icon>
