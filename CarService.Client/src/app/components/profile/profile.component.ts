@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { CommunicationService } from '../../services/communication.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,16 +16,21 @@ export class ProfileComponent implements OnInit {
   private user: UserDTO;
   private userInfo: Element[];
   dataSource = new MatTableDataSource(this.userInfo);
-  
+
   loading: boolean;
 
   constructor(
-    private profileService: ProfileService, 
+    private profileService: ProfileService,
     private router: Router,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private communicationService: CommunicationService) { }
 
   ngOnInit() {
     this.getUserInfo();
+    this.communicationService.isUpdatedReceived.subscribe(d => {
+      if (d === true)
+        this.getUserInfo();
+    });
   }
 
   private getUserInfo() {
@@ -33,19 +39,18 @@ export class ProfileComponent implements OnInit {
     this.profileService.getUserInfo().subscribe((data: UserDTO) => {
       this.user = data;
       this.userInfo = [
-        {name: "First Name", value: this.user.firstName},
-        {name: "Last Name", value: this.user.lastName},
-        {name: "Email", value: this.user.email},
-        {name: "Phone Number", value: this.user.phoneNumber},
-        {name: "City", value: this.user.city},
-        {name: "Card Number", value: this.user.cardNumber}
+        { name: "First Name", value: this.user.firstName },
+        { name: "Last Name", value: this.user.lastName },
+        { name: "Email", value: this.user.email },
+        { name: "Phone Number", value: this.user.phoneNumber },
+        { name: "City", value: this.user.city },
+        { name: "Card Number", value: this.user.cardNumber }
       ];
 
-      if (this.user.workExperience != undefined)
-      {
-        this.userInfo.push({name: "Work Experience", value: this.user.workExperience.toString()});
-        this.userInfo.push({name: "Specialization", value: this.user.specialization});
-        this.userInfo.push({name: "Rate", value: this.user.mechanicRate.toString()});
+      if (this.user.workExperience != undefined) {
+        this.userInfo.push({ name: "Work Experience", value: this.user.workExperience.toString() });
+        this.userInfo.push({ name: "Specialization", value: this.user.specialization });
+        this.userInfo.push({ name: "Rate", value: this.user.mechanicRate.toFixed(1).toString() });
       }
 
       this.loading = false;

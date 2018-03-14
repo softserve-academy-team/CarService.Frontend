@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { OrderSearchModel } from '../models/order-search-model';
 import { BaseOrderInfo } from '../models/base-order-info';
 import { CreateOrder } from '../models/create-order';
+import { AcceptReviewProposition } from '../models/accept-review-proposition';
 import { RestUrlBuilder } from './rest-url-builder';
 import { CreateReviewProposition } from '../models/create-review-proposition';
 
@@ -45,5 +46,17 @@ export class OrderService {
 
     createReviewProposition(reviewProposition: CreateReviewProposition) {
         return this.httpClient.post(this.urlBuilder.build(this.carServiceApiBaseUrl, 'orders', 'create-review-proposition'), reviewProposition);
+    }
+
+    getCustomerOrderInfo(orderId: number) {
+        return this.httpClient.get(this.urlBuilder.build(this.carServiceApiBaseUrl, 'orders', 'order-info', orderId.toString()))
+    }
+
+    getMechanicOrderInfo(orderId: number) {
+        return this.httpClient.get(this.urlBuilder.build(this.carServiceApiBaseUrl, 'orders', 'mechanic-order-info', orderId.toString()))
+    }
+
+    acceptReviewProposition(proposition: AcceptReviewProposition) {
+        return this.httpClient.put(this.urlBuilder.build(this.carServiceApiBaseUrl, 'orders', 'accept-proposition'), proposition);
     }
 }

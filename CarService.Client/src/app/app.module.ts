@@ -23,6 +23,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { EmailConfirmComponent } from './components/email-confirm/email-confirm.component';
 import { ProfileOrdersComponent } from './components/profile-orders/profile-orders.component';
+import { CustomerOrderInfoComponent } from './components/customer-order-info/customer-order-info.component';
+import { MechanicRateComponent } from './components/mechanic-rate/mechanic-rate.component';
 
 import { RestUrlBuilder } from './services/rest-url-builder';
 import { CarService } from './services/car.service';
@@ -33,6 +35,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { RegistrationService } from './services/registration.service';
 import { ProfileService } from './services/profile.service';
 import { PasswordValidation } from './validation/password-validation';
+
 import { CreateOrderDialogComponent } from './dialogs/create-order-dialog/create-order-dialog.component';
 import { UnregisterUserDialogComponent } from './dialogs/unregister-user-dialog/unregister-user-dialog.component'
 import { ReviewPropositionDialogComponent } from './dialogs/review-proposition-dialog/review-proposition-dialog.component'
@@ -52,6 +55,7 @@ import { AgmCoreModule, MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { OrderFilterComponent } from './components/order-filter/order-filter.component';
 import { MapsService } from './services/maps-service';
+import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mechanic-order-info.component';
 
 
 @NgModule({
@@ -84,7 +88,10 @@ import { MapsService } from './services/maps-service';
     CarPhotoPipe,
     UserPhotoPipe,
     OrderCardComponent,
-    OrderFilterComponent
+    OrderFilterComponent,
+    CustomerOrderInfoComponent,
+    MechanicRateComponent,
+    MechanicOrderInfoComponent
   ],
   imports: [
     AppRoutingModule,
