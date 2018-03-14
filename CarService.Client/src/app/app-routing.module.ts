@@ -16,6 +16,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { ProfileOrdersComponent } from './components/profile-orders/profile-orders.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { ReviewCreateComponent } from './components/review-create/review-create.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'google-map', component: GoogleMapComponent },
   { path: 'order-list', component: OrderListComponent },
+  { path: 'review-create', component: ReviewCreateComponent },
   {
     path: 'personalAccount', component: PersonalAccountComponent, children: [
       { path: 'profile', component: ProfileComponent, outlet: 'personalAccountOutlet' },

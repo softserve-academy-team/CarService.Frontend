@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { FileUploadModule } from "ng2-file-upload/file-upload/file-upload.module";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -51,6 +52,9 @@ import { AgmCoreModule, MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { OrderFilterComponent } from './components/order-filter/order-filter.component';
 import { MapsService } from './services/maps-service';
+import { ReviewCreateComponent } from './components/review-create/review-create.component';
+import { ReviewBodyComponent } from './components/review-body/review-body.component';
+import { ReviewService } from './services/review.service';
 
 
 @NgModule({
@@ -82,7 +86,9 @@ import { MapsService } from './services/maps-service';
     CarPhotoPipe,
     UserPhotoPipe,
     OrderCardComponent,
-    OrderFilterComponent
+    OrderFilterComponent,
+    ReviewCreateComponent,
+    ReviewBodyComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -97,7 +103,8 @@ import { MapsService } from './services/maps-service';
       libraries: ["places"]
     }),
     AgmJsMarkerClustererModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FileUploadModule
   ],
   providers: [
     RestUrlBuilder,
@@ -114,7 +121,8 @@ import { MapsService } from './services/maps-service';
       useClass: AuthInterceptor,
       multi: true
     },
-    MapsService
+    MapsService,
+    ReviewService
   ],
   bootstrap: [AppComponent],
   entryComponents: [CreateOrderDialogComponent,

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatInputModule, MatDivider, MatTableModule, MatMenuModule, MatSidenavModule, MatNativeDateModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatDivider, MatTableModule, MatMenuModule, MatSidenavModule, MatNativeDateModule, MatStepperModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule, MatFormFieldControl } from '@angular/material/form-field';
@@ -33,7 +33,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatDialogModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
-    MatTabsModule
+    MatTabsModule,
+    MatStepperModule
   ],
   exports: [
     MatAutocompleteModule,
@@ -52,7 +53,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTableModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
-    MatTabsModule
+    MatTabsModule,
+    MatStepperModule
   ]
 })
 export class MaterialModule { }
