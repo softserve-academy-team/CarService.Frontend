@@ -6,6 +6,7 @@ import { OrderSearchModel } from '../models/order-search-model';
 import { BaseOrderInfo } from '../models/base-order-info';
 import { CreateOrder } from '../models/create-order';
 import { RestUrlBuilder } from './rest-url-builder';
+import { CreateReviewProposition } from '../models/create-review-proposition';
 
 @Injectable()
 export class OrderService {
@@ -39,7 +40,10 @@ export class OrderService {
     }
 
     createOrder(order: CreateOrder) {
-        return this.httpClient.post(this.urlBuilder.build(this.carServiceApiBaseUrl, 'order', 'create-order'), order);
+        return this.httpClient.post(this.urlBuilder.build(this.carServiceApiBaseUrl, 'orders', 'create-order'), order);
     }
 
+    createReviewProposition(reviewProposition: CreateReviewProposition) {
+        return this.httpClient.post(this.urlBuilder.build(this.carServiceApiBaseUrl, 'orders', 'create-review-proposition'), reviewProposition);
+    }
 }

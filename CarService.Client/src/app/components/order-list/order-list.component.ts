@@ -6,6 +6,11 @@ import { GoogleMapConfig } from '../../config-models/google-map-config';
 import { OrderSearchModel } from '../../models/order-search-model';
 import { BaseOrderInfo } from '../../models/base-order-info';
 import { OrderService } from '../../services/order.service';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { ReviewPropositionDialogComponent } from '../../dialogs/review-proposition-dialog/review-proposition-dialog.component';
+import { NullAstVisitor } from '@angular/compiler';
+import { CreateReviewProposition } from '../../models/create-review-proposition';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-order-list',
@@ -20,6 +25,10 @@ export class OrderListComponent implements OnInit, AfterViewChecked {
 
   private orders: BaseOrderInfo[] = [];
   private cities: Observable<string[]>;
+  private order: BaseOrderInfo;
+  private reviewDescription: string;
+  private reviewPrice: number;
+  private orderId: number;
 
   private skip: number = 0;
   private readonly take: number = 5;
@@ -31,7 +40,9 @@ export class OrderListComponent implements OnInit, AfterViewChecked {
   private isAllOrdersReceived: boolean = false;
 
   constructor(private cdRef: ChangeDetectorRef,
-    private orderService: OrderService) {
+    private orderService: OrderService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar) {
 
     this.mapConfig = environment.GoogleMap;
     this.orderSearchConfig = environment.OrderSearch;
@@ -65,7 +76,7 @@ export class OrderListComponent implements OnInit, AfterViewChecked {
 
   private cityMarkerButtonClickedHandler(cityName: string) {
     this.scrollToTop();
-    this.isAllOrdersReceived = false;    
+    this.isAllOrdersReceived = false;
     if (this.orderSearchModel != undefined && this.orderSearchModel != null) {
       this.orderSearchModel = new OrderSearchModel();
     }
@@ -124,4 +135,55 @@ export class OrderListComponent implements OnInit, AfterViewChecked {
     this.cdRef.detectChanges();
   }
 
+  createReviewPropositionDialog(order) {
+    this.order = order;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = { order: this.order }
+    let createReviewProposition = this.dialog.open(ReviewPropositionDialogComponent, dialogConfig);
+
+    createReviewProposition.afterClosed().subscribe(result => {
+      if ((result != null)) {
+        this.orderId = order.orderId;
+        this.reviewDescription = result.reviewDescription;
+        this.reviewPrice = result.reviewPrice;
+
+        this.postCreatedReviewProposition();
+        this.reviewPropositionCreatedSnackBar();
+
+        console.log('Review create!');
+      } else {
+        console.log('Review create cancel');
+      }
+    })
+  }
+
+  private createReviewProposition(): CreateReviewProposition {
+    let reviewProp = new CreateReviewProposition();
+    reviewProp.orderId = this.orderId;
+    reviewProp.reviewDescription = this.reviewDescription;
+    reviewProp.reviewPrice = this.reviewPrice;
+    return reviewProp;
+  }
+
+  postCreatedReviewProposition(): void {
+    let reviewProp = this.createReviewProposition();
+    this.orderService.createReviewProposition(reviewProp).subscribe(data => {
+    },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log('An error occurred:', err.error.message);
+        } else {
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+        }
+      }
+    );
+  }
+
+  reviewPropositionCreatedSnackBar() {
+    this.snackBar.open("Review proposition created!", "Ok", {
+      duration: 5000
+    });
+  }
 }

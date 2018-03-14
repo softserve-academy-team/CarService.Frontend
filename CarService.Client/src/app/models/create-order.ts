@@ -6,4 +6,7 @@ export class CreateOrder {
     year: number;
     photoLink: string;
     city: string;
+    categoryId: number;
+    markId: number;
+    modelId: number;
 }

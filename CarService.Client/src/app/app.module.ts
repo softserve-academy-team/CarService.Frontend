@@ -35,6 +35,7 @@ import { ProfileService } from './services/profile.service';
 import { PasswordValidation } from './validation/password-validation';
 import { CreateOrderDialogComponent } from './dialogs/create-order-dialog/create-order-dialog.component';
 import { UnregisterUserDialogComponent } from './dialogs/unregister-user-dialog/unregister-user-dialog.component'
+import { ReviewPropositionDialogComponent } from './dialogs/review-proposition-dialog/review-proposition-dialog.component'
 import { ProfileOrderCardComponent } from './components/profile-order-card/profile-order-card.component';
 import { BaseCarInfoCardComponent } from './components/base-car-info-card/base-car-info-card.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
@@ -72,6 +73,7 @@ import { MapsService } from './services/maps-service';
     EmailConfirmComponent,
     CreateOrderDialogComponent,
     UnregisterUserDialogComponent,
+    ReviewPropositionDialogComponent,
     PersonalAccountComponent,
     ProfileOrdersComponent,
     ProfileOrderCardComponent,
@@ -118,6 +120,7 @@ import { MapsService } from './services/maps-service';
   ],
   bootstrap: [AppComponent],
   entryComponents: [CreateOrderDialogComponent,
-    UnregisterUserDialogComponent]
+    UnregisterUserDialogComponent,
+    ReviewPropositionDialogComponent]
 })
 export class AppModule { }
