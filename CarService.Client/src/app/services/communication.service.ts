@@ -6,8 +6,10 @@ import { BaseCarInfo } from '../models/base-car-info';
 export class CommunicationService {
 
   private infoToShare = new Subject<BaseCarInfo[]>();
+  private reviewIdToShare = new Subject<number>();
   private isUpdatedProfile = new Subject<boolean>();
   public infoReceived = this.infoToShare.asObservable();
+  public reviewReceived = this.reviewIdToShare.asObservable();
   public isUpdatedReceived = this.isUpdatedProfile.asObservable();
 
   constructor() { }
@@ -26,5 +28,13 @@ export class CommunicationService {
 
   getNotifiedEditedProfile(isUpdated: boolean) {
     this.isUpdatedProfile.subscribe(data => isUpdated = data);
+  }
+
+  sendReview(reviewId: number){
+    this.reviewIdToShare.next(reviewId);
+  }
+
+  getNotifiedOfReviewUpdate(reviewId: number){
+    this.reviewIdToShare.subscribe(data => reviewId = data);
   }
 }

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FileUploader, FileSelectDirective } from 'ng2-file-upload';
-
-const URL = 'https://localhost:44340/api/review/save_photo/';
+import { CommunicationService } from '../../services/communication.service';
 
 @Component({
   selector: 'app-review-body',
@@ -9,11 +8,25 @@ const URL = 'https://localhost:44340/api/review/save_photo/';
   styleUrls: ['./review-body.component.scss']
 })
 export class ReviewBodyComponent {
+  @Input() reviewId: number;
   uploadFile: any;
+  url: string;
 
-  public uploader: FileUploader = new FileUploader({ url: URL });
+  public uploader: FileUploader;
   public hasBaseDropZoneOver: boolean = false;
   public hasAnotherDropZoneOver: boolean = false;
+
+  constructor(private communicationService: CommunicationService) {
+    this.communicationService.reviewReceived.subscribe(d => {
+      this.reviewId = d;
+      this.url = `https://localhost:44340/api/review/save_photo/${this.reviewId}`;
+      console.log(this.url);
+      this.uploader = new FileUploader({ 
+        url: this.url,
+        authToken: `Bearer ${localStorage.getItem("token")}`
+      });
+    });
+  }
 
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
@@ -21,12 +34,5 @@ export class ReviewBodyComponent {
 
   public fileOverAnother(e: any): void {
     this.hasAnotherDropZoneOver = e;
-  }
-
-  handleUpload(data): void {
-    if (data && data.response) {
-      data = JSON.parse(data.response);
-      this.uploadFile = data;
-    }
   }
 }

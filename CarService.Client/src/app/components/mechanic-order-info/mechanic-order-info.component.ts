@@ -78,6 +78,6 @@ export class MechanicOrderInfoComponent implements OnInit {
   }
 
   addReview() {
-    
+    this.router.navigate([`review-create/${this.order.orderId}`]);
   }
 }

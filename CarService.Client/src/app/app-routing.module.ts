@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'google-map', component: GoogleMapComponent },
   { path: 'order-list', component: OrderListComponent },
-  { path: 'review-create', component: ReviewCreateComponent },
+  { path: 'review-create/:id', component: ReviewCreateComponent },
   {
     path: 'personalAccount', component: PersonalAccountComponent, children: [
       { path: 'profile', component: ProfileComponent, outlet: 'personalAccountOutlet' },

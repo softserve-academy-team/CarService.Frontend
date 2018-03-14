@@ -13,7 +13,7 @@
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Fill out your address</ng-template>
-      <app-review-body></app-review-body>
+      <app-review-body [reviewId] = "reviewId"></app-review-body>
       <!-- <mat-form-field>
         <input matInput placeholder="Address" formControlName="secondCtrl" required>
       </mat-form-field> -->

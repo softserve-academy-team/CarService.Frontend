@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { ReviewService } from './../../services/review.service';
 import { CreateReview } from '../../models/create-review';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { CommunicationService } from '../../services/communication.service';
 
 @Component({
   selector: 'app-review-create',
@@ -10,7 +12,6 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./review-create.component.scss']
 })
 export class ReviewCreateComponent implements OnInit {
-  @Input() order: number;
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -18,7 +19,11 @@ export class ReviewCreateComponent implements OnInit {
   reviewId: number;
 
 
-  constructor(private _formBuilder: FormBuilder, private reviewService: ReviewService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private _formBuilder: FormBuilder, 
+    private reviewService: ReviewService,
+    private communicationService: CommunicationService) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -33,11 +38,12 @@ export class ReviewCreateComponent implements OnInit {
   }
 
   createReview() {
-    this.reviewService.createReview(new CreateReview( 52, this.firstCtrl.value)).subscribe((data: number) => {
+    this.reviewService.createReview(new CreateReview( +this.route.snapshot.paramMap.get('id'), this.firstCtrl.value)).subscribe((data: number) => {
       
       console.log(data);
 
       this.reviewId = data;
+      this.communicationService.sendReview(data);
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
