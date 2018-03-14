@@ -13,4 +13,7 @@ export class DetailCarInfo {
     fuelName: string;
     gearBoxName: string;
     description: string;
+    categoryId: number;
+    markId: number;
+    modelId: number;
 }

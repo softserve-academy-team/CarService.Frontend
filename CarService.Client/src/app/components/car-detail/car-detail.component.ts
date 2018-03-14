@@ -74,8 +74,6 @@ export class CarDetailComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    // dialogConfig.width = '520px';
-    // dialogConfig.height = '300px';
     dialogConfig.data = { orderDescription: this.orderDescription }
     let createOrder = this.dialog.open(CreateOrderDialogComponent, dialogConfig);
 
@@ -96,8 +94,6 @@ export class CarDetailComponent implements OnInit {
   unregisterUserDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    // dialogConfig.width = '350px';
-    // dialogConfig.height = '180px';
     let createUnregister = this.dialog.open(UnregisterUserDialogComponent, dialogConfig);
 
     createUnregister.afterClosed().subscribe(result => {
@@ -119,6 +115,9 @@ export class CarDetailComponent implements OnInit {
     order.year = this.detailCarById.year;
     order.photoLink = this.detailCarById.photoLink;
     order.city = this.detailCarById.city;
+    order.categoryId = this.detailCarById.categoryId;
+    order.markId = this.detailCarById.markId;
+    order.modelId = this.detailCarById.modelId;
     return order;
   }
 
