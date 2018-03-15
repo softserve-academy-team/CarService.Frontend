@@ -7,6 +7,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CommunicationService } from '../../services/communication.service';
 import { FileUploader } from 'ng2-file-upload';
+import { environment } from '../../../environments/environment';
+import { RestUrlBuilder } from '../../services/rest-url-builder';
 
 @Component({
   selector: 'app-profile',
@@ -28,15 +30,20 @@ export class ProfileComponent implements OnInit {
     private profileService: ProfileService,
     private router: Router,
     private authService: AuthService,
-    private communicationService: CommunicationService) { }
+    private communicationService: CommunicationService,
+    private restUrlBuilder: RestUrlBuilder) {}
 
   ngOnInit() {
-    this.url = `https://localhost:44340/api/profile/set-avatar/`;
+    this.url = this.restUrlBuilder.build(environment['CarServiceApiBaseUrl'], 'profile', 'set-avatar');
 
     this.uploader = new FileUploader({
       url: this.url,
       authToken: `Bearer ${localStorage.getItem("token")}`
     });
+
+    this.uploader.onSuccessItem = file => {
+      this.getUserInfo();
+    };
 
     this.getUserInfo();
     this.communicationService.isUpdatedReceived.subscribe(d => {
@@ -78,6 +85,7 @@ export class ProfileComponent implements OnInit {
   }
 
   uploadAvatar() {
+    console.log("Review");
     this.uploader.uploadAll();
   }
 }

@@ -1,10 +1,12 @@
 <div class="component-container">
-  <div class="profile-container">
+  <div class="profile-container" *ngIf="!!user">
     <div class="image-container">
       <img *ngIf="!loading" src="{{user.avatar | userPhoto}}" class="avatar">
-      <div>
-        <input type="file" ng2FileSelect [uploader]="uploader"/>
-        <button type="button" (click)="uploadAvatar()">Upload</button>
+      <div class="file-upload">
+        <button mat-raised-button color="primary" (click)="fileInput.click()" class="button-upload">
+          <span>Change avatar</span>
+          <input #fileInput type="file" (change)="uploadAvatar()" style="display:none;" ng2FileSelect [uploader]="uploader"/>
+        </button>
       </div>
     </div>
     <div class="information-container">

@@ -42,6 +42,14 @@ $item-font-size: 11pt;
     margin-top: 40px;
 }
 
+.file-upload {
+    text-align: center;
+}
+.button-upload {
+    margin: auto;
+    margin-top: 20px;
+}
+
 @media screen and (min-width: 720px) {
     .profile-container {
         display: flex;
