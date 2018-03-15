@@ -1,0 +1,63 @@
+<div>
+  <mat-card class="order-container">
+    <div class="header-container">
+      <div class="img-container">
+        <img src="{{review.photoLink}}" class="car-image">
+      </div>
+      <div class="general-info-container">
+        <div class="general-info">
+          <div>
+            <h2>Review №{{review.reviewId}}</h2>
+          </div>
+          <div>
+            <h2>City: {{review.city}}</h2>
+          </div>
+        </div>
+        <div class="general-info">
+          <div>
+            <a routerLink="/cardetail/{{review.autoRiaId}}">
+              <h4>
+                {{review.markName}} {{review.modelName}} {{review.year}}
+              </h4>
+            </a>
+          </div>
+          <div>
+            <h4>{{review.date}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="content-container">
+      
+      <mat-card class="content">
+        <div class="header-content">
+          <h3>Description:</h3>
+        </div>
+        <div class="description-container">
+          <p>{{review.description}}</p>
+        </div>
+      </mat-card>
+
+      <mat-card class="content" *ngIf="hasPhotos">
+        <div class="header-content">
+          <h3>Photos: </h3>
+        </div>
+        <div class="photos-content">
+          <app-car-detail-gallery [carImages]="review.photos"></app-car-detail-gallery>
+        </div>
+      </mat-card>
+
+      <mat-card class="content" *ngIf="hasVideos">
+        <div class="header-content">
+          <h3>Videos:</h3>
+        </div>
+        <div class="videos-content">
+          <div *ngFor="let video of review.videos" class="video-container">
+            <app-video-player [videoUrl]="video"></app-video-player>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>

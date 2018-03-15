@@ -19,6 +19,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { ReviewCreateComponent } from './components/review-create/review-create.component';
 import { CustomerOrderInfoComponent } from './components/customer-order-info/customer-order-info.component';
 import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mechanic-order-info.component';
+import { ReviewInfoComponent } from './components/review-info/review-info.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'google-map', component: GoogleMapComponent },
   { path: 'order-list', component: OrderListComponent },
   { path: 'review-create/:id', component: ReviewCreateComponent },
+  { path: 'review-info/:id', component: ReviewInfoComponent},
   {
     path: 'personalAccount', component: PersonalAccountComponent, children: [
       { path: 'profile', component: ProfileComponent, outlet: 'personalAccountOutlet' },

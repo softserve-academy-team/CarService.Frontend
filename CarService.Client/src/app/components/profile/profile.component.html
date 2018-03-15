@@ -1,7 +1,11 @@
 <div class="component-container">
   <div class="profile-container">
     <div class="image-container">
-      <img *ngIf="!loading" src="https://labelstech.com/wp-content/uploads/2017/02/47199326-profile-pictures.png" class="avatar">
+      <img *ngIf="!loading" src="{{user.avatar | userPhoto}}" class="avatar">
+      <div>
+        <input type="file" ng2FileSelect [uploader]="uploader"/>
+        <button type="button" (click)="uploadAvatar()">Upload</button>
+      </div>
     </div>
     <div class="information-container">
       <div *ngFor="let property of userInfo" class="properties">

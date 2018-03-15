@@ -20,7 +20,7 @@ export class ReviewBodyComponent {
     this.communicationService.reviewReceived.subscribe(d => {
       this.reviewId = d;
       this.url = `https://localhost:44340/api/review/save_photo/${this.reviewId}`;
-      console.log(this.url);
+
       this.uploader = new FileUploader({ 
         url: this.url,
         authToken: `Bearer ${localStorage.getItem("token")}`

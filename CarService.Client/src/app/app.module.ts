@@ -60,6 +60,8 @@ import { ReviewCreateComponent } from './components/review-create/review-create.
 import { ReviewBodyComponent } from './components/review-body/review-body.component';
 import { ReviewService } from './services/review.service';
 import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mechanic-order-info.component';
+import { ReviewInfoComponent } from './components/review-info/review-info.component';
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
 
 
 @NgModule({
@@ -97,7 +99,9 @@ import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mec
     ReviewBodyComponent,
     CustomerOrderInfoComponent,
     MechanicRateComponent,
-    MechanicOrderInfoComponent
+    MechanicOrderInfoComponent,
+    ReviewInfoComponent,
+    VideoPlayerComponent
   ],
   imports: [
     AppRoutingModule,

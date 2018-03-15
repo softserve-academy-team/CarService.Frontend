@@ -17,4 +17,9 @@ export class ReviewService {
     return this.httpClient.post<any>(
       this.restUrlBuilder.build(this.carServiceApiBaseUrl, "review", "create_review"), data);
   }
+
+  getReview(data: number) {
+    return this.httpClient.get(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, "review", "review-info", data.toString()));
+  }
 }

@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CommunicationService } from '../../services/communication.service';
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-profile',
@@ -19,6 +20,10 @@ export class ProfileComponent implements OnInit {
 
   loading: boolean;
 
+  public uploader: FileUploader;
+  uploadFile: any;
+  url: string;
+
   constructor(
     private profileService: ProfileService,
     private router: Router,
@@ -26,6 +31,13 @@ export class ProfileComponent implements OnInit {
     private communicationService: CommunicationService) { }
 
   ngOnInit() {
+    this.url = `https://localhost:44340/api/profile/set-avatar/`;
+
+    this.uploader = new FileUploader({
+      url: this.url,
+      authToken: `Bearer ${localStorage.getItem("token")}`
+    });
+
     this.getUserInfo();
     this.communicationService.isUpdatedReceived.subscribe(d => {
       if (d === true)
@@ -63,6 +75,10 @@ export class ProfileComponent implements OnInit {
         }
       }
     );
+  }
+
+  uploadAvatar() {
+    this.uploader.uploadAll();
   }
 }
 
