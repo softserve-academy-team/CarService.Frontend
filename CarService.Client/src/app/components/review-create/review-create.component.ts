@@ -12,7 +12,7 @@ import { CommunicationService } from '../../services/communication.service';
   styleUrls: ['./review-create.component.scss']
 })
 export class ReviewCreateComponent implements OnInit {
-  isLinear = true;
+  isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   firstCtrl: AbstractControl;
@@ -39,9 +39,6 @@ export class ReviewCreateComponent implements OnInit {
 
   createReview() {
     this.reviewService.createReview(new CreateReview( +this.route.snapshot.paramMap.get('id'), this.firstCtrl.value)).subscribe((data: number) => {
-      
-      console.log(data);
-
       this.reviewId = data;
       this.communicationService.sendReview(data);
     },
