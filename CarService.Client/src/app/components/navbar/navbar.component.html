@@ -23,7 +23,7 @@
           <mat-icon>work</mat-icon>
           <span>Orders</span>
         </button>
-        <button mat-menu-item disabled>
+        <button mat-menu-item [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['profile-reviews'] } }]">
           <mat-icon>assignment</mat-icon>
           <span>Reviews</span>
         </button>

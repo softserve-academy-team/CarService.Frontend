@@ -62,6 +62,8 @@ import { ReviewService } from './services/review.service';
 import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mechanic-order-info.component';
 import { ReviewInfoComponent } from './components/review-info/review-info.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
+import { ProfileReviewsComponent } from './components/profile-reviews/profile-reviews.component';
+import { ReviewCardComponent } from './components/review-card/review-card.component';
 
 
 @NgModule({
@@ -101,7 +103,9 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     MechanicRateComponent,
     MechanicOrderInfoComponent,
     ReviewInfoComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    ProfileReviewsComponent,
+    ReviewCardComponent
   ],
   imports: [
     AppRoutingModule,

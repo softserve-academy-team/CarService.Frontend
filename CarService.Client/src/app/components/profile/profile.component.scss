@@ -1,4 +1,4 @@
-$avatar-width: 200px;
+$avatar-width: 250px;
 $profile-container-min-width: 420px;
 $profile-container-origin-width: 700px;
 $item-font-size: 11pt;
@@ -24,7 +24,8 @@ $item-font-size: 11pt;
 
 .avatar {
     width: $avatar-width;
-    height: auto;
+    height: $avatar-width;
+    border-radius: 50%;
 }
 
 .item-container {
