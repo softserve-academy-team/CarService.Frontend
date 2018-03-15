@@ -12,11 +12,21 @@
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Multimedia</ng-template>
-      <app-review-body [reviewId] = "reviewId"></app-review-body>
+      <ng-template matStepLabel>Photos</ng-template>
+      <app-review-body [Url]="photoUrl"></app-review-body>
       <div>
         <!-- <button mat-button matStepperPrevious>Back</button> -->
-        <button mat-button matStepperNext (click)="stepper.reset()">Done</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Videos</ng-template>
+      <app-review-body [Url]="videoUrl"></app-review-body>
+      <div>
+        <!-- <button mat-button matStepperPrevious>Back</button> -->
+        <button mat-button matStepperNext routerLink='/review-info/{{reviewId}}'>Done</button>
       </div>
     </form>
   </mat-step>

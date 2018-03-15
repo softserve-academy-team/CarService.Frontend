@@ -8,40 +8,25 @@ import { CommunicationService } from '../../services/communication.service';
   styleUrls: ['./review-body.component.scss']
 })
 export class ReviewBodyComponent {
-  @Input() reviewId: number;
+  reviewId: number;
   uploadFile: any;
-  photoUrl: string;
-  videoUrl: string;
+  @Input() Url: string;
 
-  public videoUploader: FileUploader;
-  public photoUploader: FileUploader;
-  public hasVideoDropZoneOver: boolean = false;
-  public hasPhotoDropZoneOver: boolean = false;
+  public uploader: FileUploader;
+  public hasDropZoneOver: boolean = false;
 
   constructor(private communicationService: CommunicationService, private detector: ChangeDetectorRef) {
     this.communicationService.reviewReceived.subscribe(d => {
-      this.reviewId = d;
+      this.Url += `/${d}`;
 
-      this.videoUrl = `https://localhost:44340/api/review/save_video/${this.reviewId}`;
-      this.photoUrl = `https://localhost:44340/api/review/save_photo/${this.reviewId}`;
-
-      this.videoUploader = new FileUploader({
-        url: this.videoUrl,
-        authToken: `Bearer ${localStorage.getItem("token")}`
-      });
-
-      this.photoUploader = new FileUploader({
-        url: this.photoUrl,
+      this.uploader = new FileUploader({
+        url: this.Url,
         authToken: `Bearer ${localStorage.getItem("token")}`
       });
     });
   }
 
-  public fileOverVideo(e: any): void {
-    this.hasVideoDropZoneOver = e;
-  }
-
-  public fileOverPhoto(e: any): void {
-    this.hasPhotoDropZoneOver = e;
+  public fileOverDropZone(e: any): void {
+    this.hasDropZoneOver = e;
   }
 }
