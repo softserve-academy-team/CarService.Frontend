@@ -91,7 +91,7 @@
         </div>
       </mat-card>
       <button mat-raised-button color="primary" (click)="addReview()" class="button-review" *ngIf="status == 'Pending'">Add Review</button>
-      <button mat-raised-button color="primary" routerLink='/review-info/{{order.reviewId}}' *ngIf="order.status == 'Done'">Review</button>
+      <button mat-raised-button color="primary" routerLink='/review-info/{{order?.reviewId}}' *ngIf="status == 'Done'">Review</button>
     </div>
   </mat-card>
 </div>
