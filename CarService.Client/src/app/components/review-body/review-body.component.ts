@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FileUploader, FileSelectDirective } from 'ng2-file-upload';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { FileUploader, FileSelectDirective, FileItem } from 'ng2-file-upload';
 import { CommunicationService } from '../../services/communication.service';
 
 @Component({
@@ -14,14 +14,13 @@ export class ReviewBodyComponent {
 
   public uploader: FileUploader;
   public hasBaseDropZoneOver: boolean = false;
-  public hasAnotherDropZoneOver: boolean = false;
 
-  constructor(private communicationService: CommunicationService) {
+  constructor(private communicationService: CommunicationService, private detector: ChangeDetectorRef) {
     this.communicationService.reviewReceived.subscribe(d => {
       this.reviewId = d;
       this.url = `https://localhost:44340/api/review/save_photo/${this.reviewId}`;
 
-      this.uploader = new FileUploader({ 
+      this.uploader = new FileUploader({
         url: this.url,
         authToken: `Bearer ${localStorage.getItem("token")}`
       });
@@ -30,9 +29,5 @@ export class ReviewBodyComponent {
 
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
-  }
-
-  public fileOverAnother(e: any): void {
-    this.hasAnotherDropZoneOver = e;
   }
 }
