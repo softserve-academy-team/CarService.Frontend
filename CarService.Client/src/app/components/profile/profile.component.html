@@ -1,0 +1,29 @@
+<div class="component-container">
+  <div class="profile-container" *ngIf="!!user">
+    <div class="image-container">
+      <img #profilePhoto *ngIf="!photoLoading" src="{{user.avatar | userPhoto}}" class="avatar">
+      <mat-spinner *ngIf="photoLoading" class="spinner"></mat-spinner>
+      <div class="file-upload">
+        <button mat-raised-button color="primary" (click)="fileInput.click()" class="button-upload">
+          <span>Change avatar</span>
+          <input #fileInput type="file" (change)="uploadAvatar()" style="display:none;" ng2FileSelect [uploader]="uploader" />
+        </button>
+      </div>
+    </div>
+    <div class="information-container">
+      <div *ngFor="let property of userInfo" class="properties">
+        <div class="item-container">
+          <div class="item">
+            <span>{{property.name}}: </span>
+          </div>
+          <div class="item">
+            <span>{{property.value}}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+      <button mat-raised-button *ngIf="!loading" color="primary" class="edit-button" [routerLink]="['edit-profile']">Edit Profile Information</button>
+      <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>      
+    </div>
+  </div>
+</div>

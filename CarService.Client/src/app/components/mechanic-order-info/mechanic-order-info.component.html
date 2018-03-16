@@ -1,0 +1,97 @@
+<div>
+  <mat-card class="order-container">
+    <div class="header-container">
+      <div class="img-container">
+        <img src="{{order?.photoLink}}" class="car-image">
+      </div>
+      <div class="general-info-container">
+        <div class="general-info">
+          <div>
+            <h2>Order №{{order?.orderId}}</h2>
+          </div>
+          <div>
+            <h2>Status: </h2>
+            <h2 [style.color]="color">{{status}}</h2>
+          </div>
+        </div>
+        <div class="general-info">
+          <div class="autoria-link">
+            <a routerLink="/cardetail/{{order?.autoRiaId}}">
+              <h4>
+                {{order?.markName}} {{order?.modelName}} {{order?.year}}
+              </h4>
+            </a>
+          </div>
+          <div class="customer-info">
+            <div mat-card-avatar class="header-image"></div>
+            <div class="customer-name">
+              <h4>{{order?.customerFirstName}} {{order?.customerLastName}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="content-container">
+      <mat-card>
+        <div class="item-container">
+          <div class="item">
+            <span>City: </span>
+          </div>
+          <div class="item">
+            <span>{{order?.city}}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="item-container">
+          <div class="item">
+            <span>Description: </span>
+          </div>
+          <div class="item">
+            <span>{{order?.description}}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="item-container">
+          <div class="item">
+            <span>Date: </span>
+          </div>
+          <div class="item">
+            <span>{{order?.date}}</span>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card class="proposition-container">
+        <div class="item-container">
+          <div class="item">
+            <span>Your proposition: </span>
+          </div>
+          <div class="item">
+            <span>{{order?.propositionPrice}}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="item-container">
+          <div class="item">
+            <span>Your comment: </span>
+          </div>
+          <div class="item">
+            <span>{{order?.propositionComment}}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="item-container">
+          <div class="item">
+            <span>Date of proposition: </span>
+          </div>
+          <div class="item">
+            <span>{{order?.propositionDate}}</span>
+          </div>
+        </div>
+      </mat-card>
+      <button mat-raised-button color="primary" (click)="addReview()" class="button-review" *ngIf="status == 'Pending'">Add Review</button>
+      <button mat-raised-button color="primary" routerLink='/review-info/{{order?.reviewId}}' *ngIf="status == 'Done'">Review</button>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,81 @@
+$avatar-width: 250px;
+$profile-container-min-width: 420px;
+$profile-container-origin-width: 700px;
+$item-font-size: 11pt;
+
+.profile-container {
+    margin: auto;
+    padding: 15px;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+.spinner {
+    margin: auto;
+}
+
+.information-container {
+    padding: 10px;
+    width: 100%;
+}
+
+.properties {
+    width: auto;
+}
+
+.avatar {
+    width: $avatar-width;
+    height: $avatar-width;
+    border-radius: 50%;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.item {
+    width: 50%;
+    padding: 15px;
+    font-size: $item-font-size;
+}
+
+.edit-button {
+    margin-top: 40px;
+}
+
+.file-upload {
+    text-align: center;
+}
+.button-upload {
+    margin: auto;
+    margin-top: 20px;
+}
+
+@media screen and (min-width: 720px) {
+    .profile-container {
+        display: flex;
+        flex-direction: row;
+        width: $profile-container-origin-width;
+    }
+
+    .information-container {
+        margin-left: 40px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .information-container {
+        min-width: $profile-container-min-width;
+    }
+
+    .image-container {
+        margin: auto;
+    }
+}
+

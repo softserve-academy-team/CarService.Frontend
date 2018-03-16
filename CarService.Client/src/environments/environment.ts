@@ -4,5 +4,26 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  CarServiceApiBaseUrl: "https://localhost:44340/api",
+  RegistrationConfig: {
+    textMinLength: 4,
+    textMaxLength: 20,
+    experienceMinValue: 0,
+    experienceMaxValue: 60,
+    emailMinLength: 6,
+    emailMaxLength: 30
+  },
+  GoogleMap: {
+    defaultLat: 48.3794,
+    defaultLng: 31.1656,
+    defaultZoom: 6,
+    defaultSearchZoom: 12,
+    gestureHandling: "greedy"
+  },
+  OrderSearch: {
+    minYear: 1900,
+    maxYear: 2018,
+    textMaxLength: 20
+  }
 };

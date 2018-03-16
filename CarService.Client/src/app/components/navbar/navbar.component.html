@@ -1,0 +1,41 @@
+<mat-toolbar color="primary" class="main">
+  <mat-toolbar-row>
+    <div class="home">
+      <button mat-button class="home" [routerLink]="['']">Car Service</button>
+    </div>
+    <div class="carinspection">
+      <button mat-button [routerLink]="['car-list']">Search for inspection</button>
+      <button mat-button [routerLink]="['order-list']" [disabled]="!authService.isMechanic">Do inspection</button>
+    </div>
+    <div class="authorization">
+      <button *ngIf="!authService.isAuthentificated" mat-button [routerLink]="['sign-in']">Sign in</button>
+      <button *ngIf="!authService.isAuthentificated" mat-button [routerLink]="['registration']">Sign up</button>
+
+      <button *ngIf="authService.isAuthentificated" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['favorites'] } }]">
+          <mat-icon>star_border</mat-icon>
+          <span>Favorites</span>
+        </button>
+        <button mat-menu-item [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['profile-orders'] } }]">
+          <mat-icon>work</mat-icon>
+          <span>Orders</span>
+        </button>
+        <button mat-menu-item [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['profile-reviews'] } }]">
+          <mat-icon>assignment</mat-icon>
+          <span>Reviews</span>
+        </button>
+        <button mat-menu-item [routerLink]="['/personalAccount', {outlets: { personalAccountOutlet: ['profile'] } }]">
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </button>
+        <button mat-menu-item (click)="authService.logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Sign Out</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

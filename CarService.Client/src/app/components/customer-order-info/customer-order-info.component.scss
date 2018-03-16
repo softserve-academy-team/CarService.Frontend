@@ -1,0 +1,110 @@
+$car-img-width: 220px;
+
+* {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+.order-container {
+    margin: auto;
+    width: 70%;
+    max-width: 1100px;
+    min-width: 700px;
+    min-height: 600px;
+    margin-bottom: 40px;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.img-container {
+    padding: 10px;
+}
+
+.general-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    width: 100%;
+}
+
+.general-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.car-image {
+    width: $car-img-width;
+}
+
+.content-container {
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.propositions-title {
+    margin: 20px 0;
+}
+
+.no-propositions {
+    padding: 20px;
+    text-align: center;
+}
+
+mat-panel-title {
+    width: 55%;
+}
+
+.panel-title {
+    display: flex;
+    flex-direction: row;
+    //justify-content: center;
+    width: 100%;
+}
+
+%panel-title-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.stars-container {
+    @extend %panel-title-content;
+}
+
+.mechanic-name {
+    @extend %panel-title-content;
+    width: 40%;
+}
+
+.mechanic-rate {
+    @extend %panel-title-content;
+    margin-left: 10px;
+}
+
+.description-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.description-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+}
+
+.button-accept {
+    background-color:#00cc00;
+    color:white;
+    margin-left: 10px;
+}
+
+.general-info h2 {
+    display: inline;
+}

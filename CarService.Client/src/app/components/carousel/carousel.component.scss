@@ -1,0 +1,33 @@
+$main-width: 500px;
+$main-height: 250px;
+$num-of-px-inside-img: -40px;
+$arrow-size: 40px;
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding: 0px;
+    width: $main-width;
+    height: $main-height;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.bigger {
+    font-size: $arrow-size;
+}
+
+.leftBtn {
+    margin-right: $num-of-px-inside-img;
+}
+
+.rightBtn {
+    margin-left: $num-of-px-inside-img;
+}

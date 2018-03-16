@@ -1,0 +1,54 @@
+<div *ngIf="detailCarById">
+  <div class="car-detail-container">
+    <div class="car-detail">
+      <mat-card class="cardetail-card">
+        <mat-card-title>
+          <div class="info-container">
+            <div class="car-name">
+              <h2>{{detailCarById.markName}} {{detailCarById.modelName}} {{detailCarById.year}}</h2>
+            </div>
+          </div>
+        </mat-card-title>
+        <app-car-detail-gallery [carImages]="carPhotosAll"></app-car-detail-gallery>
+      </mat-card>
+
+      <mat-card>
+        <div class="infoo-car">
+          <div class="price-block">
+            <p class="carPriceUSD">{{detailCarById.priceUSD}}$ /</p>
+            <p class="carPriceUAH">{{detailCarById.priceUAH}}₴</p>
+          </div>
+
+          <div class="info-container">
+            <div class="info-item">
+              <img src="../assets/icons-sedan.png" class="icon" />
+              <p>{{detailCarById.race}}</p>
+            </div>
+            <div class="info-item">
+              <img src="../assets/icons-gearbox.png" class="iconGear" />
+              <p>{{detailCarById.gearBoxName}}</p>
+            </div>
+          </div>
+
+          <div class="info-container">
+            <div class="info-item">
+              <img src="../assets/icons-engine.png" class="icon" />
+              <p>{{detailCarById.fuelName}}</p>
+            </div>
+            <div class="info-item">
+              <img src="../assets/icons-place-marker.png" class="icon" />
+              <p>{{detailCarById.city}}</p>
+            </div>
+          </div>
+          <div class="description">{{detailCarById.description}}</div>
+        </div>
+        <mat-card>
+          <button *ngIf="!isCarInFavorites" mat-raised-button color="primary" (click)="addCarToFavorites()">Add to Favorites</button>
+          <button *ngIf="isCarInFavorites" mat-raised-button color="primary" (click)="deleteCarFromFavorites()">Delete from Favorites</button>
+          <button class="md-button-right" mat-raised-button color="primary" (click)="chooseCreateOrderDialogs()">Order a review</button>
+        </mat-card>
+      </mat-card>
+
+    </div>
+  </div>
+</div>

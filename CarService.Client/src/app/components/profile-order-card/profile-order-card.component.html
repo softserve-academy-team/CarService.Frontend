@@ -1,0 +1,25 @@
+<mat-card class="list-card">
+  <a routerLink={{getLink()}}>
+    <img src="{{order.photoLink}}">
+  </a>
+  <div class="content">
+    <div class="header-container">
+      <div>
+        <h4>
+          Order № {{order.orderId}}
+        </h4>
+      </div>
+      <div>
+        <h4 class="header-status">Status: </h4><h4 [style.color]="color">{{status}}</h4>
+      </div>
+    </div>
+    <div class="car-name">
+      <h4>{{order.markName}} {{order.modelName}} {{order.year}}</h4>
+    </div>
+    <div class="publish-date">
+      <h4 class="header-status">
+        {{order.date}}
+      </h4>
+    </div>
+  </div>
+</mat-card>

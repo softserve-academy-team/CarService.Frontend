@@ -1,0 +1,127 @@
+<div class="edit-main">
+  <mat-card class="edit-card">
+    <mat-card-header>
+      <mat-card-title class="edit-card-title">
+        <p>Edit Profile Information</p>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content class="edit-card-content">
+      <form [formGroup]="editFormGroup" class="edit-form">
+
+        <mat-form-field class="edit-form-field">
+          <input matInput placeholder="First Name" [formGroup]="editFormGroup" [formControl]="firstName">
+          <mat-error *ngIf="firstName.hasError('required')">
+            First Name is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!firstName.hasError('required')
+                         && firstName.hasError('minlength')">
+            The First Name field must be at least
+            <strong>{{config.textMinLength}}</strong> characters in length
+          </mat-error>
+          <mat-error *ngIf="!firstName.hasError('required')
+                         && !firstName.hasError('minlength')
+                         && firstName.hasError('maxlength')">
+            The First Name field cannot exceed
+            <strong>{{config.textMaxLength}}</strong> characters in length
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="edit-form-field">
+          <input matInput placeholder="Last Name" [formGroup]="editFormGroup" [formControl]="lastName">
+          <mat-error *ngIf="lastName.hasError('required')">
+            Last Name is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!lastName.hasError('required')
+                         && lastName.hasError('minlength')">
+            The Last Name field must be at least
+            <strong>{{config.textMinLength}}</strong> characters in length
+          </mat-error>
+          <mat-error *ngIf="!lastName.hasError('required')
+                         && !lastName.hasError('minlength')
+                         && lastName.hasError('maxlength')">
+            The Last Name field cannot exceed
+            <strong>{{config.textMaxLength}}</strong> characters in length
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="edit-form-field">
+          <input matInput placeholder="City" [formGroup]="editFormGroup" [formControl]="city">
+          <mat-error *ngIf="city.hasError('required')">
+            City is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!city.hasError('required')
+                         && city.hasError('minlength')">
+            The City field must be at least
+            <strong>{{config.textMinLength}}</strong> characters in length
+          </mat-error>
+          <mat-error *ngIf="!city.hasError('required')
+                         && !city.hasError('minlength')
+                         && city.hasError('maxlength')">
+            The City field cannot exceed
+            <strong>{{config.textMaxLength}}</strong> characters in length
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="edit-form-field">
+          <input matInput placeholder="Phone Number" [formGroup]="editFormGroup" [formControl]="phoneNumber">
+          <mat-error *ngIf="phoneNumber.hasError('pattern')
+                            || phoneNumber.hasError('maxlength')">
+            The Phone Number must be in form +38xxxxx and 
+            <strong>13</strong> characters in length
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="edit-form-field">
+          <input matInput placeholder="Card Number" [formGroup]="editFormGroup" [formControl]="cardNumber">
+          <mat-error *ngIf="!cardNumber.hasError('required')
+                         && cardNumber.hasError('pattern')
+                         || cardNumber.hasError('maxlength')">
+            The Phone Number field must consist only numbers and {{cardNumberLength}} characters in length
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="isMechanic" class="edit-form-field">
+          <input matInput placeholder="Experience" [formGroup]="editFormGroup" [formControl]="experience">
+          <mat-error *ngIf="experience.hasError('required')">
+            Experience is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!experience.hasError('required')
+                         && experience.hasError('pattern')">
+            The value of Experience field should be in the range of
+            <strong>{{config.experienceMinValue}}</strong>
+            to
+            <strong>{{config.experienceMaxValue}}</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="isMechanic" class="edit-form-field">
+          <input matInput placeholder="Specialization" [formGroup]="editFormGroup" [formControl]="specialization">
+          <mat-error *ngIf="specialization.hasError('required')">
+            Specialization is
+            <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="!specialization.hasError('required')
+                         && specialization.hasError('minlength')">
+            The Specialization field must be at least
+            <strong>{{config.textMinLength}}</strong> characters in length
+          </mat-error>
+          <mat-error *ngIf="!specialization.hasError('required')
+                         && !specialization.hasError('minlength')
+                         && specialization.hasError('maxlength')">
+            The Specialization field cannot exceed
+            <strong>{{maxSpecializationLength}}</strong> characters in length
+          </mat-error>
+        </mat-form-field>
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="edit-actions">
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
