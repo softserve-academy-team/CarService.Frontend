@@ -124,7 +124,6 @@ export class CarDetailComponent implements OnInit {
   postCreatedOrder(): void {
     let order = this.createOrder();
     this.orderService.createOrder(order).subscribe(data => {
-      this.isCarInFavorites = true;
     },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {

@@ -1,0 +1,27 @@
+<div class="component-container">
+  <mat-tab-group class="tabs">
+    <mat-tab label="Reviews that I bought">
+      <mat-spinner *ngIf="loadingBought" class="spinner"></mat-spinner>
+      <div>
+        <h3 *ngIf="!enabledBought" class="null-reviews">You don't have reviews</h3>
+        <div class="list-container">
+          <div *ngFor="let review of boughtReviews">
+            <app-review-card [review]="review" [link]="routerLinkForBought()"></app-review-card>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Reviews that I made" [disabled]="!isMechanic">
+      <mat-spinner *ngIf="loadingCreated" class="spinner"></mat-spinner>
+      <div>
+        <h3 *ngIf="!enabledCreated" class="null-reviews">You don't have reviews</h3>
+        <div class="list-container">
+          <div *ngFor="let review of createdReviews">
+            <app-review-card [review]="review" [link]="routerLinkForCreated()"></app-review-card>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

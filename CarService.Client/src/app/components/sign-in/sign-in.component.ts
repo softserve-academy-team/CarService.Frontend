@@ -15,6 +15,7 @@ export class SignInComponent {
   email: AbstractControl;
   password: AbstractControl;
   verticalPosition: MatSnackBarVerticalPosition = 'top';
+  
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {
     this.form = fb.group({
       email: ['', [Validators.required, Validators.email]],

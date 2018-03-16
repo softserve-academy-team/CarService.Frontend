@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { FileUploadModule } from "ng2-file-upload/file-upload/file-upload.module";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -55,7 +56,14 @@ import { AgmCoreModule, MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { OrderFilterComponent } from './components/order-filter/order-filter.component';
 import { MapsService } from './services/maps-service';
+import { ReviewCreateComponent } from './components/review-create/review-create.component';
+import { ReviewBodyComponent } from './components/review-body/review-body.component';
+import { ReviewService } from './services/review.service';
 import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mechanic-order-info.component';
+import { ReviewInfoComponent } from './components/review-info/review-info.component';
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
+import { ProfileReviewsComponent } from './components/profile-reviews/profile-reviews.component';
+import { ReviewCardComponent } from './components/review-card/review-card.component';
 
 
 @NgModule({
@@ -89,9 +97,15 @@ import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mec
     UserPhotoPipe,
     OrderCardComponent,
     OrderFilterComponent,
+    ReviewCreateComponent,
+    ReviewBodyComponent,
     CustomerOrderInfoComponent,
     MechanicRateComponent,
-    MechanicOrderInfoComponent
+    MechanicOrderInfoComponent,
+    ReviewInfoComponent,
+    VideoPlayerComponent,
+    ProfileReviewsComponent,
+    ReviewCardComponent
   ],
   imports: [
     AppRoutingModule,
@@ -106,7 +120,8 @@ import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mec
       libraries: ["places"]
     }),
     AgmJsMarkerClustererModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FileUploadModule
   ],
   providers: [
     RestUrlBuilder,
@@ -123,7 +138,8 @@ import { MechanicOrderInfoComponent } from './components/mechanic-order-info/mec
       useClass: AuthInterceptor,
       multi: true
     },
-    MapsService
+    MapsService,
+    ReviewService
   ],
   bootstrap: [AppComponent],
   entryComponents: [CreateOrderDialogComponent,

@@ -1,5 +1,5 @@
 export class CreateReviewProposition {
     orderId: number;
-    reviewDescription: string;
+    reviewComment: string;
     reviewPrice: number;
 }

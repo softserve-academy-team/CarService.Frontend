@@ -65,4 +65,21 @@ export class ProfileService {
     return this.httpClient.get(
       this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'applied-orders'));
   }
+
+  getUserAvatarUrl() {
+    return this.httpClient.get(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'get-avatar'), {
+        responseType: "text"
+      });
+    }
+    
+  getUserBoughtReviews() {
+    return this.httpClient.get(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'bought-reviews'));
+  }
+
+  getUserCreatedReviews() {
+    return this.httpClient.get(
+      this.restUrlBuilder.build(this.carServiceApiBaseUrl, 'profile', 'created-reviews'));
+  }
 }
